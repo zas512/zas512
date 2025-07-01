@@ -1,18 +1,16 @@
 "use client";
-
-import React from "react";
+import type { ReactNode, CSSProperties } from "react";
 import { Heading, Flex, IconButton, useToast } from "@/once-ui/components";
-
 import styles from "@/components/HeadingLink.module.scss";
 
 interface HeadingLinkProps {
   id: string;
   level: 1 | 2 | 3 | 4 | 5 | 6;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
+  children: ReactNode;
+  style?: CSSProperties;
 }
 
-export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, style }) => {
+export const HeadingLink = ({ id, level, children, style }: HeadingLinkProps) => {
   const { addToast } = useToast();
 
   const copyURL = (id: string): void => {
@@ -29,7 +27,7 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
           variant: "danger",
           message: "Failed to copy link.",
         });
-      },
+      }
     );
   };
 
@@ -43,7 +41,7 @@ export const HeadingLink: React.FC<HeadingLinkProps> = ({ id, level, children, s
   } as const;
 
   const variant = variantMap[level];
-  const asTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const asTag = `h${level}` as const;
 
   return (
     <Flex
