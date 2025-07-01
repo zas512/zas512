@@ -16,7 +16,7 @@ export async function generateMetadata() {
 
 export default function Blog() {
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="m">
       <Schema
         as="blog"
         baseURL={baseURL}

@@ -1,0 +1,204 @@
+---
+title: "Deploy a Static Site on an .eth Domain via IPFS"
+summary: "A direct, code-first guide to deploying a static site to an .eth domain using Pinata for IPFS storage and ethers.js for ENS updates."
+publishedAt: "2025-07-01"
+tag: "IPFS, ENS, ethers.js, Pinata"
+---
+
+This guide provides the essential code to host a static site on an Ethereum Name Service (.eth) domain. The process involves uploading your site to IPFS via Pinata, verifying its public availability, and then pointing your `.eth` domain to that content.
+
+***
+
+## Step 1: Upload Site to Pinata & Get CID
+
+This Node.js script uploads a directory (e.g., `./dist`) to Pinata and returns the IPFS Content Identifier (CID). You'll need a [Pinata](https://pinata.cloud) JWT API key.
+
+### Setup
+Install the necessary packages:
+```bash
+npm install axios form-data glob
+```
+
+**Upload Script (`upload.mjs`)**
+This script packages your build folder and sends it to Pinata.
+
+```js
+import fs from 'fs';
+import path from 'path';
+import axios from 'axios';
+import FormData from 'form-data';
+import { glob } from 'glob';
+
+// --- CONFIGURATION ---
+const PINATA_JWT = 'YOUR_PINATA_JWT';
+const SOURCE_DIR = path.resolve('./dist'); // Your site's build folder
+// --- END CONFIGURATION ---
+
+async function uploadDirectoryToPinata(dirPath) {
+  if (PINATA_JWT === 'YOUR_PINATA_JWT') {
+    throw new Error('Pinata JWT is not set. Please update the script.');
+  }
+
+  const formData = new FormData();
+  const files = await glob(`${dirPath}/**/*`, { nodir: true });
+
+  files.forEach((file) => {
+    formData.append('file', fs.createReadStream(file), {
+      filepath: path.relative(dirPath, file),
+    });
+  });
+
+  formData.append('pinataOptions', JSON.stringify({ cidVersion: 1 }));
+  formData.append('pinataMetadata', JSON.stringify({ name: `my-site-${Date.now()}` }));
+
+  const { data } = await axios.post(
+    'https://api.pinata.cloud/pinning/pinFileToIPFS',
+    formData, {
+      maxBodyLength: 'Infinity',
+      headers: {
+        'Content-Type': `multipart/form-data; boundary=${formData.getBoundary()}`,
+        'Authorization': `Bearer ${PINATA_JWT}`,
+      },
+    }
+  );
+
+  return data.IpfsHash;
+}
+
+try {
+  const cid = await uploadDirectoryToPinata(SOURCE_DIR);
+  console.log(`✅ Upload successful! CID: ${cid}`);
+} catch (error) {
+  console.error('❌ Upload failed:', error.message);
+}
+```
+
+Run the script and copy the output CID.
+
+***
+
+## Step 2: Verify Public Availability
+
+Before updating your ENS record, confirm the content is accessible on a public IPFS gateway.
+
+**Verification Script (`verify.mjs`)**
+This script sends a request to ipfs.io to check if the CID is reachable.
+
+```js
+import axios from 'axios';
+
+// --- CONFIGURATION ---
+const CID_TO_CHECK = 'PASTE_YOUR_CID_HERE';
+// --- END CONFIGURATION ---
+
+async function verifyOnGateway(cid) {
+  if (CID_TO_CHECK === 'PASTE_YOUR_CID_HERE') {
+    throw new Error('CID is not set. Please update the script.');
+  }
+  
+  const url = `https://ipfs.io/ipfs/${cid}`;
+  console.log(`Checking gateway: ${url}`);
+
+  try {
+    // We use a HEAD request because we only need the status, not the content.
+    await axios.head(url, { timeout: 15000 }); // 15-second timeout
+    console.log(`✅ Success! CID is available on the public gateway.`);
+    return true;
+  } catch (error) {
+    if (error.response) {
+      console.error(`❌ Failed: Gateway returned status ${error.response.status}.`);
+    } else {
+      console.error('❌ Failed: Gateway could not be reached. The content may still be propagating.');
+    }
+    return false;
+  }
+}
+
+verifyOnGateway(CID_TO_CHECK);
+```
+
+Run this script with your new CID. A success message confirms you can proceed.
+
+***
+
+## Step 3: Update .eth Domain Content Hash
+
+This final script connects to your browser wallet (e.g., MetaMask) to update the content hash record on your .eth domain, which requires a gas fee.
+
+**ENS Update Page (`index.html`)**
+Create this HTML file to execute the browser-based script.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ENS Content Hash Updater</title>
+</head>
+<body>
+  <h1>Update .eth Domain Content Hash</h1>
+  <button id="updateButton">Connect Wallet & Update</button>
+  <p id="status"></p>
+
+  <script async src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "ethers": "https://cdn.ethers.io/lib/ethers-5.7.esm.min.js",
+      "content-hash": "https://cdn.skypack.dev/content-hash"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import { ethers } from 'ethers';
+    import { encode as encodeContentHash } from 'content-hash';
+
+    // --- CONFIGURATION ---
+    const ETH_DOMAIN = 'your-domain.eth';
+    const IPFS_CID = 'PASTE_YOUR_CID_HERE';
+    // --- END CONFIGURATION ---
+
+    const updateButton = document.getElementById('updateButton');
+    const statusEl = document.getElementById('status');
+
+    updateButton.onclick = async () => {
+      if (!window.ethereum) {
+        statusEl.textContent = 'Wallet not found. Please install MetaMask.';
+        return;
+      }
+      if (ETH_DOMAIN === 'your-domain.eth' || IPFS_CID === 'PASTE_YOUR_CID_HERE') {
+          statusEl.textContent = 'Please configure ETH_DOMAIN and IPFS_CID in the script.';
+          return;
+      }
+
+      try {
+        statusEl.textContent = 'Connecting to wallet...';
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        
+        const resolver = await provider.getResolver(ETH_DOMAIN);
+        if (!resolver) {
+            throw new Error("Domain could not be resolved. Ensure it's registered and configured.");
+        }
+        
+        statusEl.textContent = 'Encoding content hash...';
+        const newContentHash = '0x' + encodeContentHash('ipfs-ns', IPFS_CID);
+
+        statusEl.textContent = 'Please approve the transaction in your wallet.';
+        const tx = await resolver.setContenthash(newContentHash);
+        
+        statusEl.textContent = `Transaction sent (${tx.hash}). Waiting for confirmation...`;
+        await tx.wait(1);
+
+        statusEl.innerHTML = `✅ Success! Domain updated. <a href="https://etherscan.io/tx/${tx.hash}" target="_blank">View on Etherscan</a>`;
+      } catch (error) {
+        statusEl.textContent = `❌ Error: ${error.reason || error.message}`;
+      }
+    };
+  </script>
+</body>
+</html>
+```
+
+Open `index.html` in your browser, connect your wallet, and approve the transaction. Once confirmed, your .eth domain will point to your new IPFS site and be accessible via gateways like eth.limo. 

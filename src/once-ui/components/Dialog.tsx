@@ -1,13 +1,11 @@
 "use client";
-
 import React, {
-  ReactNode,
+  type ReactNode,
   useEffect,
   useCallback,
   useRef,
   forwardRef,
-  useState,
-  useContext,
+  useState
 } from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
@@ -26,31 +24,6 @@ interface DialogProps extends Omit<React.ComponentProps<typeof Flex>, "title"> {
   onHeightChange?: (height: number) => void;
   minHeight?: number;
 }
-
-const DialogContext = React.createContext<{
-  stackedDialogOpen: boolean;
-  setStackedDialogOpen: (open: boolean) => void;
-}>({
-  stackedDialogOpen: false,
-  setStackedDialogOpen: () => {},
-});
-
-export const DialogProvider: React.FC<{
-  children: React.ReactNode;
-}> = ({ children }) => {
-  const [stackedDialogOpen, setStackedDialogOpen] = useState(false);
-
-  return (
-    <DialogContext.Provider
-      value={{
-        stackedDialogOpen,
-        setStackedDialogOpen,
-      }}
-    >
-      {children}
-    </DialogContext.Provider>
-  );
-};
 
 const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
   (
@@ -72,13 +45,6 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(
     const dialogRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(isOpen);
     const [isAnimating, setIsAnimating] = useState(false);
-    const { stackedDialogOpen, setStackedDialogOpen } = useContext(DialogContext);
-
-    useEffect(() => {
-      if (stack) {
-        setStackedDialogOpen(isOpen);
-      }
-    }, [stack, isOpen, setStackedDialogOpen]);
 
     useEffect(() => {
       if (dialogRef.current && isVisible) {

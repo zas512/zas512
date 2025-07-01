@@ -8,17 +8,6 @@
   white-space: inherit;
 }
 
-.line-numbers-rows {
-  padding-right: var(--static-space-4);
-  left: calc(-1 * var(--static-space-40));
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  width: var(--static-space-48);
-  user-select: none;
-}
-
 .line-numbers-rows > span {
   display: block;
   counter-increment: linenumber;

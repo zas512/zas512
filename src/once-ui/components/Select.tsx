@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect, forwardRef, ReactNode } from "react";
+import React, {forwardRef, ReactNode, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
-import { DropdownWrapper, Flex, Icon, IconButton, Input, InputProps, Option } from ".";
+import {DropdownWrapper, Flex, Icon, IconButton, Input, InputProps, Option} from ".";
 import inputStyles from "./Input.module.scss";
-import type { OptionProps } from "./Option";
-import type { DropdownWrapperProps } from "./DropdownWrapper";
-import { Placement } from "@floating-ui/react-dom";
+import type {OptionProps} from "./Option";
+import type {DropdownWrapperProps} from "./DropdownWrapper";
+import {Placement} from "@floating-ui/react-dom";
 
 type SelectOptionType = Omit<OptionProps, "selected">;
 
@@ -83,18 +83,14 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(
           }
           event.preventDefault();
           setHighlightedIndex((prevIndex) => {
-            const newIndex =
-              prevIndex === null || prevIndex === options.length - 1 ? 0 : prevIndex + 1;
-            return newIndex;
+            return prevIndex === null || prevIndex === options.length - 1 ? 0 : prevIndex + 1;
           });
           break;
 
         case "ArrowUp":
           event.preventDefault();
           setHighlightedIndex((prevIndex) => {
-            const newIndex =
-              prevIndex === null || prevIndex === 0 ? options.length - 1 : prevIndex - 1;
-            return newIndex;
+            return prevIndex === null || prevIndex === 0 ? options.length - 1 : prevIndex - 1;
           });
           break;
 

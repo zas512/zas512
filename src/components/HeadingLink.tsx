@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode, CSSProperties } from "react";
-import { Heading, Flex, IconButton, useToast } from "@/once-ui/components";
+import { Heading, Flex, IconButton } from "@/once-ui/components";
 import styles from "@/components/HeadingLink.module.scss";
 
 interface HeadingLinkProps {
@@ -11,24 +11,9 @@ interface HeadingLinkProps {
 }
 
 export const HeadingLink = ({ id, level, children, style }: HeadingLinkProps) => {
-  const { addToast } = useToast();
-
   const copyURL = (id: string): void => {
     const url = `${window.location.origin}${window.location.pathname}#${id}`;
-    navigator.clipboard.writeText(url).then(
-      () => {
-        addToast({
-          variant: "success",
-          message: "Link copied to clipboard.",
-        });
-      },
-      () => {
-        addToast({
-          variant: "danger",
-          message: "Failed to copy link.",
-        });
-      }
-    );
+    navigator.clipboard.writeText(url);
   };
 
   const variantMap = {
