@@ -1,0 +1,28 @@
+---
+title: "Integrating WalletConnect in a React App"
+summary: "Step-by-step instructions to add WalletConnect support to your React dApp."
+publishedAt: "2024-06-04"
+tag: "Web3"
+---
+
+WalletConnect lets users connect their wallets to your dApp easily. Here's how to integrate it in React:
+
+1. Install WalletConnect dependencies:
+   ```bash
+   npm install @walletconnect/web3-provider web3
+   ```
+2. Set up the provider in your React app:
+   ```js
+   import WalletConnectProvider from "@walletconnect/web3-provider";
+   import Web3 from "web3";
+
+   const provider = new WalletConnectProvider({
+     infuraId: "YOUR_INFURA_ID"
+   });
+
+   await provider.enable();
+   const web3 = new Web3(provider);
+   ```
+3. Use the `web3` instance to interact with the blockchain as usual.
+
+Check the [WalletConnect docs](https://docs.walletconnect.com/) for more options and best practices. 

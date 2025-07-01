@@ -1,0 +1,50 @@
+.hover {
+    border: 1px solid var(--static-transparent);
+
+    &:hover {
+        border: 1px solid var(--neutral-alpha-medium);
+    }
+}
+
+.image {
+    transition: var(--transition-micro-medium);
+    transform: scale(1);
+}
+
+.blurBg {
+    background: rgba(255, 255, 255, 0.05); /* more transparent for glass effect */
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border-radius: var(--radius-l);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border for glassmorphism */
+    padding: 0;
+    transition: background 0.3s;
+    /* Subtle radial gradient for glassmorphism */
+    position: relative;
+    overflow: hidden;
+}
+
+.blurBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(120, 180, 255, 0.10) 0%, rgba(255,255,255,0.04) 100%);
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+/* Ensure content is above the gradient overlay */
+.blurBg > * {
+    position: relative;
+    z-index: 1;
+}
+
+.equalHeight {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

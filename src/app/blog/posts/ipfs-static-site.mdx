@@ -1,0 +1,24 @@
+---
+title: "How to Deploy a Static Site on IPFS"
+summary: "A quick guide to hosting your static website on the InterPlanetary File System (IPFS)."
+publishedAt: "2024-06-03"
+tag: "IPFS"
+---
+
+IPFS allows you to host static sites in a decentralized way. Here's how to deploy your site:
+
+1. Install IPFS CLI:
+   ```bash
+   npm install -g ipfs-cli
+   ```
+2. Initialize IPFS and add your site folder:
+   ```bash
+   ipfs init
+   ipfs add -r ./your-site-folder
+   ```
+3. Get the CID (Content Identifier) and access your site via a public IPFS gateway:
+   ```
+   https://ipfs.io/ipfs/<your-cid>
+   ```
+
+You can also use services like [Fleek](https://fleek.co/) for easier deployment and continuous integration. 
