@@ -189,6 +189,56 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
         }}
         {...rest}
       >
+        {/* Blue blurred div on top left */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-50%",
+            left: "-50%",
+            width: "300px",
+            height: "300px",
+            backgroundColor: "rgba(59, 130, 246, 0.6)",
+            borderRadius: "50%",
+            filter: "blur(100px)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        />
+
+        {/* Red blurred div on top right */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-50%",
+            right: "-50%",
+            width: "300px",
+            height: "300px",
+            backgroundColor: "rgba(239, 68, 68, 0.6)",
+            borderRadius: "50%",
+            filter: "blur(100px)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        />
+
+        {/* Cursor-following subtle blurred div */}
+        <div
+          style={{
+            position: "absolute",
+            left: `${smoothPosition.x}px`,
+            top: `${smoothPosition.y}px`,
+            width: "200px",
+            height: "200px",
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(80px)",
+            pointerEvents: "none",
+            transform: "translate(-50%, -50%)",
+            zIndex: 2,
+            transition: "none",
+          }}
+        />
+
         {gradient.display && (
           <Flex
             position="absolute"

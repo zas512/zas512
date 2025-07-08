@@ -54,10 +54,10 @@ const style = {
 
 const effects = {
   mask: {
-    cursor: false,
+    cursor: true,
     x: 50,
     y: 0,
-    radius: 100,
+    radius: 50,
   },
   gradient: {
     display: false,
@@ -77,26 +77,20 @@ const effects = {
     color: "brand-background-strong",
   },
   grid: {
-    display: false,
+    display: true,
     opacity: 100,
     color: "neutral-alpha-medium",
     width: "0.25rem",
     height: "0.25rem",
   },
   lines: {
-    display: false,
+    display: true,
     opacity: 100,
     color: "neutral-alpha-weak",
     size: "16",
     thickness: 1,
     angle: 45,
   },
-};
-
-const display = {
-  location: true,
-  time: true,
-  themeSwitcher: true,
 };
 
 const mailchimp = {
@@ -143,4 +137,4 @@ const mailchimp = {
   },
 };
 
-export { routes, protectedRoutes, effects, style, display, mailchimp, baseURL, font };
+export { routes, protectedRoutes, effects, style, mailchimp, baseURL, font };

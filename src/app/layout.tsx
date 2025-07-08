@@ -7,6 +7,7 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 import { Background, Column, Flex } from "@/once-ui/components";
 import { Meta } from "@/once-ui/modules";
 import { opacity, SpacingToken } from "@/once-ui/types";
+import type { ReactNode } from "react";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -18,11 +19,11 @@ export async function generateMetadata() {
   });
 }
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-
-export default async function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
   return (
     <Flex
       suppressHydrationWarning
@@ -47,7 +48,13 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
       )}
     >
       <head />
-      <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
+      <Column
+        style={{ minHeight: "100vh" }}
+        as="body"
+        fillWidth
+        margin="0"
+        padding="0"
+      >
         <ParticlesBackground />
         <Background
           position="fixed"
@@ -92,7 +99,14 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
         />
         <Flex fillWidth minHeight="16" hide="s"></Flex>
         <Header />
-        <Flex zIndex={0} fillWidth paddingY="l" paddingX="l" horizontal="center" flex={1}>
+        <Flex
+          zIndex={0}
+          fillWidth
+          paddingY="l"
+          paddingX="l"
+          horizontal="center"
+          flex={1}
+        >
           <Flex horizontal="center" fillWidth minHeight="0">
             {children}
           </Flex>

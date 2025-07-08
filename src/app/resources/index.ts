@@ -3,7 +3,6 @@ export {
   protectedRoutes,
   effects,
   style,
-  display,
   mailchimp,
   baseURL,
   font,
