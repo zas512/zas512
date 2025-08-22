@@ -60,7 +60,7 @@ const effects = {
     radius: 50,
   },
   gradient: {
-    display: false,
+    display: true,
     opacity: 100,
     x: 50,
     y: 60,
@@ -71,7 +71,7 @@ const effects = {
     colorEnd: "page-background",
   },
   dots: {
-    display: true,
+    display: false,
     opacity: 40,
     size: "2",
     color: "brand-background-strong",
@@ -84,7 +84,7 @@ const effects = {
     height: "0.25rem",
   },
   lines: {
-    display: true,
+    display: false,
     opacity: 100,
     color: "neutral-alpha-weak",
     size: "16",
