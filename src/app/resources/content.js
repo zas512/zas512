@@ -1,11 +1,11 @@
 const person = {
   firstName: "Zain",
-  lastName: "Ali",
+  lastName: "Ali Sajid",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full Stack Developer",
-  avatar: "/images/avatar.png", // Ensure this image exists
+  role: "Full Stack Developer (MERN / MEAN)",
+  avatar: "/images/avatar.png",
   email: "zainalis.914@gmail.com",
   languages: ["English", "Urdu"],
   location: "Rawalpindi, Pakistan",
@@ -16,8 +16,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about full stack development, DevOps, and engineering solutions across
-      web platforms.
+      I occasionally write about full stack development, DevOps, and engineering
+      solutions across MERN/MEAN platforms.
     </>
   ),
 };
@@ -46,20 +46,26 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Delivering scalable full stack solutions with React, Node, and DevOps</>,
+  headline: (
+    <>
+      Delivering scalable SaaS, GIS, VoIP, and AI-driven solutions with MERN /
+      MEAN Stack and DevOps
+    </>
+  ),
   featured: {
     display: true,
     title: (
       <>
-        Recent project: <strong className="ml-4">AI SaaS Platform</strong>
+        Recent project: <strong className="ml-4">SignWise Inbox</strong>
       </>
     ),
-    href: "/work/ai-saas-platform",
+    href: "/work/signwise-inbox",
   },
   subline: (
     <>
-      I'm Zain, a full stack developer delivering robust solutions across CRM, GIS, SaaS, and VoIP
-      platforms using MERN and DevOps tools.
+      I'm Zain, a full stack developer with 4+ years of experience building
+      SaaS, VoIP, GIS, and AI platforms using React, Next.js, Angular, Node.js,
+      and AWS.
     </>
   ),
 };
@@ -85,9 +91,12 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Full Stack Developer with 3+ years of experience in building scalable web applications. I
-        specialize in the MERN stack, DevOps, and real-time systems. My recent work includes
-        WebRTC-based dialers, 3D GIS platforms, and AI-powered SaaS tools.
+        Full Stack Developer with 4+ years of experience in building and scaling
+        applications across enterprise SaaS, telecommunications, and AI-driven
+        platforms. Skilled in both MERN (MongoDB, Express, React, Node.js) and
+        MEAN (MongoDB, Express, Angular, Node.js) stacks. I specialize in
+        end-to-end development — from frontend UI/UX to backend APIs, databases,
+        and DevOps.
       </>
     ),
   },
@@ -96,68 +105,88 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "CCript",
-        timeframe: "Apr 2025 – Present",
+        company: "CCRIPT Agency",
+        timeframe: "May 2025 – Present",
         role: "Full Stack Developer",
         achievements: [
           <>
-            Working on a variety of full stack projects including internal tools, dashboards, and
-            API integrations.
+            Architected SignWise Inbox, a productivity suite combining email +
+            project planning.
           </>,
           <>
-            Handling modern web3, WebRTC-based real-time apps, and streamlining CI/CD with Docker +
-            GitHub Actions.
+            Built Adaptive Voice Dialer supporting hundreds of concurrent calls
+            with analytics.
           </>,
         ],
-        images: [],
       },
       {
         company: "WJIKS",
-        timeframe: "May 2024 – Apr 2025",
+        timeframe: "Jan 2024 – Apr 2025",
         role: "Full Stack Developer",
         achievements: [
           <>
-            Built OSINT, GIS, billing, and VoIP dialer systems using Next.js, CesiumJS, WebSockets,
-            and Docker.
+            Built OSINT Intelligence Platform for real-time dataset
+            visualization with Next.js.
           </>,
           <>
-            Created real-time dashboards, multi-tenant billing solutions, and integrated tracking
-            tools for surveillance.
+            Developed multi-tenant Billing Solution with 99.9% uptime and cloud
+            deployment.
+          </>,
+          <>
+            Created Jadops 3D GIS platform with CesiumJS for real-time
+            geospatial data.
+          </>,
+          <>
+            Engineered SureHelp Insurance Platform with faster claims
+            processing.
           </>,
         ],
-        images: [],
       },
       {
         company: "Graana.com",
-        timeframe: "Jun 2022 – May 2024",
-        role: "Full Stack Developer",
+        timeframe: "Mar 2022 – Dec 2023",
+        role: "Full Stack Developer | VoIP Engineer",
         achievements: [
           <>
-            Built and upgraded CRM dialers, real-time agent dashboards, and backend systems using
-            React, FreePBX, and Node.js.
+            Built ARMS CRM Dialer reducing manual dialing by 60% with React +
+            FreePBX.
           </>,
           <>
-            Reduced call latency and manual tasks, improved UX for agents, and managed complex
-            integrations with Asterisk.
+            Developed Call Center Backend with Node.js + Asterisk ensuring zero
+            downtime.
+          </>,
+          <>
+            Upgraded Worksapp CRM Dialer UI and integrated real-time call
+            activity via WebSockets.
+          </>,
+          <>
+            Contributed to Angular-based internal dashboards for call analytics
+            and reporting.
           </>,
         ],
-        images: [],
       },
       {
         company: "Freelance Projects",
         timeframe: "Nov 2023 – Present",
-        role: "Full Stack Developer",
+        role: "Full Stack Developer | UI/UX Designer",
         achievements: [
           <>
-            Built SaaS platforms like Slick Magic AI (video rendering), Apply Pool (university
-            chatbot), and Beard Friends (social booking).
+            Developed Slick Magic AI, an AI-powered video rendering SaaS with
+            Stripe payments.
           </>,
           <>
-            Handled web3 integrations, real-time chat with WebRTC & WebSockets, and full payment
-            flows with Stripe/PayPal.
+            Built Apply Pool, a smart auto-apply university tool connecting
+            students with mentors.
+          </>,
+          <>
+            Launched Beard Friends, a niche social booking platform with 5k+
+            users in first quarter.
+          </>,
+          <>
+            Created Twinsting, a Fiverr-like artist marketplace with real-time
+            chat + React Native.
           </>,
         ],
-        images: [],
       },
     ],
   },
@@ -176,31 +205,41 @@ const about = {
     title: "Technical Skills",
     skills: [
       {
+        title: "Languages",
+        description: <>JavaScript, TypeScript</>,
+      },
+      {
         title: "Frontend",
         description: (
-          <>React, Next.js (App/Pages Router), TailwindCSS, Redux Toolkit, Zustand, ShadCN</>
+          <>
+            React, Next.js, Angular, Redux, TailwindCSS, ShadCN, Figma,
+            Next-Auth, Clerk
+          </>
         ),
-        images: [],
       },
       {
         title: "Backend",
-        description: <>Node.js, Express, WebSockets, Sequelize, Mongoose, Firebase, WebRTC</>,
-        images: [],
+        description: (
+          <>Node.js, Express.js, WebSockets, Sequelize, Mongoose, Firebase</>
+        ),
       },
       {
         title: "Databases",
         description: <>MongoDB, PostgreSQL, MySQL, Redis, Supabase</>,
-        images: [],
       },
       {
         title: "DevOps & Cloud",
-        description: <>Docker, AWS (EC2, S3, Amplify), CI/CD, GitHub Actions, Vercel, Kubernetes</>,
-        images: [],
+        description: (
+          <>AWS (EC2, S3, Amplify), Docker, Kubernetes, CI/CD, GitHub Actions</>
+        ),
       },
       {
         title: "Other Tools",
-        description: <>Stripe, OpenAI, Clerk, LangChain, FFmpeg, Asterisk, FreePBX</>,
-        images: [],
+        description: (
+          <>
+            WebRTC, FreePBX, Asterisk, Stripe, OpenAI, LangChain, FFmpeg, EsLint
+          </>
+        ),
       },
     ],
   },
@@ -209,7 +248,7 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about full stack dev and system design...",
+  title: "Writing about MERN, MEAN, SaaS, VoIP, and system design...",
   description: `Read what ${person.name} has been up to recently`,
 };
 
@@ -217,7 +256,7 @@ const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Technical case studies and projects built by ${person.name}`,
+  description: `Case studies and technical projects built by ${person.name}`,
 };
 
 const gallery = {
