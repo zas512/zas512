@@ -1,0 +1,27 @@
+name: Daily Auto Commit
+
+on:
+  schedule:
+    - cron: '0 0,8,16 * * *'
+  workflow_dispatch:
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update activity log
+        run: |
+          echo "Auto-commit on $(date)" >> activity.log
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "zas512"
+          git config --global user.email "zainalis.914@gmail.com"
+          git add activity.log
+          git commit -m "chore: daily auto-commit $(date)"
+          git push
