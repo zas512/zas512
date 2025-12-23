@@ -1,0 +1,28 @@
+src/app/about/page.tsx(242,40): error TS2339: Property 'src' does not exist on type 'never'.
+src/app/about/page.tsx(245,45): error TS2339: Property 'width' does not exist on type 'never'.
+src/app/about/page.tsx(246,43): error TS2339: Property 'height' does not exist on type 'never'.
+src/app/about/page.tsx(251,44): error TS2339: Property 'width' does not exist on type 'never'.
+src/app/about/page.tsx(252,42): error TS2339: Property 'alt' does not exist on type 'never'.
+src/app/about/page.tsx(253,42): error TS2339: Property 'src' does not exist on type 'never'.
+src/components/blog/Posts.tsx(49,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+src/components/blog/Posts.tsx(49,18): error TS2786: 'Text' cannot be used as a JSX component.
+  Its type '{ new (data?: string | undefined): Text; prototype: Text; }' is not a valid JSX element type.
+    Type '{ new (data?: string | undefined): Text; prototype: Text; }' is not assignable to type 'new (props: any, context: any) => Component<any, any, any>'.
+      Type 'Text' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, render, and 2 more.
+src/components/main/HeroContent.tsx(4,24): error TS2307: Cannot find module 'framer-motion' or its corresponding type declarations.
+src/once-ui/components/Flex.tsx(313,8): error TS2745: This JSX tag's 'children' prop expects type 'never' which requires multiple children, but only a single child was provided.
+src/once-ui/components/Flex.tsx(313,18): error TS2322: Type 'ForwardedRef<HTMLDivElement>' is not assignable to type 'never'.
+  Type 'null' is not assignable to type 'never'.
+src/once-ui/components/Flex.tsx(313,28): error TS2322: Type 'string' is not assignable to type 'never'.
+src/once-ui/components/Flex.tsx(313,48): error TS2322: Type 'CSSProperties' is not assignable to type 'never'.
+src/once-ui/components/Grid.tsx(253,8): error TS2745: This JSX tag's 'children' prop expects type 'never' which requires multiple children, but only a single child was provided.
+src/once-ui/components/Grid.tsx(253,18): error TS2322: Type 'ForwardedRef<HTMLDivElement>' is not assignable to type 'never'.
+  Type 'null' is not assignable to type 'never'.
+src/once-ui/components/Grid.tsx(253,28): error TS2322: Type 'string' is not assignable to type 'never'.
+src/once-ui/components/Grid.tsx(253,48): error TS2322: Type 'CSSProperties' is not assignable to type 'never'.
+src/once-ui/components/Heading.tsx(98,6): error TS2322: Type '{ className: string; style: { accentColor?: AccentColor | undefined; alignContent?: AlignContent | undefined; alignItems?: AlignItems | undefined; ... 853 more ...; glyphOrientationVertical?: GlyphOrientationVertical | undefined; }; } & Omit<...> & { ...; }' is not assignable to type 'IntrinsicAttributes & LibraryManagedAttributes<T, never>'.
+  Type '{ className: string; style: { accentColor?: AccentColor | undefined; alignContent?: AlignContent | undefined; alignItems?: AlignItems | undefined; ... 853 more ...; glyphOrientationVertical?: GlyphOrientationVertical | undefined; }; } & Omit<...> & { ...; }' is not assignable to type 'LibraryManagedAttributes<T, never>'.
+src/once-ui/components/Text.tsx(98,6): error TS2322: Type '{ className: string; style: { accentColor?: AccentColor | undefined; alignContent?: AlignContent | undefined; alignItems?: AlignItems | undefined; ... 853 more ...; glyphOrientationVertical?: GlyphOrientationVertical | undefined; }; } & Omit<...> & { ...; }' is not assignable to type 'IntrinsicAttributes & LibraryManagedAttributes<T, never>'.
+  Type '{ className: string; style: { accentColor?: AccentColor | undefined; alignContent?: AlignContent | undefined; alignItems?: AlignItems | undefined; ... 853 more ...; glyphOrientationVertical?: GlyphOrientationVertical | undefined; }; } & Omit<...> & { ...; }' is not assignable to type 'LibraryManagedAttributes<T, never>'.
+src/once-ui/modules/code/CodeBlock.tsx(11,19): error TS7016: Could not find a declaration file for module 'prismjs'. 'D:/Projects/zas512/node_modules/prismjs/prism.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/prismjs` if it exists or add a new declaration (.d.ts) file containing `declare module 'prismjs';`

@@ -1,3 +1,11 @@
+/**
+ * @typedef {object} ContentImage
+ * @property {string} src
+ * @property {string} alt
+ * @property {number} width
+ * @property {number} height
+ */
+
 const person = {
   firstName: "Zain",
   lastName: "Ali",
@@ -128,6 +136,7 @@ const about = {
         company: "CCCRIPT Agency",
         timeframe: "May 2025 – Present",
         role: "Full Stack Developer",
+        /** @type {ContentImage[]} */
         images: [],
         achievements: [
           <>
@@ -149,6 +158,7 @@ const about = {
         company: "WJIKS",
         timeframe: "Jan 2024 – April 2025",
         role: "Full Stack Developer",
+        /** @type {ContentImage[]} */
         images: [],
         achievements: [
           <>
@@ -178,6 +188,7 @@ const about = {
         company: "Freelance (Contract-Based Projects)",
         timeframe: "Nov 2023 – Present",
         role: "Full Stack Developer | UI/UX Designer",
+        /** @type {ContentImage[]} */
         images: [],
         achievements: [
           <>
@@ -223,6 +234,8 @@ const about = {
       {
         title: "Languages",
         description: <>JavaScript, TypeScript</>,
+        /** @type {ContentImage[]} */
+        images: [],
       },
       {
         title: "Frontend",
@@ -232,22 +245,30 @@ const about = {
             Next-Auth, Clerk
           </>
         ),
+        /** @type {ContentImage[]} */
+        images: [],
       },
       {
         title: "Backend",
         description: (
           <>Node.js, Express.js, WebSockets, Sequelize, Mongoose, Firebase</>
         ),
+        /** @type {ContentImage[]} */
+        images: [],
       },
       {
         title: "Databases",
         description: <>MongoDB, PostgreSQL, MySQL, Redis, Supabase</>,
+        /** @type {ContentImage[]} */
+        images: [],
       },
       {
         title: "DevOps & Cloud",
         description: (
           <>AWS (EC2, S3, Amplify), Docker, Kubernetes, CI/CD, GitHub Actions</>
         ),
+        /** @type {ContentImage[]} */
+        images: [],
       },
       {
         title: "Other Tools",
@@ -256,6 +277,8 @@ const about = {
             WebRTC, FreePBX, Asterisk, Stripe, OpenAI, LangChain, FFmpeg, EsLint
           </>
         ),
+        /** @type {ContentImage[]} */
+        images: [],
       },
     ],
   },

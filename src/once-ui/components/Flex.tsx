@@ -15,7 +15,8 @@ import {
 import { ColorScheme, ColorWeight, SpacingToken, TextVariant } from "../types";
 
 interface ComponentProps
-  extends FlexProps,
+  extends
+    FlexProps,
     SpacingProps,
     SizeProps,
     StyleProps,
@@ -112,17 +113,17 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       children,
       ...rest
     },
-    ref,
+    ref
   ) => {
     if (onBackground && onSolid) {
       console.warn(
-        "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied.",
+        "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied."
       );
     }
 
     if (background && solid) {
       console.warn(
-        "You cannot use both 'background' and 'solid' props simultaneously. Only one will be applied.",
+        "You cannot use both 'background' and 'solid' props simultaneously. Only one will be applied."
       );
     }
 
@@ -134,11 +135,16 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
     const sizeClass = textSize ? `font-${textSize}` : "";
     const weightClass = textWeight ? `font-${textWeight}` : "";
 
-    const variantClasses = textVariant ? getVariantClasses(textVariant) : [sizeClass, weightClass];
+    const variantClasses = textVariant
+      ? getVariantClasses(textVariant)
+      : [sizeClass, weightClass];
 
     let colorClass = "";
     if (onBackground) {
-      const [scheme, weight] = onBackground.split("-") as [ColorScheme, ColorWeight];
+      const [scheme, weight] = onBackground.split("-") as [
+        ColorScheme,
+        ColorWeight,
+      ];
       colorClass = `${scheme}-on-background-${weight}`;
     } else if (onSolid) {
       const [scheme, weight] = onSolid.split("-") as [ColorScheme, ColorWeight];
@@ -195,13 +201,14 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       generateDynamicClass("solid", solid),
       generateDynamicClass(
         "border",
-        border || borderTop || borderRight || borderBottom || borderLeft,
+        border || borderTop || borderRight || borderBottom || borderLeft
       ),
       (border || borderTop || borderRight || borderBottom || borderLeft) &&
         !borderStyle &&
         "border-solid",
       border && !borderWidth && "border-1",
-      (borderTop || borderRight || borderBottom || borderLeft) && "border-reset",
+      (borderTop || borderRight || borderBottom || borderLeft) &&
+        "border-reset",
       borderTop && "border-top-1",
       borderRight && "border-right-1",
       borderBottom && "border-bottom-1",
@@ -231,11 +238,15 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       overflowY && `overflow-y-${overflowY}`,
       flex && `flex-${flex}`,
       horizontal &&
-        (direction === "row" || direction === "row-reverse" || direction === undefined
+        (direction === "row" ||
+        direction === "row-reverse" ||
+        direction === undefined
           ? `justify-${horizontal}`
           : `align-${horizontal}`),
       vertical &&
-        (direction === "row" || direction === "row-reverse" || direction === undefined
+        (direction === "row" ||
+        direction === "row-reverse" ||
+        direction === undefined
           ? `align-${vertical}`
           : `justify-${vertical}`),
       center && "center",
@@ -258,12 +269,12 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       light && "light-flex",
       colorClass,
       className,
-      ...variantClasses,
+      ...variantClasses
     );
 
     const parseDimension = (
       value: number | SpacingToken | undefined,
-      type: "width" | "height",
+      type: "width" | "height"
     ): string | undefined => {
       if (value === undefined) return undefined;
       if (typeof value === "number") return `${value}rem`;
@@ -309,12 +320,19 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
       ...style,
     };
 
+    const DynamicComponent = Component as any;
+
     return (
-      <Component ref={ref} className={classes} style={combinedStyle} {...rest}>
+      <DynamicComponent
+        ref={ref}
+        className={classes}
+        style={combinedStyle}
+        {...rest}
+      >
         {children}
-      </Component>
+      </DynamicComponent>
     );
-  },
+  }
 );
 
 Flex.displayName = "Flex";

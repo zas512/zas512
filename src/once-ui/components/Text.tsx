@@ -1,10 +1,13 @@
 "use client";
-
-import React, { ElementType, ComponentPropsWithoutRef } from "react";
 import classNames from "classnames";
-
-import { TextProps, CommonProps, SpacingProps } from "../interfaces";
-import { ColorScheme, ColorWeight, TextVariant, SpacingToken } from "../types";
+import type { ElementType, ComponentPropsWithoutRef } from "react";
+import type { TextProps, CommonProps, SpacingProps } from "../interfaces";
+import type {
+  ColorScheme,
+  ColorWeight,
+  TextVariant,
+  SpacingToken,
+} from "../types";
 
 type TypeProps<T extends ElementType> = TextProps<T> &
   CommonProps &
@@ -47,7 +50,7 @@ const Text = <T extends ElementType = "span">({
 
   if (onBackground && onSolid) {
     console.warn(
-      "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied.",
+      "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied."
     );
   }
 
@@ -59,18 +62,26 @@ const Text = <T extends ElementType = "span">({
   const sizeClass = size ? `font-${size}` : "";
   const weightClass = weight ? `font-${weight}` : "";
 
-  const classes = variant ? getVariantClasses(variant) : [sizeClass, weightClass];
+  const classes = variant
+    ? getVariantClasses(variant)
+    : [sizeClass, weightClass];
 
   let colorClass = "";
   if (onBackground) {
-    const [scheme, weight] = onBackground.split("-") as [ColorScheme, ColorWeight];
+    const [scheme, weight] = onBackground.split("-") as [
+      ColorScheme,
+      ColorWeight,
+    ];
     colorClass = `${scheme}-on-background-${weight}`;
   } else if (onSolid) {
     const [scheme, weight] = onSolid.split("-") as [ColorScheme, ColorWeight];
     colorClass = `${scheme}-on-solid-${weight}`;
   }
 
-  const generateClassName = (prefix: string, token: SpacingToken | undefined) => {
+  const generateClassName = (
+    prefix: string,
+    token: SpacingToken | undefined
+  ) => {
     return token ? `${prefix}-${token}` : undefined;
   };
 
@@ -91,11 +102,13 @@ const Text = <T extends ElementType = "span">({
     generateClassName("mt", marginTop),
     generateClassName("mb", marginBottom),
     generateClassName("mx", marginX),
-    generateClassName("my", marginY),
+    generateClassName("my", marginY)
   );
 
+  const DynamicComponent = Component as any;
+
   return (
-    <Component
+    <DynamicComponent
       className={combinedClasses}
       style={{
         textAlign: align,
@@ -105,7 +118,7 @@ const Text = <T extends ElementType = "span">({
       {...props}
     >
       {children}
-    </Component>
+    </DynamicComponent>
   );
 };
 
