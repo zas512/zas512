@@ -1,12 +1,13 @@
 const person = {
   firstName: "Zain",
-  lastName: "Ali Sajid",
+  lastName: "Ali",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full Stack Developer (MERN / MEAN)",
+  role: "Full Stack Developer",
   avatar: "/images/avatar.png",
   email: "zainalis.914@gmail.com",
+  phone: "+92334 9068211",
   languages: ["English", "Urdu"],
   location: "Rawalpindi, Pakistan",
 };
@@ -16,8 +17,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about full stack development, DevOps, and engineering
-      solutions across MERN/MEAN platforms.
+      I occasionally write about full stack development, SaaS platforms, VoIP
+      systems, GIS applications, AI-driven solutions, and DevOps practices.
     </>
   ),
 };
@@ -45,11 +46,11 @@ const home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Portfolio website showcasing my work as a ${person.role} with 4+ years of experience building enterprise SaaS, telecommunications, and AI-driven platforms`,
   headline: (
     <>
-      Delivering scalable SaaS, GIS, VoIP, and AI-driven solutions with MERN /
-      MEAN Stack and DevOps
+      Building scalable applications across enterprise SaaS, telecommunications,
+      and AI-driven platforms
     </>
   ),
   featured: {
@@ -63,11 +64,29 @@ const home = {
   },
   subline: (
     <>
-      I'm Zain, a full stack developer with 4+ years of experience building
-      SaaS, VoIP, GIS, and AI platforms using React, Next.js, Angular, Node.js,
-      and AWS.
+      I'm Zain, a Full Stack Developer with 4+ years of experience building and
+      scaling applications across diverse sectors. I specialize in React,
+      Next.js, Node.js, PostgreSQL, and AWS, delivering solutions that improve
+      performance, streamline processes, and enhance user experiences.
     </>
   ),
+  stats: {
+    display: true,
+    items: [
+      { label: "Years of Experience", value: "4+" },
+      { label: "Projects Delivered", value: "20+" },
+      { label: "Technologies", value: "15+" },
+    ],
+  },
+  highlights: {
+    display: true,
+    items: [
+      "Improved data retrieval times by 40% on insurance platforms",
+      "Achieved 99.9% uptime on multi-tenant billing solutions",
+      "Reduced manual dialing by 60% with VoIP automation",
+      "Built platforms supporting 5,000+ users within first quarter",
+    ],
+  },
 };
 
 const about = {
@@ -91,12 +110,13 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Full Stack Developer with 4+ years of experience in building and scaling
-        applications across enterprise SaaS, telecommunications, and AI-driven
-        platforms. Skilled in both MERN (MongoDB, Express, React, Node.js) and
-        MEAN (MongoDB, Express, Angular, Node.js) stacks. I specialize in
-        end-to-end development — from frontend UI/UX to backend APIs, databases,
-        and DevOps.
+        Full Stack Developer with 4+ years of experience building and scaling
+        applications across diverse sectors, including enterprise SaaS,
+        telecommunications, and AI-driven platforms. Proficient in the complete
+        project lifecycle, utilizing a tech stack that includes React, Next.js,
+        Node.js, PostgreSQL, and AWS. Passionate about leveraging modern
+        technologies to solve complex problems and deliver exceptional user
+        experiences.
       </>
     ),
   },
@@ -105,86 +125,80 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "CCRIPT Agency",
+        company: "CCCRIPT Agency",
         timeframe: "May 2025 – Present",
         role: "Full Stack Developer",
+        images: [],
         achievements: [
           <>
-            Architected SignWise Inbox, a productivity suite combining email +
-            project planning.
+            SureHelp Insurance Platform: Developed a comprehensive insurance
+            management system for corporate clients, centralizing client data
+            and policy details. Engineered features that improved data retrieval
+            times by 40% and streamlined the claims tracking process.
           </>,
           <>
-            Built Adaptive Voice Dialer supporting hundreds of concurrent calls
-            with analytics.
+            SignWise Inbox: Architected a unified productivity suite combining a
+            multi-platform email client (Gmail, Outlook) with an integrated
+            project planner. The solution boosted user productivity by
+            consolidating communication and task management into a single,
+            intuitive interface.
           </>,
         ],
       },
       {
         company: "WJIKS",
-        timeframe: "Jan 2024 – Apr 2025",
+        timeframe: "Jan 2024 – April 2025",
         role: "Full Stack Developer",
+        images: [],
         achievements: [
           <>
-            Built OSINT Intelligence Platform for real-time dataset
-            visualization with Next.js.
+            OSINT Intelligence Platform: Engineered a high-performance front end
+            using Next.js and Redux Toolkit, enabling real-time visualization of
+            massive OSINT datasets and improving data analysis capabilities.
           </>,
           <>
-            Developed multi-tenant Billing Solution with 99.9% uptime and cloud
-            deployment.
+            Billing Solution: Architected a multi-tenant, cloud-deployed billing
+            platform that achieved 99.9% uptime, successfully managing multiple
+            clients, subscriptions, and payment processes.
           </>,
           <>
-            Created Jadops 3D GIS platform with CesiumJS for real-time
-            geospatial data.
+            Jadops (3D GIS Platform): Developed an interactive 3D GIS platform
+            with CesiumJS to visualize real-time geospatial data, enhancing
+            operational planning and asset tracking for enterprise users.
           </>,
           <>
-            Engineered SureHelp Insurance Platform with faster claims
-            processing.
+            Adaptive Voice Dialer: Built a scalable VoIP dialer supporting
+            hundreds of concurrent calls, which included features like campaign
+            management and real-time analytics, improving call center agent
+            efficiency and monitoring.
           </>,
         ],
       },
       {
-        company: "Graana.com",
-        timeframe: "Mar 2022 – Dec 2023",
-        role: "Full Stack Developer | VoIP Engineer",
-        achievements: [
-          <>
-            Built ARMS CRM Dialer reducing manual dialing by 60% with React +
-            FreePBX.
-          </>,
-          <>
-            Developed Call Center Backend with Node.js + Asterisk ensuring zero
-            downtime.
-          </>,
-          <>
-            Upgraded Worksapp CRM Dialer UI and integrated real-time call
-            activity via WebSockets.
-          </>,
-          <>
-            Contributed to Angular-based internal dashboards for call analytics
-            and reporting.
-          </>,
-        ],
-      },
-      {
-        company: "Freelance Projects",
+        company: "Freelance (Contract-Based Projects)",
         timeframe: "Nov 2023 – Present",
         role: "Full Stack Developer | UI/UX Designer",
+        images: [],
         achievements: [
           <>
-            Developed Slick Magic AI, an AI-powered video rendering SaaS with
-            Stripe payments.
+            Slick Magic AI: Enabled automated video content creation for
+            creators by developing an AI-powered SaaS platform using OpenAI and
+            FFmpeg, with secure payment processing via Stripe.
           </>,
           <>
-            Built Apply Pool, a smart auto-apply university tool connecting
-            students with mentors.
+            Apply Pool: Helped students increase their application opportunities
+            by 5x with a smart auto-apply tool on a platform connecting
+            university applicants with mentors.
           </>,
           <>
-            Launched Beard Friends, a niche social booking platform with 5k+
-            users in first quarter.
+            Beard Friends: Attracted over 5,000 users within the first quarter
+            by launching a niche social platform with features like appointment
+            booking, contests, and leaderboards.
           </>,
           <>
-            Created Twinsting, a Fiverr-like artist marketplace with real-time
-            chat + React Native.
+            Twinsting: Processed over 1,000 transactions within the first 3
+            months of launch on a Fiverr-like platform for artists, featuring
+            real-time messaging and mobile support with React Native.
           </>,
         ],
       },
@@ -196,7 +210,9 @@ const about = {
     institutions: [
       {
         name: "ARID University, Rawalpindi",
-        description: <>B.S. in Computer Science (2016 – 2020)</>,
+        description: (
+          <>Bachelor of Science in Computer Science (Sep 2016 – Nov 2020)</>
+        ),
       },
     ],
   },
@@ -248,7 +264,8 @@ const about = {
 const blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about MERN, MEAN, SaaS, VoIP, and system design...",
+  title:
+    "Writing about Full Stack Development, SaaS, VoIP, GIS, AI, and DevOps...",
   description: `Read what ${person.name} has been up to recently`,
 };
 

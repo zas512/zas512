@@ -3,6 +3,11 @@
 
     &:hover {
         border: 1px solid var(--neutral-alpha-medium);
+        transform: translateY(-2px);
+        
+        .image {
+            transform: scale(1.02);
+        }
     }
 }
 

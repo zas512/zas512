@@ -1,12 +1,17 @@
-import React from "react";
 import Script from "next/script";
 import { social } from "@/app/resources/content";
 
 export interface SchemaProps {
-  as: "website" | "article" | "blog" | "blogPosting" | "techArticle" | "webPage" | "organization";
+  as:
+    | "website"
+    | "article"
+    | "blog"
+    | "blogPosting"
+    | "techArticle"
+    | "webPage"
+    | "organization";
   title: string;
   description: string;
-  baseURL: string;
   path: string;
   datePublished?: string;
   dateModified?: string;
@@ -16,6 +21,19 @@ export interface SchemaProps {
     url?: string;
     image?: string;
   };
+}
+
+type SchemaValue =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | SchemaObject
+  | SchemaValue[];
+
+interface SchemaObject {
+  [key: string]: SchemaValue;
 }
 
 const schemaTypeMap = {
@@ -32,44 +50,29 @@ export function Schema({
   as,
   title,
   description,
-  baseURL,
   path,
   datePublished,
   dateModified,
-  image,
   author,
 }: SchemaProps) {
-  const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-
-  const imageUrl = image
-    ? `${normalizedBaseURL}${image.startsWith("/") ? image : `/${image}`}`
-    : `${normalizedBaseURL}/og?title=${encodeURIComponent(title)}`;
-
-  const url = `${normalizedBaseURL}${normalizedPath}`;
-
   const schemaType = schemaTypeMap[as];
 
-  const schema: Record<string, any> = {
+  const schema: SchemaObject = {
     "@context": "https://schema.org",
     "@type": schemaType,
-    url,
   };
-  
-  schema.sameAs = Object.values(social).filter(Boolean)
+
+  schema.sameAs = Object.values(social).filter(Boolean);
 
   if (as === "website") {
     schema.name = title;
     schema.description = description;
-    schema.image = imageUrl;
   } else if (as === "organization") {
     schema.name = title;
     schema.description = description;
-    schema.image = imageUrl;
   } else {
     schema.headline = title;
     schema.description = description;
-    schema.image = imageUrl;
 
     if (datePublished) {
       schema.datePublished = datePublished;
@@ -92,13 +95,9 @@ export function Schema({
   }
 
   return (
-    <Script
-      id={`schema-${as}-${path}`}
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(schema),
-      }}
-    />
+    <Script id={`schema-${as}-${path}`} type="application/ld+json">
+      {JSON.stringify(schema)}
+    </Script>
   );
 }
 

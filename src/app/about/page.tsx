@@ -10,18 +10,15 @@ import {
   Tag,
   Text,
 } from "@/once-ui/components";
-import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
-import { Meta, Schema } from "@/once-ui/modules";
+import { Meta } from "@/once-ui/modules";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: about.title,
     description: about.description,
-    baseURL: baseURL,
-    image: `${baseURL}/og?title=${encodeURIComponent(about.title)}`,
     path: about.path,
   });
 }
@@ -51,19 +48,6 @@ export default function About() {
   ];
   return (
     <Column maxWidth="m">
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={about.title}
-        description={about.description}
-        path={about.path}
-        image={`${baseURL}/og?title=${encodeURIComponent(about.title)}`}
-        author={{
-          name: person.name,
-          url: `${baseURL}${about.path}`,
-          image: `${baseURL}${person.avatar}`,
-        }}
-      />
       {about.tableOfContent.display && (
         <Column
           left="0"

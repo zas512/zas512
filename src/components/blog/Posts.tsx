@@ -11,7 +11,7 @@ interface PostsProps {
 
 export function Posts({
     range,
-    columns = '1',
+    columns = '2',
     thumbnail = false,
     direction
 }: PostsProps) {
@@ -30,10 +30,12 @@ export function Posts({
 
     return (
         <>
-            {displayedBlogs.length > 0 && (
+            {displayedBlogs.length > 0 ? (
                 <Grid
-                    columns={columns} mobileColumns="1"
-                    fillWidth marginBottom="40" gap="12">
+                    columns={columns} 
+                    mobileColumns="1"
+                    fillWidth 
+                    gap="l">
                     {displayedBlogs.map((post) => (
                         <Post
                             key={post.slug}
@@ -43,6 +45,10 @@ export function Posts({
                         />
                     ))}
                 </Grid>
+            ) : (
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                    No blog posts found.
+                </Text>
             )}
         </>
     );

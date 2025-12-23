@@ -11,6 +11,8 @@ interface PostProps {
 }
 
 export default function Post({ post, thumbnail, direction }: PostProps) {
+    const displayDirection = direction || (thumbnail ? "column" : "row");
+    
     return (
         <SmartLink
             fillWidth
@@ -21,46 +23,57 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             <Flex
                 position="relative"
                 transition="micro-medium"
-                direction={direction}
+                direction={displayDirection}
                 radius="l"
                 className={styles.hover + ' ' + styles.blurBg + ' ' + styles.equalHeight}
                 mobileDirection="column"
                 fillWidth>
-                {post.metadata.image && thumbnail && (
+                {thumbnail && (
                     <SmartImage
-                        priority
+                        priority={false}
                         className={styles.image}
-                        sizes="(max-width: 768px) 100vw, 640px"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         border="neutral-alpha-weak"
                         cursor="interactive"
                         radius="l"
-                        src={post.metadata.image}
+                        src={post.metadata.image || '/images/og/home.jpg'}
                         alt={'Thumbnail of ' + post.metadata.title}
                         aspectRatio="16 / 9"
                     />
                 )}
                 <Column
                     position="relative"
-                    fillWidth gap="4"
-                    padding="24"
+                    fillWidth 
+                    gap="m"
+                    padding="l"
                     vertical="center">
                     <Heading
                         as="h2"
-                        variant="heading-strong-l"
+                        variant="heading-strong-m"
                         wrap="balance">
                         {post.metadata.title}
                     </Heading>
-                    <Text
-                        variant="label-default-s"
-                        onBackground="neutral-weak">
-                        {formatDate(post.metadata.publishedAt, false)}
-                    </Text>
-                    { post.metadata.tag &&
-                        <Tag
-                            className="mt-12"
-                            label={post.metadata.tag}
-                            variant="neutral" />
-                    }
+                    {post.metadata.summary && (
+                        <Text
+                            variant="body-default-m"
+                            onBackground="neutral-weak"
+                            wrap="balance">
+                            {post.metadata.summary}
+                        </Text>
+                    )}
+                    <Flex gap="m" vertical="center" wrap>
+                        <Text
+                            variant="label-default-s"
+                            onBackground="neutral-weak">
+                            {formatDate(post.metadata.publishedAt, false)}
+                        </Text>
+                        {post.metadata.tag && (
+                            <Tag
+                                label={post.metadata.tag}
+                                variant="neutral" 
+                                size="s" />
+                        )}
+                    </Flex>
                 </Column>
             </Flex>
         </SmartLink>

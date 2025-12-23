@@ -1,5 +1,3 @@
-const baseURL = "https://demo.magic-portfolio.com";
-
 const routes = {
   "/": true,
   "/about": true,
@@ -54,13 +52,13 @@ const style = {
 
 const effects = {
   mask: {
-    cursor: true,
+    cursor: false,
     x: 50,
     y: 0,
     radius: 50,
   },
   gradient: {
-    display: true,
+    display: false,
     opacity: 100,
     x: 50,
     y: 60,
@@ -137,4 +135,4 @@ const mailchimp = {
   },
 };
 
-export { routes, protectedRoutes, effects, style, mailchimp, baseURL, font };
+export { routes, protectedRoutes, effects, style, mailchimp, font };

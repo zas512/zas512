@@ -1,43 +1,38 @@
 {
-  "name": "zain-dev-portfolio",
-  "version": "1.0.0",
+  "name": "zas512",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome check",
+    "format": "biome format --write"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^2.1.4",
-    "@mdx-js/loader": "^3.1.0",
-    "@next/mdx": "^15.3.4",
+    "@floating-ui/react-dom": "^2.1.6",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.2",
     "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
-    "next": "^15.3.4",
+    "maath": "^0.10.8",
+    "next": "16.0.10",
     "next-mdx-remote": "^5.0.0",
-    "postcss": "^8.5.6",
-    "postcss-preset-env": "^10.2.4",
     "prismjs": "^1.30.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "react-icons": "^5.5.0",
-    "react-tsparticles": "^2.12.2",
-    "sass": "^1.89.2",
-    "sharp": "^0.34.2",
-    "tsparticles": "^3.8.1",
-    "tsparticles-slim": "^2.12.0"
+    "saas": "^1.0.0",
+    "sass": "^1.96.0"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^3.0.0",
-    "@types/node": "^24.0.8",
-    "@types/prismjs": "^1.26.5",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.30.0",
-    "postcss-custom-media": "^11.0.6",
-    "postcss-flexbugs-fixes": "^5.0.2",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3"
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.182.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

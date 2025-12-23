@@ -1,94 +1,47 @@
 "use client";
+import { Points, PointMaterial } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { inSphere } from "maath/random/dist/maath-random.esm";
+import { Suspense, useRef, useState } from "react";
+import type * as THREE from "three";
 
-import { useCallback } from "react";
-import Particles from "react-tsparticles";
-import type { Container, Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
-
-const ParticlesBackground = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    console.log(container);
-  }, []);
+const StarBackground = (props: React.ComponentPropsWithoutRef<"group">) => {
+  const ref = useRef<THREE.Points>(null);
+  const [sphere] = useState(() =>
+    inSphere(new Float32Array(4000), { radius: 1.2 })
+  );
+  useFrame((_, delta) => {
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 12;
+      ref.current.rotation.y -= delta / 12;
+      ref.current.rotation.z += delta / 20;
+    }
+  });
 
   return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        background: {
-          color: {
-            value: "transparent",
-          },
-        },
-        fpsLimit: 60,
-        interactivity: {
-          events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 3,
-            },
-            repulse: {
-              distance: 150,
-              duration: 0.2,
-            },
-          },
-        },
-        particles: {
-          color: {
-            value: "#ffffff",
-          },
-          links: {
-            color: "#ffffff",
-            distance: 150,
-            enable: true,
-            opacity: 0.1,
-            width: 1,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 0.4,
-            straight: false,
-          },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 80,
-          },
-          opacity: {
-            value: 0.3,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 0.5, max: 2 },
-          },
-        },
-        detectRetina: true,
-      }}
-    />
+    <group rotation={[Math.PI / 6, Math.PI / 6, Math.PI / 4]}>
+      <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
+        <PointMaterial
+          transparent
+          color="#fff"
+          size={0.002}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
+    </group>
+  );
+};
+
+const ParticlesBackground = () => {
+  return (
+    <div className="fixed inset-0 z-[-1] pointer-events-none">
+      <Canvas camera={{ position: [0, 0, 1] }}>
+        <Suspense fallback={null}>
+          <StarBackground />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 };
 

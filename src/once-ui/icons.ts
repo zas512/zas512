@@ -1,3 +1,4 @@
+import React from "react";
 import { IconType } from "react-icons";
 
 import {
@@ -37,6 +38,7 @@ import {
 } from "react-icons/pi";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX } from "react-icons/fa6";
+import { HiSparkles } from "react-icons/hi2";
 
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
@@ -73,7 +75,14 @@ export const iconLibrary: Record<string, IconType> = {
   moon: HiMoon,
   sun: HiSun,
   document: HiOutlineDocument,
+  sparkle: HiSparkles,
 };
 
 export type IconLibrary = typeof iconLibrary;
 export type IconName = keyof IconLibrary;
+
+// Export SparklesIcon as a React component for direct use
+export const SparklesIcon: React.FC<React.SVGProps<SVGSVGElement> & { className?: string }> = ({ className, ...props }) => {
+  const IconComponent = iconLibrary.sparkle;
+  return React.createElement(IconComponent, { className, ...props });
+};
