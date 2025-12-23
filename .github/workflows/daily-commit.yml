@@ -23,5 +23,5 @@ jobs:
           git config --global user.name "zas512"
           git config --global user.email "zainalis.914@gmail.com"
           git add activity.log
-          git commit -m "chore: daily auto-commit $(date)"
+          git commit -m "status check"
           git push
