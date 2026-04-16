@@ -1,22 +1,13 @@
-/**
- * @typedef {object} ContentImage
- * @property {string} src
- * @property {string} alt
- * @property {number} width
- * @property {number} height
- */
-
 const person = {
   firstName: "Zain",
   lastName: "Ali",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Full Stack Developer",
+  role: "Senior Full Stack Developer",
   avatar: "/images/avatar.png",
   email: "zainalis.914@gmail.com",
-  phone: "+92334 9068211",
-  languages: ["English", "Urdu"],
+  phone: "+92 304 2002147",
   location: "Rawalpindi, Pakistan",
 };
 
@@ -25,8 +16,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about full stack development, SaaS platforms, VoIP
-      systems, GIS applications, AI-driven solutions, and DevOps practices.
+      Insights on the MERN stack, Python-driven AI, scalable SaaS architecture,
+      and high-performance VoIP systems.
     </>
   ),
 };
@@ -53,46 +44,47 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role} with 4+ years of experience building enterprise SaaS, telecommunications, and AI-driven platforms`,
+  title: `${person.name} | Senior Full Stack Developer`,
+  description: `Portfolio of ${person.name}, a Full Stack Developer with 5 years of experience specializing in AI-driven platforms, enterprise SaaS, and telecommunications.`,
   headline: (
     <>
-      Building scalable applications across enterprise SaaS, telecommunications,
-      and AI-driven platforms
+      Architecting scalable SaaS, AI-driven solutions, and high-concurrency
+      telecommunications platforms.
     </>
   ),
   featured: {
     display: true,
     title: (
       <>
-        Recent project: <strong className="ml-4">SignWise Inbox</strong>
+        Current Project: <strong className="ml-4">SureHelp Insurance</strong>
       </>
     ),
-    href: "/work/signwise-inbox",
+    href: "/work/surehelp",
   },
   subline: (
     <>
-      I'm Zain, a Full Stack Developer with 4+ years of experience building and
-      scaling applications across diverse sectors. I specialize in React,
-      Next.js, Node.js, PostgreSQL, and AWS, delivering solutions that improve
-      performance, streamline processes, and enhance user experiences.
+      I am a Senior Full Stack Developer with 5 years of experience [cite: 5]
+      transforming complex requirements into high-performance applications. From
+      rebuilding enterprise insurance modules to architecting real-time AI
+      content engines, I specialize in React, Next.js, Python (FastAPI), and
+      AWS.
     </>
   ),
   stats: {
     display: true,
     items: [
-      { label: "Years of Experience", value: "4+" },
-      { label: "Projects Delivered", value: "20+" },
-      { label: "Technologies", value: "15+" },
+      { label: "Years of Experience", value: "5" }, // Reflected from CV [cite: 5]
+      { label: "Projects Delivered", value: "25+" },
+      { label: "Tech Stack", value: "MERN + AI" },
     ],
   },
   highlights: {
     display: true,
     items: [
-      "Improved data retrieval times by 40% on insurance platforms",
-      "Achieved 99.9% uptime on multi-tenant billing solutions",
-      "Reduced manual dialing by 60% with VoIP automation",
-      "Built platforms supporting 5,000+ users within first quarter",
+      "Boosted data retrieval performance by 40% for enterprise platforms [cite: 19]",
+      "Engineered multi-tenant billing systems with 99.9% uptime [cite: 29]",
+      "Automated video creation using Generative AI (OpenAI & FFmpeg) [cite: 49]",
+      "Reduced manual dialing by 60% via custom VoIP integrations [cite: 37]",
     ],
   },
 };
@@ -115,16 +107,15 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "The Professional Narrative",
     description: (
       <>
-        Full Stack Developer with 4+ years of experience building and scaling
-        applications across diverse sectors, including enterprise SaaS,
-        telecommunications, and AI-driven platforms. Proficient in the complete
-        project lifecycle, utilizing a tech stack that includes React, Next.js,
-        Node.js, PostgreSQL, and AWS. Passionate about leveraging modern
-        technologies to solve complex problems and deliver exceptional user
-        experiences.
+        With a solid foundation in Computer Science from ARID University[cite:
+        51, 52], I have spent 5 years [cite: 5] navigating the complete software
+        lifecycle. My expertise lies at the intersection of robust backend
+        architecture (Node.js/Python) and dynamic, data-heavy frontends. I am
+        particularly focused on the integration of Generative AI to streamline
+        workflows and the optimization of real-time communication systems.
       </>
     ),
   },
@@ -133,151 +124,103 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "CCCRIPT Agency",
+        company: "WJIKS", // Corrected per CV [cite: 15]
         timeframe: "May 2025 – Present",
-        role: "Full Stack Developer",
-        /** @type {ContentImage[]} */
-        images: [],
+        role: "Senior Full Stack Developer",
         achievements: [
           <>
-            SureHelp Insurance Platform: Developed a comprehensive insurance
-            management system for corporate clients, centralizing client data
-            and policy details. Engineered features that improved data retrieval
-            times by 40% and streamlined the claims tracking process.
+            <b>SureHelp Insurance:</b> Rebuilt legacy modules for a fully
+            functional corporate platform, optimizing PostgreSQL performance to
+            reduce data retrieval times by 40%[cite: 18, 19].
           </>,
           <>
-            SignWise Inbox: Architected a unified productivity suite combining a
-            multi-platform email client (Gmail, Outlook) with an integrated
-            project planner. The solution boosted user productivity by
-            consolidating communication and task management into a single,
-            intuitive interface.
+            <b>SignWise Inbox:</b> Architected a unified communication suite
+            with real-time syncing for project management and email
+            integrations[cite: 20].
+          </>,
+          <>
+            <b>NexaMortgage:</b> Stabilized an AI-driven loan management system
+            by modernizing an existing codebase and enhancing functional
+            reliability[cite: 23].
           </>,
         ],
       },
       {
-        company: "WJIKS",
+        company: "CCCRIPT Agency", // Corrected per CV [cite: 24]
         timeframe: "Jan 2024 – April 2025",
         role: "Full Stack Developer",
-        /** @type {ContentImage[]} */
-        images: [],
         achievements: [
           <>
-            OSINT Intelligence Platform: Engineered a high-performance front end
-            using Next.js and Redux Toolkit, enabling real-time visualization of
-            massive OSINT datasets and improving data analysis capabilities.
+            <b>OSINT Platform:</b> Developed a high-performance frontend for
+            massive dataset visualization using Next.js and amCharts[cite: 26,
+            27].
           </>,
           <>
-            Billing Solution: Architected a multi-tenant, cloud-deployed billing
-            platform that achieved 99.9% uptime, successfully managing multiple
-            clients, subscriptions, and payment processes.
+            <b>Custom Billing & VoIP:</b> Engineered a multi-tenant billing
+            solution for VoIP providers with 99.9% uptime and real-time usage
+            tracking[cite: 28, 29].
           </>,
           <>
-            Jadops (3D GIS Platform): Developed an interactive 3D GIS platform
-            with CesiumJS to visualize real-time geospatial data, enhancing
-            operational planning and asset tracking for enterprise users.
-          </>,
-          <>
-            Adaptive Voice Dialer: Built a scalable VoIP dialer supporting
-            hundreds of concurrent calls, which included features like campaign
-            management and real-time analytics, improving call center agent
-            efficiency and monitoring.
+            <b>Jadops GIS:</b> Delivered a 3D geospatial platform using CesiumJS
+            for real-time telemetry and asset tracking[cite: 30].
           </>,
         ],
       },
       {
-        company: "Freelance (Contract-Based Projects)",
-        timeframe: "Nov 2023 – Present",
-        role: "Full Stack Developer | UI/UX Designer",
-        /** @type {ContentImage[]} */
-        images: [],
+        company: "Graana.com",
+        timeframe: "Mar 2022 – Dec 2023",
+        role: "Full Stack Developer | VoIP Engineer",
         achievements: [
           <>
-            Slick Magic AI: Enabled automated video content creation for
-            creators by developing an AI-powered SaaS platform using OpenAI and
-            FFmpeg, with secure payment processing via Stripe.
+            Built a SIP-based React dialer integrated with FreePBX, reducing
+            manual sales dialing by 60%[cite: 37].
           </>,
           <>
-            Apply Pool: Helped students increase their application opportunities
-            by 5x with a smart auto-apply tool on a platform connecting
-            university applicants with mentors.
-          </>,
-          <>
-            Beard Friends: Attracted over 5,000 users within the first quarter
-            by launching a niche social platform with features like appointment
-            booking, contests, and leaderboards.
-          </>,
-          <>
-            Twinsting: Processed over 1,000 transactions within the first 3
-            months of launch on a Fiverr-like platform for artists, featuring
-            real-time messaging and mobile support with React Native.
+            Achieved zero downtime for a centralized contact center management
+            system through custom routing rules and Node.js[cite: 38].
           </>,
         ],
-      },
-    ],
-  },
-  studies: {
-    display: true,
-    title: "Education",
-    institutions: [
-      {
-        name: "ARID University, Rawalpindi",
-        description: (
-          <>Bachelor of Science in Computer Science (Sep 2016 – Nov 2020)</>
-        ),
       },
     ],
   },
   technical: {
     display: true,
-    title: "Technical Skills",
+    title: "Technical Expertise",
     skills: [
       {
-        title: "Languages",
-        description: <>JavaScript, TypeScript</>,
-        /** @type {ContentImage[]} */
-        images: [],
-      },
-      {
-        title: "Frontend",
+        title: "AI & Data Science",
         description: (
           <>
-            React, Next.js, Angular, Redux, TailwindCSS, ShadCN, Figma,
-            Next-Auth, Clerk
+            Generative AI (OpenAI), LangChain, Python, FastAPI, FFmpeg
+            Automation
           </>
         ),
-        /** @type {ContentImage[]} */
         images: [],
       },
       {
-        title: "Backend",
+        title: "Languages & Frameworks",
         description: (
-          <>Node.js, Express.js, WebSockets, Sequelize, Mongoose, Firebase</>
+          <>TypeScript, JavaScript, Python, React, Next.js, Redux, Node.js</>
         ),
-        /** @type {ContentImage[]} */
         images: [],
       },
       {
-        title: "Databases",
-        description: <>MongoDB, PostgreSQL, MySQL, Redis, Supabase</>,
-        /** @type {ContentImage[]} */
+        title: "Backend & Databases",
+        description: (
+          <>Express.js, PostgreSQL, MongoDB, Redis, WebSockets, Supabase</>
+        ),
         images: [],
       },
       {
         title: "DevOps & Cloud",
-        description: (
-          <>AWS (EC2, S3, Amplify), Docker, Kubernetes, CI/CD, GitHub Actions</>
-        ),
-        /** @type {ContentImage[]} */
+        description: <>AWS (EC2, S3, Amplify), Docker, GitHub Actions, CI/CD</>,
         images: [],
       },
       {
-        title: "Other Tools",
+        title: "Telecommunications",
         description: (
-          <>
-            WebRTC, FreePBX, Asterisk, Stripe, OpenAI, LangChain, FFmpeg, EsLint
-          </>
+          <>WebRTC, Asterisk, FreePBX, SIP Protocol, VoIP Integration</>
         ),
-        /** @type {ContentImage[]} */
         images: [],
       },
     ],

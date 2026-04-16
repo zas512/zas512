@@ -1,6 +1,6 @@
 "use client";
-import { Points, PointMaterial } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
 import { inSphere } from "maath/random/dist/maath-random.esm";
 import { Suspense, useRef, useState } from "react";
 import type * as THREE from "three";
@@ -8,7 +8,7 @@ import type * as THREE from "three";
 const StarBackground = (props: React.ComponentPropsWithoutRef<"group">) => {
   const ref = useRef<THREE.Points>(null);
   const [sphere] = useState(() =>
-    inSphere(new Float32Array(4000), { radius: 1.2 })
+    inSphere(new Float32Array(4000), { radius: 1.2 }),
   );
   useFrame((_, delta) => {
     if (ref.current) {
@@ -35,7 +35,7 @@ const StarBackground = (props: React.ComponentPropsWithoutRef<"group">) => {
 
 const ParticlesBackground = () => {
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none">
+    <div className="fixed inset-0 -z-20 pointer-events-none bg-[#030014]">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
           <StarBackground />

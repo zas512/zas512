@@ -7,7 +7,6 @@ import {
   Icon,
   IconButton,
   SmartImage,
-  Tag,
   Text,
 } from "@/once-ui/components";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -77,15 +76,6 @@ export default function About() {
               <Icon onBackground="accent-weak" name="globe" />
               Rawalpindi, Pakistan
             </Flex>
-            {person.languages.length > 0 && (
-              <Flex wrap gap="8">
-                {person.languages.map((language) => (
-                  <Tag key={language} size="l">
-                    {language}
-                  </Tag>
-                ))}
-              </Flex>
-            )}
           </Column>
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
@@ -168,7 +158,7 @@ export default function About() {
                           variant="secondary"
                         />
                       </div>
-                    )
+                    ),
                 )}
               </Flex>
             )}
@@ -196,11 +186,8 @@ export default function About() {
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column
-                    key={`${experience.company}-${experience.role}-${index}`}
-                    fillWidth
-                  >
+                {about.work.experiences.map((experience) => (
+                  <Column key={experience.company} fillWidth>
                     <Flex
                       fillWidth
                       horizontal="space-between"
@@ -225,11 +212,11 @@ export default function About() {
                       {experience.role}
                     </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement, index) => (
+                      {experience.achievements.map((achievement) => (
                         <Text
                           as="li"
                           variant="body-default-m"
-                          key={`${experience.company}-${index}`}
+                          key={experience.company}
                         >
                           {achievement}
                         </Text>
@@ -273,12 +260,8 @@ export default function About() {
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column
-                    key={`${institution.name}-${index}`}
-                    fillWidth
-                    gap="4"
-                  >
+                {about.studies.institutions.map((institution) => (
+                  <Column key={institution.name} fillWidth gap="4">
                     <Text id={institution.name} variant="heading-strong-l">
                       {institution.name}
                     </Text>
@@ -305,8 +288,8 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                {about.technical.skills.map((skill) => (
+                  <Column key={skill.title} fillWidth gap="4">
                     <Text variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}

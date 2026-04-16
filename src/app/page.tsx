@@ -14,7 +14,8 @@ import {
 import { Mailchimp } from "@/components";
 import { Meta, Schema } from "@/once-ui/modules";
 import { routes } from "@/app/resources";
-import { about, home, newsletter, person } from "@/app/resources/content";
+import { home, newsletter, person } from "@/app/resources/content";
+import HeroContent from "@/components/main/HeroContent";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -36,22 +37,23 @@ export default function Home() {
           name: person.name,
         }}
       />
-      {/* Black Hole Video Background */}
-      <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-[50%] w-[70vw] h-auto">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          height={"100%"}
-          width={"100%"}
-          className="object-cover mix-blend-screen mask-[radial-gradient(circle,white_20%,transparent_100%)]"
-        >
-          <source src="/videos/blackhole.webm" type="video/webm" />
-        </video>
-      </div>
-      <Column fillWidth paddingY="24" gap="m">
-        <Column maxWidth="s">
+      <video
+        autoPlay
+        muted
+        loop
+        className="rotate-180 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[52%] w-full h-full object-cover -z-10"
+        style={{
+          maskImage:
+            "radial-gradient(circle at center, black 10%, rgba(0,0,0,0.5) 40%, transparent 50%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, black 10%, rgba(0,0,0,0.5) 40%, transparent 50%)",
+        }}
+      >
+        <source src="/videos/blackhole.webm" type="video/webm" />
+      </video>
+      <HeroContent />
+      <Column fillWidth paddingY="24" gap="m" className="mt-40">
+        {/* <Column maxWidth="s">
           {home.featured && (
             <RevealFx
               fillWidth
@@ -124,7 +126,7 @@ export default function Home() {
               </Flex>
             </Button>
           </RevealFx>
-        </Column>
+        </Column> */}
       </Column>
       {home?.stats?.display && (
         <RevealFx translateY="12" delay={0.5} fillWidth>

@@ -1,8 +1,6 @@
 "use client";
-
 import React, { CSSProperties, useState, useRef, useEffect } from "react";
 import Image from "next/image";
-
 import { Flex, Skeleton } from ".";
 
 export interface SmartImageProps extends React.ComponentProps<typeof Flex> {
@@ -199,7 +197,9 @@ const SmartImage: React.FC<SmartImageProps> = ({
               height: "100vh",
               transform: "translate(-50%, -50%)",
             }}
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation()
+            }
           >
             {isVideo ? (
               <video
