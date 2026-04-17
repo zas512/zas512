@@ -4,12 +4,51 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Senior Full Stack Developer",
+  role: "AI | Full Stack Developer",
   avatar: "/images/avatar.png",
   email: "zainalis.914@gmail.com",
   phone: "+92 304 2002147",
   location: "Rawalpindi, Pakistan",
 };
+
+const codeLines = [
+  {
+    id: "line-comment",
+    text: "// Welcome to my workspace",
+    tone: "text-zinc-500",
+  },
+  {
+    id: "line-import",
+    text: "import { Developer } from './universe';",
+    tone: "text-[#d7c9ff]",
+  },
+  { id: "line-empty-1", text: "", tone: "text-[#d7d9ff]" },
+  {
+    id: "line-component",
+    text: "const Portfolio = () => {",
+    tone: "text-[#f3c66d]",
+  },
+  { id: "line-return", text: "  return (", tone: "text-[#a78bfa]" },
+  { id: "line-open-tag", text: "    <Developer", tone: "text-[#d7d9ff]" },
+  {
+    id: "line-name",
+    text: `      name='${person.name}'`,
+    tone: "text-[#22d3ee]",
+  },
+  {
+    id: "line-passion",
+    text: "      passion='Engineering Beyond Boundaries'",
+    tone: "text-emerald-400",
+  },
+  {
+    id: "line-available",
+    text: "      available={true}",
+    tone: "text-emerald-400",
+  },
+  { id: "line-close-tag", text: "    />", tone: "text-[#d7d9ff]" },
+  { id: "line-close-return", text: "  );", tone: "text-[#d7d9ff]" },
+  { id: "line-close-component", text: "};", tone: "text-[#d7d9ff]" },
+];
 
 const newsletter = {
   display: true,
@@ -266,4 +305,4 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, codeLines };

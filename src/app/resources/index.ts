@@ -15,4 +15,5 @@ export {
   blog,
   work,
   gallery,
+  codeLines,
 } from "@/app/resources/content";
