@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { BentoTrustCard } from "./BentoTrustCard";
 import { BentoTechStackCard } from "./BentoTechStackCard";

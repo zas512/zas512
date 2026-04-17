@@ -1,23 +1,90 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import {
-  slideInFromLeft,
-  slideInFromRight,
-  slideInFromTop,
-} from "@/utils/motion";
-import { FolderOpen, Sparkles } from "lucide-react";
+import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
+import { Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { person, codeLines } from "@/app/resources";
+
+type CodeSegment = {
+  text: string;
+  tone: string;
+};
+
+type CodeLine = {
+  id: string;
+  text: string;
+  tone?: string;
+  segments?: CodeSegment[];
+};
+
+type TypedChar = {
+  char: string;
+  tone: string;
+};
+
+const fallbackTone = "text-[#d7d9ff]";
+
+const getTypedChars = (line: CodeLine, typedText: string): TypedChar[] => {
+  const typedChars: TypedChar[] = [];
+  if (!typedText) return typedChars;
+
+  if (line.segments?.length) {
+    let consumedLength = 0;
+    for (const segment of line.segments) {
+      if (consumedLength >= typedText.length) break;
+      const visiblePart = segment.text.slice(
+        0,
+        typedText.length - consumedLength,
+      );
+      for (const char of visiblePart) {
+        typedChars.push({ char, tone: segment.tone });
+      }
+      consumedLength += visiblePart.length;
+    }
+
+    if (consumedLength < typedText.length) {
+      const remaining = typedText.slice(consumedLength);
+      const remainingTone = line.tone ?? fallbackTone;
+      for (const char of remaining) {
+        typedChars.push({ char, tone: remainingTone });
+      }
+    }
+    return typedChars;
+  }
+
+  const tone = line.tone ?? fallbackTone;
+  for (const char of typedText) {
+    typedChars.push({ char, tone });
+  }
+  return typedChars;
+};
+
+const renderTypedChars = (chars: TypedChar[]) => {
+  if (!chars.length) return null;
+
+  const grouped: Array<{ tone: string; text: string }> = [];
+  for (const { char, tone } of chars) {
+    const previousGroup = grouped[grouped.length - 1];
+    if (previousGroup && previousGroup.tone === tone) {
+      previousGroup.text += char;
+      continue;
+    }
+    grouped.push({ tone, text: char });
+  }
+
+  let cursor = 0;
+  return grouped.map((group) => {
+    const key = `${group.tone}-${cursor}-${group.text.length}`;
+    cursor += group.text.length;
+    return (
+      <span key={key} className={group.tone}>
+        {group.text}
+      </span>
+    );
+  });
+};
 
 const HeroContent = () => {
   const [typedLines, setTypedLines] = useState<string[]>(
@@ -72,7 +139,6 @@ const HeroContent = () => {
               SYSTEM.KERNEL :: v2.5.0 ONLINE
             </Badge>
           </motion.div>
-
           <motion.h1
             variants={slideInFromLeft(0.4)}
             className="max-w-[620px] font-heading text-5xl font-bold leading-[1.04] text-zinc-100 sm:text-6xl lg:text-7xl"
@@ -82,7 +148,6 @@ const HeroContent = () => {
               {person.name}
             </span>
           </motion.h1>
-
           <motion.p
             variants={slideInFromLeft(0.7)}
             className="max-w-[620px] text-xl leading-relaxed text-zinc-300"
@@ -94,41 +159,17 @@ const HeroContent = () => {
               applications.
             </p>
           </motion.p>
-
           <motion.div
             variants={slideInFromLeft(0.9)}
             className="mt-3 flex max-w-[620px] items-center gap-4"
-          >
-            <Card
-              size="sm"
-              className="flex-1 gap-3 rounded-xl border-orange-400/25 bg-zinc-900/80 py-3 shadow-[inset_0_0_0_1px_rgba(251,146,60,0.08)]"
-            >
-              <CardContent className="px-3">
-                <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-widest text-zinc-300">
-                  <span>Initialize OS</span>
-                  <span className="text-orange-300">Loading...</span>
-                </div>
-                <Progress
-                  value={80}
-                  className="h-1.5 bg-zinc-700/70 **:data-[slot=progress-indicator]:bg-linear-to-r **:data-[slot=progress-indicator]:from-orange-400 **:data-[slot=progress-indicator]:to-indigo-400"
-                />
-              </CardContent>
-            </Card>
-            <Button
-              asChild
-              variant="outline"
-              className="h-14 rounded-xl border-white/15 bg-white/5 px-5 text-sm font-semibold text-zinc-100 hover:bg-white/10 hover:text-zinc-100"
-            >
-              <a href="https://github.com" target="_blank" rel="noreferrer">
-                Check out GitHub
-              </a>
-            </Button>
-          </motion.div>
+          ></motion.div>
         </div>
         {/* Right Side */}
         <motion.div
-          variants={slideInFromRight(0.8)}
-          className="relative w-full transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_36px_rgba(139,92,246,0.16),0_0_22px_rgba(168,85,247,0.1)] rounded-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="relative w-full rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_36px_rgba(139,92,246,0.16),0_0_22px_rgba(168,85,247,0.1)]"
         >
           <div className="pointer-events-none absolute -inset-2 -z-10 rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.2),transparent_44%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.18),transparent_48%)] blur-xl" />
           <Card className="w-full gap-0 overflow-hidden rounded-2xl border-white/12 bg-[#070a12]/95 py-0 shadow-[0_18px_70px_rgba(0,0,0,0.55)]">
@@ -144,95 +185,90 @@ const HeroContent = () => {
             </CardHeader>
             <CardContent className="px-4 py-4 sm:px-5">
               <pre className="min-h-max font-mono text-[0.92rem] leading-7 text-[#d7d9ff]">
-                {codeLines.slice(0, visibleLineCount).map((line, index) => {
-                  const typedLine = typedLines[index];
-                  const isActiveTypingLine =
-                    !isTypingFinished && index === currentLine;
-                  const isLastCharHighlighted =
-                    isActiveTypingLine &&
-                    currentChar >= line.text.length &&
-                    typedLine.length > 0;
+                {(codeLines as CodeLine[])
+                  .slice(0, visibleLineCount)
+                  .map((line, index) => {
+                    const typedLine = typedLines[index];
+                    const typedChars = getTypedChars(line, typedLine);
+                    const isActiveTypingLine =
+                      !isTypingFinished && index === currentLine;
+                    const isLastCharHighlighted =
+                      isActiveTypingLine &&
+                      currentChar >= line.text.length &&
+                      typedLine.length > 0;
 
-                  const showCursor =
-                    (isActiveTypingLine && currentChar < line.text.length) ||
-                    (isTypingFinished && index === codeLines.length - 1);
+                    const showCursor =
+                      (isActiveTypingLine && currentChar < line.text.length) ||
+                      (isTypingFinished && index === codeLines.length - 1);
 
-                  const isActive = isActiveTypingLine && typedLine.length > 0;
+                    const isActive = isActiveTypingLine && typedLine.length > 0;
+                    const activeChars = isLastCharHighlighted
+                      ? typedChars.slice(0, -1)
+                      : typedChars;
+                    const lastChar = isLastCharHighlighted
+                      ? typedChars[typedChars.length - 1]
+                      : null;
 
-                  return (
-                    <div
-                      key={line.id}
-                      className="grid grid-cols-[22px_1fr] gap-2"
-                    >
-                      <span className="select-none text-[0.8rem] text-blue-300/45">
-                        {index + 1}
-                      </span>
-                      <span className="whitespace-pre-wrap wrap-break-word">
-                        {isLastCharHighlighted ? (
-                          <>
-                            <span className={line.tone}>
-                              {typedLine.slice(0, -1)}
-                            </span>
+                    return (
+                      <div
+                        key={line.id}
+                        className="grid grid-cols-[22px_1fr] gap-2"
+                      >
+                        <span className="select-none text-[0.8rem] text-blue-300/45">
+                          {index + 1}
+                        </span>
+                        <span className="whitespace-pre-wrap wrap-break-word">
+                          {isLastCharHighlighted ? (
+                            <>
+                              {renderTypedChars(activeChars)}
+                              <span
+                                className={[
+                                  lastChar?.tone ?? line.tone ?? fallbackTone,
+                                  "inline-block rounded-[2px] bg-[#049EE2]/25 px-px animate-pulse",
+                                  "shadow-[0_0_14px_rgba(4,158,226,0.65)]",
+                                ].join(" ")}
+                                style={{ animationDuration: "140ms" }}
+                              >
+                                {lastChar?.char}
+                              </span>
+                            </>
+                          ) : (
                             <span
                               className={[
-                                line.tone,
-                                "inline-block rounded-[2px] bg-[#049EE2]/25 px-px animate-pulse",
-                                "shadow-[0_0_14px_rgba(4,158,226,0.65)]",
+                                isActive
+                                  ? "[text-shadow:0_0_14px_rgba(4,158,226,0.18)] transition-all duration-75"
+                                  : "",
                               ].join(" ")}
-                              style={{ animationDuration: "140ms" }}
                             >
-                              {typedLine.slice(-1)}
+                              {renderTypedChars(activeChars)}
                             </span>
-                          </>
-                        ) : (
-                          <span
-                            className={[
-                              line.tone,
-                              isActive
-                                ? "[text-shadow:0_0_14px_rgba(4,158,226,0.18)] transition-all duration-75"
-                                : "",
-                            ].join(" ")}
-                          >
-                            {typedLine}
-                          </span>
-                        )}
-                        {showCursor ? (
-                          isTypingFinished && index === codeLines.length - 1 ? (
-                            <motion.span
-                              className="ml-px inline-block text-violet-300"
-                              aria-hidden
-                              animate={{ opacity: [1, 0] }}
-                              transition={{
-                                duration: 0.28,
-                                repeat: Infinity,
-                                repeatType: "reverse",
-                                ease: "linear",
-                              }}
-                            >
-                              |
-                            </motion.span>
-                          ) : (
-                            <span className="ml-px text-blue-300">|</span>
-                          )
-                        ) : null}
-                      </span>
-                    </div>
-                  );
-                })}
+                          )}
+                          {showCursor ? (
+                            isTypingFinished &&
+                            index === codeLines.length - 1 ? (
+                              <motion.span
+                                className="ml-px inline-block text-violet-300"
+                                aria-hidden
+                                animate={{ opacity: [1, 0] }}
+                                transition={{
+                                  duration: 0.28,
+                                  repeat: Infinity,
+                                  repeatType: "reverse",
+                                  ease: "linear",
+                                }}
+                              >
+                                |
+                              </motion.span>
+                            ) : (
+                              <span className="ml-px text-blue-300">|</span>
+                            )
+                          ) : null}
+                        </span>
+                      </div>
+                    );
+                  })}
               </pre>
             </CardContent>
-            <CardFooter className="border-t h-12 border-white/8">
-              <Button
-                asChild
-                variant="outline"
-                className="rounded-lg border-white/15 bg-white/5 text-zinc-100 hover:bg-white/10 hover:text-zinc-100"
-              >
-                <Link href="/work">
-                  <FolderOpen className="h-4 w-4" />
-                  View Projects
-                </Link>
-              </Button>
-            </CardFooter>
           </Card>
         </motion.div>
       </div>

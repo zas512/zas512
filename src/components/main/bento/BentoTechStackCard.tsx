@@ -71,7 +71,7 @@ function TechStackRow({
         fadeOut
         fadeOutColor="rgb(9 9 11)"
         ariaLabel={ariaLabel}
-        renderItem={(item, key) =>
+        renderItem={(item: TechLogo, key: string) =>
           techPillRender(item as TechLogo, String(key))
         }
         className="h-full"
