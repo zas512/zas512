@@ -7,7 +7,7 @@ export function BentoTrustCard() {
     <Card
       size="sm"
       className={bentoGlassCard(
-        "h-full min-h-[220px] rounded-3xl md:min-h-[280px]",
+        "h-full min-h-56 rounded-3xl md:min-h-[280px]",
       )}
     >
       <CardContent className="flex h-full min-h-[inherit] flex-col items-center justify-center p-6 text-center text-muted-foreground">
