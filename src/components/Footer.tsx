@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { person, social } from "@/app/resources/content";
+import { person, social } from "@/app/resources";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { HiEnvelope } from "react-icons/hi2";

@@ -6,7 +6,7 @@ import {
   Radio,
   Server,
   Zap,
-  type LucideIcon,
+  type LucideIcon
 } from "lucide-react";
 import { useMemo, useState, type ReactNode } from "react";
 import {
@@ -35,13 +35,12 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiNextdotjs,
-  SiWebrtc,
+  SiWebrtc
 } from "react-icons/si";
 import LogoLoop from "@/components/LogoLoop";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { bentoGlassCard } from "./bento-surface";
 
 type TechLogo = {
   node: ReactNode;
@@ -56,7 +55,7 @@ function LuGlyph({ Icon, className }: { Icon: LucideIcon; className: string }) {
     <Icon
       className={cn(
         "size-[1.05rem] shrink-0 stroke-[1.75] fill-none",
-        className,
+        className
       )}
       aria-hidden
     />
@@ -65,7 +64,7 @@ function LuGlyph({ Icon, className }: { Icon: LucideIcon; className: string }) {
 
 function techPillRender(item: TechLogo, _key: string) {
   const pill = (
-    <span className="inline-flex h-10 shrink-0 items-center gap-4 rounded-lg border border-white/10 bg-white/5 px-4 py-2 tracking-wide text-zinc-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+    <span className="inline-flex h-10 items-center gap-4 rounded-lg border border-white/10 bg-white/5 px-4 py-2 tracking-wide text-zinc-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
       <span className="flex items-center [&_svg]:size-[1.05rem]">
         {item.node}
       </span>
@@ -83,7 +82,7 @@ function TechStackRow({
   direction,
   logos,
   ariaLabel,
-  paused,
+  paused
 }: {
   direction: "left" | "right";
   logos: TechLogo[];
@@ -121,50 +120,50 @@ export function BentoTechStackCard() {
       {
         node: <SiJavascript className={si("text-[#F7DF1E]")} />,
         title: "JavaScript",
-        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
       },
       {
         node: <SiTypescript className={si("text-[#3178C6]")} />,
         title: "TypeScript",
-        href: "https://www.typescriptlang.org",
+        href: "https://www.typescriptlang.org"
       },
       {
         node: <SiPython className={si("text-[#3776AB]")} />,
         title: "Python",
-        href: "https://www.python.org",
+        href: "https://www.python.org"
       },
       {
         node: <SiReact className={si("text-[#61DAFB]")} />,
         title: "React.js",
-        href: "https://react.dev",
+        href: "https://react.dev"
       },
       {
         node: <SiNextdotjs className={si("text-white")} />,
         title: "Next.js",
-        href: "https://nextjs.org",
+        href: "https://nextjs.org"
       },
       {
         node: <SiRedux className={si("text-[#764ABC]")} />,
         title: "Redux",
-        href: "https://redux.js.org",
+        href: "https://redux.js.org"
       },
       {
         node: <SiTailwindcss className={si("text-[#06B6D4]")} />,
         title: "Tailwind CSS",
-        href: "https://tailwindcss.com",
+        href: "https://tailwindcss.com"
       },
       {
         node: <SiShadcnui className={si("text-white")} />,
         title: "shadcn/ui",
-        href: "https://ui.shadcn.com",
+        href: "https://ui.shadcn.com"
       },
       {
         node: <SiFigma className={si("text-[#F24E1E]")} />,
         title: "Figma",
-        href: "https://www.figma.com",
-      },
+        href: "https://www.figma.com"
+      }
     ],
-    [],
+    []
   );
 
   const rowBackendAndDatabase = useMemo<TechLogo[]>(
@@ -172,45 +171,45 @@ export function BentoTechStackCard() {
       {
         node: <SiNodedotjs className={si("text-[#5FA04E]")} />,
         title: "Node.js",
-        href: "https://nodejs.org",
+        href: "https://nodejs.org"
       },
       {
         node: <SiExpress className={si("text-white")} />,
         title: "Express.js",
-        href: "https://expressjs.com",
+        href: "https://expressjs.com"
       },
       {
         node: <SiFastapi className={si("text-[#009688]")} />,
         title: "FastAPI",
-        href: "https://fastapi.tiangolo.com",
+        href: "https://fastapi.tiangolo.com"
       },
       {
         node: <LuGlyph Icon={Radio} className="stroke-[#22C55E]" />,
         title: "WebSockets",
-        href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
+        href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
       },
       {
         node: <SiMongodb className={si("text-[#47A248]")} />,
         title: "MongoDB",
-        href: "https://www.mongodb.com",
+        href: "https://www.mongodb.com"
       },
       {
         node: <SiPostgresql className={si("text-[#4169E1]")} />,
         title: "PostgreSQL",
-        href: "https://www.postgresql.org",
+        href: "https://www.postgresql.org"
       },
       {
         node: <SiRedis className={si("text-[#FF4438]")} />,
         title: "Redis",
-        href: "https://redis.io",
+        href: "https://redis.io"
       },
       {
         node: <SiSupabase className={si("text-[#3ECF8E]")} />,
         title: "Supabase",
-        href: "https://supabase.com",
-      },
+        href: "https://supabase.com"
+      }
     ],
-    [],
+    []
   );
 
   const rowCloudAndGeneral = useMemo<TechLogo[]>(
@@ -218,106 +217,94 @@ export function BentoTechStackCard() {
       {
         node: <LuGlyph Icon={Cloud} className="stroke-[#FF9900]" />,
         title: "AWS",
-        href: "https://aws.amazon.com",
+        href: "https://aws.amazon.com"
       },
       {
         node: <LuGlyph Icon={Server} className="stroke-[#FF9900]" />,
         title: "EC2",
-        href: "https://aws.amazon.com/ec2/",
+        href: "https://aws.amazon.com/ec2/"
       },
       {
         node: <LuGlyph Icon={Archive} className="stroke-[#FF9900]" />,
         title: "S3",
-        href: "https://aws.amazon.com/s3/",
+        href: "https://aws.amazon.com/s3/"
       },
       {
         node: <LuGlyph Icon={Zap} className="stroke-[#FF9900]" />,
         title: "Amplify",
-        href: "https://aws.amazon.com/amplify/",
+        href: "https://aws.amazon.com/amplify/"
       },
       {
         node: <SiDocker className={si("text-[#2496ED]")} />,
         title: "Docker",
-        href: "https://www.docker.com",
+        href: "https://www.docker.com"
       },
       {
         node: <SiJenkins className={si("text-[#D24939]")} />,
         title: "CI/CD",
-        href: "https://www.jenkins.io",
+        href: "https://www.jenkins.io"
       },
       {
         node: <SiGithubactions className={si("text-[#2088FF]")} />,
         title: "GitHub Actions",
-        href: "https://github.com/features/actions",
+        href: "https://github.com/features/actions"
       },
       {
         node: <SiGit className={si("text-[#F05032]")} />,
         title: "Git",
-        href: "https://git-scm.com",
+        href: "https://git-scm.com"
       },
       {
         node: <SiGithub className={si("text-white")} />,
         title: "GitHub",
-        href: "https://github.com",
+        href: "https://github.com"
       },
       {
         node: <SiJira className={si("text-[#0052CC]")} />,
         title: "Jira",
-        href: "https://www.atlassian.com/software/jira",
+        href: "https://www.atlassian.com/software/jira"
       },
       {
         node: <SiWebrtc className={si("text-[#FF6600]")} />,
         title: "WebRTC",
-        href: "https://webrtc.org",
+        href: "https://webrtc.org"
       },
       {
         node: <LuGlyph Icon={Phone} className="stroke-[#E87722]" />,
         title: "FreePBX",
-        href: "https://www.freepbx.org",
+        href: "https://www.freepbx.org"
       },
       {
         node: <SiAsterisk className={si("text-[#F68F1E]")} />,
         title: "Asterisk",
-        href: "https://www.asterisk.org",
+        href: "https://www.asterisk.org"
       },
       {
         node: <SiLangchain className={si("text-[#2FE6AB]")} />,
         title: "LangChain",
-        href: "https://www.langchain.com",
+        href: "https://www.langchain.com"
       },
       {
         node: <SiEslint className={si("text-[#4B32C3]")} />,
         title: "ESLint",
-        href: "https://eslint.org",
-      },
+        href: "https://eslint.org"
+      }
     ],
-    [],
+    []
   );
 
   return (
-    <Card
-      size="sm"
-      className={bentoGlassCard(
-        cn(
-          "relative flex h-full min-h-[260px] flex-1 flex-col overflow-hidden rounded-3xl md:overflow-y-auto",
-          "cursor-default transition-[box-shadow,border-color,filter] duration-300 ease-out",
-          "hover:border-white/20 hover:brightness-[1.03]",
-          "hover:shadow-[inset_0_2px_40px_rgba(0,0,0,0.45),inset_0_1px_0_0_rgba(255,255,255,0.14),0_0_36px_-6px_rgba(139,92,246,0.35)]",
-        ),
-      )}
-      onMouseEnter={() => setCardHovered(true)}
-      onMouseLeave={() => setCardHovered(false)}
-    >
+    <Card className="relative flex h-full min-h-[260px] flex-1 flex-col overflow-hidden rounded-3xl md:overflow-y-auto cursor-default transition-[box-shadow,border-color,filter] duration-300 ease-out hover:border-white/20 hover:brightness-[1.03] hover:shadow-[inset_0_2px_40px_rgba(0,0,0,0.45),inset_0_1px_0_0_rgba(255,255,255,0.14),0_0_36px_-6px_rgba(139,92,246,0.35)]">
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(ellipse_85%_70%_at_50%_108%,rgba(168,85,247,0.14),transparent_52%),radial-gradient(circle_at_50%_120%,rgba(236,72,153,0.06),transparent_45%)] opacity-90 transition-opacity duration-300 group-hover/card:opacity-100"
         aria-hidden
       />
-      <CardContent className="flex h-full flex-col gap-6">
+      <div className="flex h-full flex-col gap-6">
         <p className="shrink-0 text-center bg-linear-to-r from-violet-300 via-fuchsia-200 to-zinc-100 bg-clip-text text-2xl font-bold tracking-wide text-transparent">
           Crafting experiences powered by next-gen tech
         </p>
 
-        <div className="flex flex-1 flex-col gap-8 overflow-hidden">
+        <div className="flex flex-1 flex-col gap-2 overflow-hidden">
           <TechStackRow
             direction="left"
             logos={rowLanguagesAndFrontend}
@@ -372,7 +359,7 @@ export function BentoTechStackCard() {
             </div>
           </section>
         </div>
-      </CardContent>
+      </div>
     </Card>
   );
 }

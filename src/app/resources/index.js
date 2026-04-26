@@ -8,14 +8,14 @@ const person = {
   avatar: "/images/avatar.png",
   email: "zainalis.914@gmail.com",
   phone: "+92 304 2002147",
-  location: "Rawalpindi, Pakistan",
+  location: "Rawalpindi, Pakistan"
 };
 
 const codeLines = [
   {
     id: "line-comment",
     text: "// Welcome to my workspace",
-    tone: "text-slate-500",
+    tone: "text-slate-500"
   },
   {
     id: "line-import",
@@ -33,8 +33,8 @@ const codeLines = [
       { text: "from", tone: "text-[#c792ea]" },
       { text: " ", tone: "text-[#d7d9ff]" },
       { text: "'./universe'", tone: "text-[#ecc48d]" },
-      { text: ";", tone: "text-[#d4d8f5]" },
-    ],
+      { text: ";", tone: "text-[#d4d8f5]" }
+    ]
   },
   { id: "line-empty-1", text: "", tone: "text-[#d7d9ff]" },
   {
@@ -49,8 +49,8 @@ const codeLines = [
       { text: "(", tone: "text-[#ffcb6b]" },
       { text: ")", tone: "text-[#ffcb6b]" },
       { text: " => ", tone: "text-[#d4d8f5]" },
-      { text: "{", tone: "text-[#f78c6c]" },
-    ],
+      { text: "{", tone: "text-[#f78c6c]" }
+    ]
   },
   {
     id: "line-availability-var",
@@ -63,8 +63,8 @@ const codeLines = [
       { text: "isAvailable", tone: "text-[#c3e88d]" },
       { text: " = ", tone: "text-[#d4d8f5]" },
       { text: "true", tone: "text-[#82aaff]" },
-      { text: ";", tone: "text-[#d4d8f5]" },
-    ],
+      { text: ";", tone: "text-[#d4d8f5]" }
+    ]
   },
   {
     id: "line-return",
@@ -74,8 +74,8 @@ const codeLines = [
       { text: "  ", tone: "text-[#d7d9ff]" },
       { text: "return", tone: "text-[#c792ea]" },
       { text: " ", tone: "text-[#d7d9ff]" },
-      { text: "(", tone: "text-[#ffcb6b]" },
-    ],
+      { text: "(", tone: "text-[#ffcb6b]" }
+    ]
   },
   {
     id: "line-open-tag",
@@ -84,8 +84,8 @@ const codeLines = [
     segments: [
       { text: "    ", tone: "text-[#d7d9ff]" },
       { text: "<", tone: "text-[#f78c6c]" },
-      { text: "Developer", tone: "text-[#89ddff]" },
-    ],
+      { text: "Developer", tone: "text-[#89ddff]" }
+    ]
   },
   {
     id: "line-name",
@@ -95,8 +95,8 @@ const codeLines = [
       { text: "      ", tone: "text-[#d7d9ff]" },
       { text: "name", tone: "text-[#89ddff]" },
       { text: "=", tone: "text-[#d4d8f5]" },
-      { text: `'${person.name}'`, tone: "text-[#ecc48d]" },
-    ],
+      { text: `'${person.name}'`, tone: "text-[#ecc48d]" }
+    ]
   },
   {
     id: "line-passion",
@@ -106,8 +106,8 @@ const codeLines = [
       { text: "      ", tone: "text-[#d7d9ff]" },
       { text: "passion", tone: "text-[#89ddff]" },
       { text: "=", tone: "text-[#d4d8f5]" },
-      { text: "'Engineering Beyond Boundaries'", tone: "text-[#ecc48d]" },
-    ],
+      { text: "'Engineering Beyond Boundaries'", tone: "text-[#ecc48d]" }
+    ]
   },
   {
     id: "line-available",
@@ -119,8 +119,8 @@ const codeLines = [
       { text: "=", tone: "text-[#d4d8f5]" },
       { text: "{", tone: "text-[#f78c6c]" },
       { text: "isAvailable", tone: "text-[#c3e88d]" },
-      { text: "}", tone: "text-[#f78c6c]" },
-    ],
+      { text: "}", tone: "text-[#f78c6c]" }
+    ]
   },
   {
     id: "line-close-tag",
@@ -129,8 +129,8 @@ const codeLines = [
     segments: [
       { text: "    ", tone: "text-[#d7d9ff]" },
       { text: "/", tone: "text-[#89ddff]" },
-      { text: ">", tone: "text-[#f78c6c]" },
-    ],
+      { text: ">", tone: "text-[#f78c6c]" }
+    ]
   },
   {
     id: "line-close-return",
@@ -139,8 +139,8 @@ const codeLines = [
     segments: [
       { text: "  ", tone: "text-[#d7d9ff]" },
       { text: ")", tone: "text-[#ffcb6b]" },
-      { text: ";", tone: "text-[#d4d8f5]" },
-    ],
+      { text: ";", tone: "text-[#d4d8f5]" }
+    ]
   },
   {
     id: "line-close-component",
@@ -148,38 +148,27 @@ const codeLines = [
     tone: "text-[#d7d9ff]",
     segments: [
       { text: "}", tone: "text-[#f78c6c]" },
-      { text: ";", tone: "text-[#d4d8f5]" },
-    ],
-  },
+      { text: ";", tone: "text-[#d4d8f5]" }
+    ]
+  }
 ];
-
-const newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: (
-    <>
-      Insights on the MERN stack, Python-driven AI, scalable SaaS architecture,
-      and high-performance VoIP systems.
-    </>
-  ),
-};
 
 const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/zas512",
+    link: "https://github.com/zas512"
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/zas512",
+    link: "https://www.linkedin.com/in/zas512"
   },
   {
     name: "Email",
     icon: "email",
-    link: `mailto:${person.email}`,
-  },
+    link: `mailto:${person.email}`
+  }
 ];
 
 const home = {
@@ -201,7 +190,7 @@ const home = {
         Current Project: <strong className="ml-4">SureHelp Insurance</strong>
       </>
     ),
-    href: "/work/surehelp",
+    href: "/work/surehelp"
   },
   subline: (
     <>
@@ -217,8 +206,8 @@ const home = {
     items: [
       { label: "Years of Experience", value: "5" }, // Reflected from CV [cite: 5]
       { label: "Projects Delivered", value: "25+" },
-      { label: "Tech Stack", value: "MERN + AI" },
-    ],
+      { label: "Tech Stack", value: "MERN + AI" }
+    ]
   },
   highlights: {
     display: true,
@@ -226,9 +215,9 @@ const home = {
       "Boosted data retrieval performance by 40% for enterprise platforms [cite: 19]",
       "Engineered multi-tenant billing systems with 99.9% uptime [cite: 29]",
       "Automated video creation using Generative AI (OpenAI & FFmpeg) [cite: 49]",
-      "Reduced manual dialing by 60% via custom VoIP integrations [cite: 37]",
-    ],
-  },
+      "Reduced manual dialing by 60% via custom VoIP integrations [cite: 37]"
+    ]
+  }
 };
 
 const about = {
@@ -238,14 +227,14 @@ const about = {
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
-    subItems: false,
+    subItems: false
   },
   avatar: {
-    display: true,
+    display: true
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com"
   },
   intro: {
     display: true,
@@ -259,7 +248,7 @@ const about = {
         particularly focused on the integration of Generative AI to streamline
         workflows and the optimization of real-time communication systems.
       </>
-    ),
+    )
   },
   work: {
     display: true,
@@ -284,8 +273,8 @@ const about = {
             <b>NexaMortgage:</b> Stabilized an AI-driven loan management system
             by modernizing an existing codebase and enhancing functional
             reliability[cite: 23].
-          </>,
-        ],
+          </>
+        ]
       },
       {
         company: "CCCRIPT Agency", // Corrected per CV [cite: 24]
@@ -305,8 +294,8 @@ const about = {
           <>
             <b>Jadops GIS:</b> Delivered a 3D geospatial platform using CesiumJS
             for real-time telemetry and asset tracking[cite: 30].
-          </>,
-        ],
+          </>
+        ]
       },
       {
         company: "Graana.com",
@@ -320,10 +309,10 @@ const about = {
           <>
             Achieved zero downtime for a centralized contact center management
             system through custom routing rules and Node.js[cite: 38].
-          </>,
-        ],
-      },
-    ],
+          </>
+        ]
+      }
+    ]
   },
   technical: {
     display: true,
@@ -337,36 +326,36 @@ const about = {
             Automation
           </>
         ),
-        images: [],
+        images: []
       },
       {
         title: "Languages & Frameworks",
         description: (
           <>TypeScript, JavaScript, Python, React, Next.js, Redux, Node.js</>
         ),
-        images: [],
+        images: []
       },
       {
         title: "Backend & Databases",
         description: (
           <>Express.js, PostgreSQL, MongoDB, Redis, WebSockets, Supabase</>
         ),
-        images: [],
+        images: []
       },
       {
         title: "DevOps & Cloud",
         description: <>AWS (EC2, S3, Amplify), Docker, GitHub Actions, CI/CD</>,
-        images: [],
+        images: []
       },
       {
         title: "Telecommunications",
         description: (
           <>WebRTC, Asterisk, FreePBX, SIP Protocol, VoIP Integration</>
         ),
-        images: [],
-      },
-    ],
-  },
+        images: []
+      }
+    ]
+  }
 };
 
 const blog = {
@@ -374,14 +363,14 @@ const blog = {
   label: "Blog",
   title:
     "Writing about Full Stack Development, SaaS, VoIP, GIS, AI, and DevOps...",
-  description: `Read what ${person.name} has been up to recently`,
+  description: `Read what ${person.name} has been up to recently`
 };
 
 const work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Case studies and technical projects built by ${person.name}`,
+  description: `Case studies and technical projects built by ${person.name}`
 };
 
 const gallery = {
@@ -393,19 +382,19 @@ const gallery = {
     {
       src: "/images/gallery/horizontal-1.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "horizontal"
     },
     {
       src: "/images/gallery/horizontal-2.jpg",
       alt: "image",
-      orientation: "horizontal",
+      orientation: "horizontal"
     },
     {
       src: "/images/gallery/vertical-1.jpg",
       alt: "image",
-      orientation: "vertical",
-    },
-  ],
+      orientation: "vertical"
+    }
+  ]
 };
 
 export {
@@ -417,5 +406,5 @@ export {
   blog,
   work,
   gallery,
-  codeLines,
+  codeLines
 };

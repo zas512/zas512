@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { slideInFromLeft, slideInFromTop } from "@/lib/motion";
 import { Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { person, codeLines } from "@/app/resources";
 
 type CodeSegment = {
@@ -148,7 +148,7 @@ const HeroContent = () => {
               {person.name}
             </span>
           </motion.h1>
-          <motion.p
+          <motion.div
             variants={slideInFromLeft(0.7)}
             className="max-w-[620px] text-xl leading-relaxed text-zinc-300"
           >
@@ -158,7 +158,7 @@ const HeroContent = () => {
               systems, real-time architecture, and high-performance
               applications.
             </p>
-          </motion.p>
+          </motion.div>
           <motion.div
             variants={slideInFromLeft(0.9)}
             className="mt-3 flex max-w-[620px] items-center gap-4"
@@ -173,7 +173,7 @@ const HeroContent = () => {
         >
           <div className="pointer-events-none absolute -inset-2 -z-10 rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.2),transparent_44%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.18),transparent_48%)] blur-xl" />
           <Card className="w-full gap-0 overflow-hidden rounded-2xl border-white/12 bg-[#070a12]/95 py-0 shadow-[0_18px_70px_rgba(0,0,0,0.55)]">
-            <CardHeader className="flex h-10 items-center rounded-none border-b border-white/10 bg-zinc-700/35">
+            <div className="flex h-10 items-center rounded-none border-b border-white/10 bg-zinc-700/35">
               <div className="flex items-center gap-2 h-full">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
@@ -182,8 +182,8 @@ const HeroContent = () => {
               <p className="text-xs w-full text-center font-semibold tracking-[0.12em] text-zinc-200">
                 portfolio.tsx
               </p>
-            </CardHeader>
-            <CardContent className="px-4 py-4 sm:px-5">
+            </div>
+            <div className="px-4 py-4 sm:px-5">
               <pre className="min-h-max font-mono text-[0.92rem] leading-7 text-[#d7d9ff]">
                 {(codeLines as CodeLine[])
                   .slice(0, visibleLineCount)
@@ -268,7 +268,7 @@ const HeroContent = () => {
                     );
                   })}
               </pre>
-            </CardContent>
+            </div>
           </Card>
         </motion.div>
       </div>
