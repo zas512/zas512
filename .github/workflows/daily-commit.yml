@@ -2,7 +2,7 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * 1-6' # Monday-Saturday
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Randomly skip most Saturdays
+        run: |
+          DAY=$(date -u +%u)
+
+          # Saturday = 6
+          if [ "$DAY" -eq 6 ]; then
+            # 25% chance to run, 75% chance to skip
+            if [ $((RANDOM % 4)) -ne 0 ]; then
+              echo "Skipping this Saturday run"
+              exit 0
+            fi
+          fi
 
       - name: Pick random commit count (2, 4, 8)
         id: random
@@ -30,7 +43,10 @@ jobs:
           for i in $(seq 1 ${{ steps.random.outputs.count }}); do
             echo "Commit $i on $(date)" >> activity.log
             git add activity.log
-            git commit -m "status check #$i"
+
+            # Skip if nothing changed
+            git diff --cached --quiet || git commit -m "status check #$i"
+
             sleep $((RANDOM % 600))  # up to 10 min delay
           done
 
