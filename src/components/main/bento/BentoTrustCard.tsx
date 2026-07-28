@@ -46,7 +46,7 @@ export function BentoTrustCard() {
           {/* Button */}
           <Button
             variant="ghost"
-            size="xs"
+            size="sm"
             className="flex items-center gap-3 -ml-3 px-3 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out delay-100"
           >
             About me

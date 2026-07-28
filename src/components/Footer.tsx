@@ -30,7 +30,7 @@ export const Footer = () => {
               key={item.name}
               asChild
               variant="ghost"
-              size="icon-sm"
+              size="icon"
               className="text-muted-foreground hover:text-foreground"
             >
               <Link

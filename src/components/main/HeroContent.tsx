@@ -36,7 +36,7 @@ const getTypedChars = (line: CodeLine, typedText: string): TypedChar[] => {
       if (consumedLength >= typedText.length) break;
       const visiblePart = segment.text.slice(
         0,
-        typedText.length - consumedLength,
+        typedText.length - consumedLength
       );
       for (const char of visiblePart) {
         typedChars.push({ char, tone: segment.tone });
@@ -88,7 +88,7 @@ const renderTypedChars = (chars: TypedChar[]) => {
 
 const HeroContent = () => {
   const [typedLines, setTypedLines] = useState<string[]>(
-    Array(codeLines.length).fill(""),
+    Array(codeLines.length).fill("")
   );
   const [currentLine, setCurrentLine] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
@@ -172,8 +172,8 @@ const HeroContent = () => {
           className="relative w-full rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_36px_rgba(139,92,246,0.16),0_0_22px_rgba(168,85,247,0.1)]"
         >
           <div className="pointer-events-none absolute -inset-2 -z-10 rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.2),transparent_44%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.18),transparent_48%)] blur-xl" />
-          <Card className="w-full gap-0 overflow-hidden rounded-2xl border-white/12 bg-[#070a12]/95 py-0 shadow-[0_18px_70px_rgba(0,0,0,0.55)]">
-            <div className="flex h-10 items-center rounded-none border-b border-white/10 bg-zinc-700/35">
+          <Card className="w-full gap-0 overflow-hidden rounded-2xl border-white/12 bg-[#070a12]/95 p-0 shadow-[0_18px_70px_rgba(0,0,0,0.55)]">
+            <div className="flex h-10 items-center rounded-none border-b border-white/10 bg-zinc-700/35 px-4">
               <div className="flex items-center gap-2 h-full">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
@@ -225,7 +225,7 @@ const HeroContent = () => {
                                 className={[
                                   lastChar?.tone ?? line.tone ?? fallbackTone,
                                   "inline-block rounded-[2px] bg-[#049EE2]/25 px-px animate-pulse",
-                                  "shadow-[0_0_14px_rgba(4,158,226,0.65)]",
+                                  "shadow-[0_0_14px_rgba(4,158,226,0.65)]"
                                 ].join(" ")}
                                 style={{ animationDuration: "140ms" }}
                               >
@@ -237,7 +237,7 @@ const HeroContent = () => {
                               className={[
                                 isActive
                                   ? "[text-shadow:0_0_14px_rgba(4,158,226,0.18)] transition-all duration-75"
-                                  : "",
+                                  : ""
                               ].join(" ")}
                             >
                               {renderTypedChars(activeChars)}
@@ -254,7 +254,7 @@ const HeroContent = () => {
                                   duration: 0.28,
                                   repeat: Infinity,
                                   repeatType: "reverse",
-                                  ease: "linear",
+                                  ease: "linear"
                                 }}
                               >
                                 |
