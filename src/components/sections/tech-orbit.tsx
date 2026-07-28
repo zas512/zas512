@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { techStack } from "@/lib/data";
 import { TechIcon } from "@/components/tech-icon";

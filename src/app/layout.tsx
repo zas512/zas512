@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import ParticlesBackground from "@/components/ParticlesBackground";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 
