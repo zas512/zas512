@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
 
-export function Nav() {
+export default function Nav() {
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
@@ -32,7 +32,7 @@ export function Nav() {
 
 function NavLink({
   to,
-  label
+  label,
 }: Readonly<{ to: "/" | "/work"; label: string }>) {
   return (
     <Link

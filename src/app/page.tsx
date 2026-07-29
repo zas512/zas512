@@ -5,10 +5,12 @@ import { TechOrbit } from "@/components/sections/tech-orbit";
 import { FeaturedWork } from "@/components/sections/featured-work";
 import { GithubActivity } from "@/components/sections/github-activity";
 import { Contact } from "@/components/sections/contact";
+import Navbar from "@/components/nav";
 
 export default function Home() {
   return (
     <main>
+      <Navbar />
       <Hero />
       <div className="max-w-7xl mx-auto p-6">
         <Bento />
