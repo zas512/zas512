@@ -55,7 +55,7 @@ export function Bento() {
   return (
     <>
       <Header />
-      <BentoGrid className="auto-rows-[18rem]">
+      <BentoGrid className="auto-rows-64">
         {features.map((feature) => (
           <BentoCard key={feature.name} {...feature} />
         ))}

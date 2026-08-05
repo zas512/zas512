@@ -14,8 +14,7 @@ export default async function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`dark ${inter.variable} ${geist.variable}`}>
-        {/* <ParticlesBackground /> */}
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">{children}</div>
+        <main className="px-6 lg:px-10">{children}</main>
       </body>
     </html>
   );
