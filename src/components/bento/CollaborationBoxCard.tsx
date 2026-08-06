@@ -50,7 +50,7 @@ const badges = [
   }
 ];
 
-const CYCLE_MS = 3600;
+const CYCLE_MS = 2000;
 
 export function CollaborationBoxCard() {
   const [activeIndex, setActiveIndex] = useState(0);

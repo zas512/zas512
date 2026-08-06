@@ -1,9 +1,9 @@
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import { BellIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
+import { BellIcon, FileTextIcon } from "@radix-ui/react-icons";
 import { MapPin } from "lucide-react";
 import { CollaborationBoxCard } from "../bento/CollaborationBoxCard";
 import LocationCard from "../bento/LocationCard";
-import { TechStackCardBackground } from "../bento/TechStackCardBackground";
+import { BentoTechStackCard } from "../bento/TechStackCardBackground";
 import { TrustCardBackground } from "../bento/TrustCardBackground";
 import { WorkspaceCardBackground } from "../bento/WorkspaceCardBackground";
 
@@ -20,13 +20,12 @@ export function Bento() {
       className: "lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-2"
     },
     {
-      Icon: InputIcon,
-      name: "Tech Stack",
-      description:
-        "Shipping production apps with modern frontend, backend, AI, and cloud tooling.",
-      href: "/about",
-      cta: "See stack",
-      background: <TechStackCardBackground />,
+      Icon: null,
+      name: "",
+      description: "",
+      href: "",
+      cta: "",
+      background: <BentoTechStackCard />,
       className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-3"
     },
     {
