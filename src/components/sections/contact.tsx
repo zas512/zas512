@@ -1,10 +1,10 @@
 "use client";
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { Copy, Check } from "lucide-react";
-import { SiGithub, SiLinkerd, SiX } from "react-icons/si";
 import { profile } from "@/lib/data";
+import { motion, useInView } from "framer-motion";
+import { Check, Copy } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { SiGithub, SiLinkerd, SiX } from "react-icons/si";
 
 const lines = [
   { p: "$", t: "initializing secure channel…" },
@@ -14,7 +14,7 @@ const lines = [
   { p: ">", t: `${profile.name} · ${profile.role}` },
   { p: "$", t: "status" },
   { p: ">", t: "available for select projects · Q1 2026" },
-  { p: "$", t: "contact --send" },
+  { p: "$", t: "contact --send" }
 ];
 
 export function Contact() {
@@ -58,6 +58,7 @@ export function Contact() {
             </p>
 
             <button
+              type="button"
               onClick={copy}
               data-cursor="hover"
               className="group mt-8 inline-flex items-center gap-3 rounded-full border border-border bg-card/60 px-5 py-3 text-sm backdrop-blur transition hover:border-primary"
@@ -132,7 +133,10 @@ export function Contact() {
                       className="flex-1 bg-transparent text-foreground outline-none placeholder:text-muted-foreground"
                     />
                     <span className="inline-block h-4 w-2 animate-blink bg-primary" />
-                    <button className="rounded-md bg-foreground px-3 py-1 text-xs text-background">
+                    <button
+                      type="button"
+                      className="rounded-md bg-foreground px-3 py-1 text-xs text-background"
+                    >
                       send
                     </button>
                   </form>
@@ -148,7 +152,7 @@ export function Contact() {
 
 function Social({
   icon,
-  label,
+  label
 }: Readonly<{ icon: React.ReactNode; label: string }>) {
   return (
     <Link
