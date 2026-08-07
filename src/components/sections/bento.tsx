@@ -1,5 +1,5 @@
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import { BellIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { FileTextIcon } from "@radix-ui/react-icons";
 import { MapPin } from "lucide-react";
 import { CollaborationBoxCard } from "../bento/CollaborationBoxCard";
 import LocationCard from "../bento/LocationCard";
@@ -47,12 +47,11 @@ export function Bento() {
       className: "lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3"
     },
     {
-      Icon: BellIcon,
-      name: "Workspace",
-      description:
-        "Full-stack execution across web apps, real-time systems, and AI-powered platforms.",
-      href: "/work",
-      cta: "View projects",
+      Icon: null,
+      name: "",
+      description: "",
+      href: "",
+      cta: "",
       background: <WorkspaceCardBackground />,
       className: "lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4"
     }

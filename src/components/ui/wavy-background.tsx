@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
 
 export const WavyBackground = ({
@@ -9,8 +9,9 @@ export const WavyBackground = ({
   containerClassName,
   colors,
   waveWidth,
-  backgroundFill,
   blur = 10,
+  saturation = 1,
+  brightness = 0.85,
   speed = "fast",
   waveOpacity = 0.5,
   ...props
@@ -20,8 +21,9 @@ export const WavyBackground = ({
   containerClassName?: string;
   colors?: string[];
   waveWidth?: number;
-  backgroundFill?: string;
   blur?: number;
+  saturation?: number;
+  brightness?: number;
   speed?: "slow" | "fast";
   waveOpacity?: number;
   [key: string]: any;
@@ -35,6 +37,7 @@ export const WavyBackground = ({
     ctx: any,
     canvas: any;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const getSpeed = () => {
     switch (speed) {
       case "slow":
@@ -48,17 +51,29 @@ export const WavyBackground = ({
 
   const init = () => {
     canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
     ctx = canvas.getContext("2d");
-    w = ctx.canvas.width = window.innerWidth;
-    h = ctx.canvas.height = window.innerHeight;
-    ctx.filter = `blur(${blur}px)`;
+    w = ctx.canvas.width = container.clientWidth || window.innerWidth;
+    h = ctx.canvas.height = container.clientHeight || window.innerHeight;
+    ctx.filter = `blur(${blur}px) saturate(${saturation}) brightness(${brightness})`;
     nt = 0;
-    window.onresize = function () {
-      w = ctx.canvas.width = window.innerWidth;
-      h = ctx.canvas.height = window.innerHeight;
-      ctx.filter = `blur(${blur}px)`;
+
+    const resize = () => {
+      w = ctx.canvas.width = container.clientWidth || window.innerWidth;
+      h = ctx.canvas.height = container.clientHeight || window.innerHeight;
+      ctx.filter = `blur(${blur}px) saturate(${saturation}) brightness(${brightness})`;
     };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(container);
+    window.addEventListener("resize", resize);
     render();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", resize);
+    };
   };
 
   const waveColors = colors ?? [
@@ -66,7 +81,7 @@ export const WavyBackground = ({
     "#818cf8",
     "#c084fc",
     "#e879f9",
-    "#22d3ee",
+    "#22d3ee"
   ];
   const drawWave = (n: number) => {
     nt += getSpeed();
@@ -75,8 +90,8 @@ export const WavyBackground = ({
       ctx.lineWidth = waveWidth || 50;
       ctx.strokeStyle = waveColors[i % waveColors.length];
       for (x = 0; x < w; x += 5) {
-        var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+        let y = noise(x / 800, 0.3 * i, nt) * 100;
+        ctx.lineTo(x, y + h * 0.5);
       }
       ctx.stroke();
       ctx.closePath();
@@ -85,17 +100,17 @@ export const WavyBackground = ({
 
   let animationId: number;
   const render = () => {
-    ctx.fillStyle = backgroundFill || "black";
+    ctx.clearRect(0, 0, w, h);
     ctx.globalAlpha = waveOpacity || 0.5;
-    ctx.fillRect(0, 0, w, h);
     drawWave(5);
     animationId = requestAnimationFrame(render);
   };
 
   useEffect(() => {
-    init();
+    const cleanup = init();
     return () => {
       cancelAnimationFrame(animationId);
+      cleanup?.();
     };
   }, []);
 
@@ -111,6 +126,7 @@ export const WavyBackground = ({
 
   return (
     <div
+      ref={containerRef}
       className={cn(
         "h-screen flex flex-col items-center justify-center",
         containerClassName
@@ -121,7 +137,11 @@ export const WavyBackground = ({
         ref={canvasRef}
         id="canvas"
         style={{
-          ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
+          ...(isSafari
+            ? {
+                filter: `blur(${blur}px) saturate(${saturation}) brightness(${brightness})`
+              }
+            : {})
         }}
       ></canvas>
       <div className={cn("relative z-10", className)} {...props}>
