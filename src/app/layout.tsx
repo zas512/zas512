@@ -1,3 +1,4 @@
+"use server";
 import { Geist, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -10,7 +11,7 @@ const description =
   "I am a software engineer with a passion for building scalable and efficient applications. I specialize in web development, cloud computing, and AI integration.";
 
 export default async function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: ReactNode;
 }>) {
@@ -18,6 +19,7 @@ export default async function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body className={`dark ${inter.variable} ${geist.variable}`}>
         <main className="px-6 lg:px-10">{children}</main>
+        {/* impeccable-live-end */}
       </body>
     </html>
   );
