@@ -1,10 +1,11 @@
 "use client"
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { profile } from "@/lib/data";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import Link from 'next/link'
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -80,16 +81,16 @@ export function Hero() {
           transition={{ delay: 0.65, duration: 0.7 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3.5"
         >
-          <a href="#work" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
+          <Link href="#work" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full">
             <InteractiveHoverButton>View selected work</InteractiveHoverButton>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-surface/40 px-6 py-2.5 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:bg-surface-2 hover:border-foreground/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <span>Let's talk</span>
             <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
-          </a>
+          </Link>
         </motion.div>
 
         {/* Social / Channel Indicators */}
@@ -131,7 +132,7 @@ export function Hero() {
   );
 }
 
-function Reveal({ children, delay = 0 }: Readonly<{ children: React.ReactNode; delay?: number }>) {
+function Reveal({ children, delay = 0 }: Readonly<{ children: ReactNode; delay?: number }>) {
   return (
     <span className="block overflow-hidden">
       <motion.span

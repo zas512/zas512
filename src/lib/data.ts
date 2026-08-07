@@ -16,13 +16,6 @@ export const profile = {
   ],
 };
 
-export const stats = [
-  { value: "5+", label: "Years shipping" },
-  { value: "20+", label: "Production apps" },
-  { value: "99.9%", label: "Uptime delivered" },
-  { value: "40%", label: "Avg perf gains" },
-];
-
 export const experience = [
   {
     company: "CCRIPT Agency",

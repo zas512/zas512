@@ -3,7 +3,7 @@ import { profile } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { SiGithub, SiLinkerd, SiX } from "react-icons/si";
 
 const lines = [
@@ -154,7 +154,7 @@ function Social({
   icon,
   label,
   href,
-}: Readonly<{ icon: React.ReactNode; label: string; href: string }>) {
+}: Readonly<{ icon: ReactNode; label: string; href: string }>) {
   return (
     <Link
       href={href}
