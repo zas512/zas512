@@ -50,7 +50,7 @@ export function Contact() {
             </p>
             <h2 className="mt-3 text-4xl font-display md:text-6xl">
               Let's build something{" "}
-              <span className="italic text-gradient">unforgettable</span>.
+              <span className="italic text-foreground">unforgettable</span>.
             </h2>
             <p className="mt-5 max-w-sm text-sm text-muted-foreground">
               I take on a small number of partnerships per quarter. If you've
@@ -72,9 +72,9 @@ export function Contact() {
             </button>
 
             <div className="mt-6 flex gap-3">
-              <Social icon={<SiGithub />} label="GitHub" />
-              <Social icon={<SiLinkerd />} label="LinkedIn" />
-              <Social icon={<SiX />} label="X" />
+              <Social icon={<SiGithub />} label="GitHub" href="https://github.com/zas512" />
+              <Social icon={<SiLinkerd />} label="LinkedIn" href="https://www.linkedin.com/in/zas512/" />
+              <Social icon={<SiX />} label="X" href="https://x.com/zas512" />
             </div>
           </div>
 
@@ -96,9 +96,9 @@ export function Contact() {
                 </span>
               </div>
               <div className="space-y-1.5 p-6 font-mono text-sm">
-                {lines.slice(0, shown).map((l, i) => (
+                {lines.slice(0, shown).map((l) => (
                   <motion.div
-                    key={i}
+                    key={`${l.p}-${l.t}`}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="flex gap-3"
@@ -152,11 +152,14 @@ export function Contact() {
 
 function Social({
   icon,
-  label
-}: Readonly<{ icon: React.ReactNode; label: string }>) {
+  label,
+  href,
+}: Readonly<{ icon: React.ReactNode; label: string; href: string }>) {
   return (
     <Link
-      href="#"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
       data-cursor="hover"
       className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-xs text-muted-foreground backdrop-blur transition hover:border-primary hover:text-foreground"
     >

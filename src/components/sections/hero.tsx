@@ -44,7 +44,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
             </span>
-            <span className="font-mono uppercase tracking-widest text-[10.5px] text-foreground/90">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-foreground/90">
               Available for full-time & contract
             </span>
           </div>
@@ -53,8 +53,8 @@ export function Hero() {
         {/* Main Headline */}
         <h1 className="mt-6 text-center font-display text-[clamp(2.75rem,8.5vw,8.5rem)] leading-[0.94] tracking-tight">
           <Reveal delay={0.15}>
-            <span className="text-shimmer">
-              Building <span className="italic text-gradient">AI-native full-stack</span>
+            <span className="text-foreground">
+              Building <span className="italic text-foreground">AI-native full-stack</span>
             </span>
           </Reveal>
           <Reveal delay={0.25}>

@@ -15,7 +15,7 @@ export function TechOrbit() {
             / 03 - My core abilities
           </p>
           <h2 className="mt-3 text-4xl font-display md:text-6xl">
-            The toolkit, <span className="italic text-gradient">in orbit</span>.
+            The toolkit, <span className="italic text-foreground">in orbit</span>.
           </h2>
           <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">
             A polyglot stack chosen per problem. Hover any icon to bring it forward.
@@ -58,7 +58,7 @@ export function TechOrbit() {
               title={t.name}
             >
               <TechIcon slug={t.slug} color={t.color} size={26} />
-              <span className="line-clamp-1 text-center text-[10px] text-muted-foreground transition group-hover:text-foreground">
+              <span className="line-clamp-1 text-center text-xs text-muted-foreground transition group-hover:text-foreground">
                 {t.name}
               </span>
             </motion.div>
@@ -74,12 +74,12 @@ function OrbitRing({
   radius,
   duration,
   reverse = false,
-}: {
+}: Readonly<{
   items: { name: string; slug: string; color: string }[];
   radius: number;
   duration: number;
   reverse?: boolean;
-}) {
+}>) {
   return (
     <motion.div
       className="absolute inset-0"

@@ -87,7 +87,7 @@ function buildWeeks(contributions: Contribution[]) {
   const monthLabels: { label: string; weekIndex: number }[] = [];
   let lastMonth = -1;
   weeks.forEach((w, idx) => {
-    const firstReal = w.find((c) => c);
+    const firstReal = w.find(Boolean);
     if (!firstReal) return;
     const m = new Date(firstReal.date).getMonth();
     if (m !== lastMonth) {
@@ -155,7 +155,7 @@ export function GithubActivity() {
             Developer insights · live from github
           </p>
           <h2 className="mt-4 font-display text-5xl leading-[1.02] md:text-7xl">
-            Github <span className="italic text-gradient">Activity</span>
+            Github <span className="italic text-foreground">Activity</span>
           </h2>
           <a
             href={`https://github.com/${GH_USER}`}
@@ -189,7 +189,7 @@ export function GithubActivity() {
           {!isLoading && !isError && weeks.length > 0 && (
             <>
               {/* Months — hidden on mobile, pixel offset matches size-3.5 + gap-0.75 */}
-              <div className="relative mb-2 hidden h-4 pl-1 font-mono text-[11px] text-muted-foreground md:block">
+              <div className="relative mb-2 hidden h-4 pl-1 font-mono text-xs text-muted-foreground md:block">
                 {monthLabels.map((m) => (
                   <span
                     key={`${m.label}-${m.weekIndex}`}
@@ -204,16 +204,19 @@ export function GithubActivity() {
               {/* Grid */}
               <div className="w-full overflow-x-auto">
                 <div className="flex min-w-max gap-0.75">
-                  {weeks.map((col, w) => (
-                    <div key={w} className="flex flex-col gap-0.75">
+                  {weeks.map((col, w) => {
+                    const weekKey = col.find(Boolean)?.date ?? `week-${w}`;
+                    return (
+                    <div key={weekKey} className="flex flex-col gap-0.75">
                       {col.map((cell, d) => renderCell(cell, w, d))}
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Legend */}
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-muted-foreground">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-muted-foreground">
                 <span>
                   {data?.totalContrib ?? 0} contributions in the last year
                 </span>

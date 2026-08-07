@@ -14,7 +14,7 @@ export function FeaturedWork() {
               / 04 - Selected work
             </p>
             <h2 className="mt-3 text-4xl font-display md:text-6xl">
-              Recently <span className="italic text-gradient">shipped</span>.
+              Recently <span className="italic text-foreground">shipped</span>.
             </h2>
           </div>
           <Link

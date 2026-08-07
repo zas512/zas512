@@ -16,7 +16,7 @@ export function Timeline() {
             / 02 - Experience
           </p>
           <h2 className="mt-3 text-4xl font-display md:text-6xl">
-            A <span className="italic text-gradient">decade-in-the-making</span> taste for craft.
+            A <span className="italic text-foreground">decade-in-the-making</span> taste for craft.
           </h2>
         </div>
 
@@ -38,7 +38,7 @@ export function Timeline() {
   );
 }
 
-function Row({ item, index }: { item: (typeof experience)[number]; index: number }) {
+function Row({ item, index }: Readonly<{ item: (typeof experience)[number]; index: number }>) {
   const isLeft = index % 2 === 0;
   return (
     <motion.div
@@ -73,7 +73,7 @@ function Row({ item, index }: { item: (typeof experience)[number]; index: number
           {item.stack.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-[11px] text-muted-foreground"
+              className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-xs text-muted-foreground"
             >
               {s}
             </span>

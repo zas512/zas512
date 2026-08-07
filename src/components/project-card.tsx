@@ -70,7 +70,7 @@ export function ProjectCard({
                   )}
                 </div>
 
-                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded-full">
+                <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground/80 bg-white/5 border border-white/5 px-2.5 py-0.5 rounded-full">
                   {project.type === "backend"
                     ? "Backend Infrastructure"
                     : "NDA Protected"}
@@ -80,9 +80,9 @@ export function ProjectCard({
                   {project.stack.slice(0, 3).map((s) => (
                     <span
                       key={s}
-                      className="text-[10px] text-muted-foreground font-mono"
+                      className="text-xs text-muted-foreground font-mono"
                     >
-                      #{s.toLowerCase().replace(/\.js/g, "")}
+                      #{s.toLowerCase().replaceAll(".js", "")}
                     </span>
                   ))}
                 </div>
@@ -93,7 +93,7 @@ export function ProjectCard({
             {project.tags.slice(0, 2).map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-background/70 px-2.5 py-1 text-[10px] uppercase tracking-wider text-muted-foreground backdrop-blur"
+                className="rounded-full bg-background/70 px-2.5 py-1 text-xs uppercase tracking-[0.14em] text-muted-foreground backdrop-blur"
               >
                 {t}
               </span>
@@ -112,7 +112,7 @@ export function ProjectCard({
               {project.tagline}
             </p>
           </div>
-          <div className="hidden text-right text-[11px] uppercase tracking-wider text-muted-foreground md:block">
+          <div className="hidden text-right text-xs uppercase tracking-[0.14em] text-muted-foreground md:block">
             <div>{project.year}</div>
             <div>{project.client}</div>
           </div>
