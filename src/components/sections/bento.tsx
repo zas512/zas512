@@ -2,10 +2,10 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { FileTextIcon } from "@radix-ui/react-icons";
 import { MapPin } from "lucide-react";
 import { CollaborationBoxCard } from "../bento/CollaborationBoxCard";
+import { DomainExpertiseCardBackground } from "../bento/DomainExpertiseCardBackground";
 import LocationCard from "../bento/LocationCard";
 import { BentoTechStackCard } from "../bento/TechStackCardBackground";
 import { TrustCardBackground } from "../bento/TrustCardBackground";
-import { WorkspaceCardBackground } from "../bento/WorkspaceCardBackground";
 
 export function Bento() {
   const features = [
@@ -52,7 +52,7 @@ export function Bento() {
       description: "",
       href: "",
       cta: "",
-      background: <WorkspaceCardBackground />,
+      background: <DomainExpertiseCardBackground />,
       className: "lg:col-start-2 lg:col-end-4 lg:row-start-3 lg:row-end-4"
     }
   ];
