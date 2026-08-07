@@ -274,8 +274,8 @@ function DomainNodeBubble({
       ? "via-cyan-300/16 opacity-100"
       : "group-hover/node:via-cyan-300/10 group-hover/node:opacity-100";
   const labelClass = node.isCenter
-    ? "font-display text-[13px] text-cyan-100 md:text-sm"
-    : "text-[11px] text-zinc-100/95 md:text-xs";
+    ? "font-display text-sm text-cyan-100 md:text-base"
+    : "text-xs text-zinc-100/95";
 
   return (
     <motion.div
@@ -715,10 +715,10 @@ export function DomainExpertiseCardBackground() {
       </div>
 
       <div className="relative z-20 w-full text-center">
-        <p className="font-mono text-[0.7rem] font-semibold tracking-[0.24em] text-zinc-400 uppercase">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
           Domain Graph
         </p>
-        <p className="mt-2 text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-[2rem]">
+        <p className="mt-2 text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-3xl">
           Product experience across regulated, real-time and AI-first systems.
         </p>
       </div>

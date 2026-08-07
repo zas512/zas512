@@ -123,10 +123,10 @@ export function CollaborationBoxCard() {
     <div className="relative h-full overflow-hidden p-4">
       <div className="relative z-10 flex h-full flex-col items-center justify-start gap-6 px-2 pt-2 text-center">
         <div className="w-full text-center">
-          <p className="font-mono text-[0.7rem] font-semibold tracking-[0.24em] text-zinc-400 uppercase">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
             What you get
           </p>
-          <p className="mt-2 max-w-[18ch] text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-[2rem]">
+          <p className="mt-2 max-w-[18ch] text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-3xl">
             Production-ready software, shipped fast
           </p>
         </div>
@@ -147,14 +147,14 @@ export function CollaborationBoxCard() {
                 className="absolute top-2 z-30"
               >
                 <div className="flex min-w-40 items-center gap-2 rounded-full border border-white/10 bg-[#191919] px-2.5 py-2 text-left">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/6 text-[11px] text-zinc-300">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/6 text-xs text-zinc-300">
                     {active.icon}
                   </span>
                   <div className="">
                     <p className="text-xs font-semibold text-zinc-100">
                       {active.title}
                     </p>
-                    <p className="text-[11px] text-zinc-400">
+                    <p className="text-xs text-zinc-400">
                       {active.subtitle}
                     </p>
                   </div>

@@ -156,14 +156,14 @@ function FloatingCards() {
         transition={{ delay: 0.95, duration: 0.9 }}
         className="pointer-events-auto absolute left-[5%] top-[22%] w-68 hover:scale-105 hover:-rotate-3 transition-transform duration-300"
       >
-        <div className="glass rounded-2xl p-4 text-left font-mono text-[11.5px] text-muted-foreground shadow-2xl border border-border/60 backdrop-blur-xl">
+        <div className="glass rounded-2xl border border-border/60 p-4 text-left font-mono text-xs text-muted-foreground shadow-2xl backdrop-blur-xl">
           <div className="mb-2.5 flex items-center justify-between border-b border-border/40 pb-2">
             <div className="flex items-center gap-1.5">
               <span className="size-2.5 rounded-full bg-red-400/80" />
               <span className="size-2.5 rounded-full bg-amber-400/80" />
               <span className="size-2.5 rounded-full bg-emerald-400/80" />
             </div>
-            <span className="text-[10px] text-muted-foreground/70 tracking-wider">agent.ts</span>
+            <span className="text-xs tracking-[0.14em] text-muted-foreground/70">agent.ts</span>
           </div>
           <pre className="leading-relaxed">
             <span className="text-accent">const</span> ship = <span className="text-accent">async</span> () =&gt; &#123;<br />
@@ -184,7 +184,7 @@ function FloatingCards() {
       >
         <div className="glass rounded-2xl p-4.5 text-left shadow-2xl border border-border/60 backdrop-blur-xl">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-[0.2em] font-mono text-muted-foreground">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
               Performance
             </span>
             <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />

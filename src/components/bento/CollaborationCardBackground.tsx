@@ -16,7 +16,7 @@ export function CollaborationCardBackground() {
       <div className="pointer-events-none absolute left-[78%] top-[11%] h-1 w-1 rounded-full bg-white/90 shadow-[0_0_10px_2px_rgba(255,255,255,0.65)] [animation-delay:800ms] animate-pulse" />
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-6 px-3 pb-8 pt-4 text-center">
-        <h3 className="max-w-[15ch] text-balance font-display text-[2rem] leading-[1.06] text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.22)]">
+        <h3 className="max-w-[15ch] text-balance font-display text-3xl leading-[1.06] text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.22)] md:text-4xl">
           Let&apos;s work together on your next project
         </h3>
 

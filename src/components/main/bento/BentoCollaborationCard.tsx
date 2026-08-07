@@ -7,7 +7,7 @@ export function BentoCollaborationCard() {
         <span className="text-xs font-medium tracking-wide uppercase">
           Collaboration
         </span>
-        <span className="mt-2 max-w-[20rem] text-[11px] leading-relaxed opacity-80">
+        <span className="mt-2 max-w-[20rem] text-xs leading-relaxed opacity-80">
           Content slot — headline, email field, copy action.
         </span>
       </div>

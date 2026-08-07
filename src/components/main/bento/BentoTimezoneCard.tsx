@@ -7,7 +7,7 @@ export function BentoTimezoneCard() {
         <span className="text-xs font-medium tracking-wide uppercase">
           Time zones
         </span>
-        <span className="mt-2 text-[11px] leading-relaxed opacity-80">
+        <span className="mt-2 text-xs leading-relaxed opacity-80">
           Content slot — regions and globe visual.
         </span>
       </div>

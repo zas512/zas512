@@ -133,7 +133,7 @@ const HeroContent = () => {
           <motion.div variants={slideInFromTop} className="w-fit">
             <Badge
               variant="outline"
-              className="h-8 gap-2 rounded-full border-orange-400/30 bg-orange-500/10 px-4 text-[11px] tracking-[0.16em] text-orange-200"
+              className="h-8 gap-2 rounded-full border-orange-400/30 bg-orange-500/10 px-4 text-xs tracking-[0.16em] text-orange-200"
             >
               <Sparkles className="h-4 w-4 text-orange-300" />
               SYSTEM.KERNEL :: v2.5.0 ONLINE
@@ -184,7 +184,7 @@ const HeroContent = () => {
               </p>
             </div>
             <div className="px-4 py-4 sm:px-5">
-              <pre className="min-h-max font-mono text-[0.92rem] leading-7 text-[#d7d9ff]">
+              <pre className="min-h-max font-mono text-sm leading-7 text-[#d7d9ff]">
                 {(codeLines as CodeLine[])
                   .slice(0, visibleLineCount)
                   .map((line, index) => {
@@ -214,7 +214,7 @@ const HeroContent = () => {
                         key={line.id}
                         className="grid grid-cols-[22px_1fr] gap-2"
                       >
-                        <span className="select-none text-[0.8rem] text-blue-300/45">
+                        <span className="select-none text-xs text-blue-300/45">
                           {index + 1}
                         </span>
                         <span className="whitespace-pre-wrap wrap-break-word">
