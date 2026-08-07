@@ -324,7 +324,7 @@ export function BentoTechStackCard() {
       onMouseEnter={() => setCardHovered(true)}
       onMouseLeave={() => setCardHovered(false)}
     >
-      <h3 className="mt-2 max-w-[18ch] text-balance font-display text-xl text-center leading-[1.02] text-zinc-100 md:text-[2.1rem] p-6">
+      <h3 className="mt-2 max-w-[18ch] text-balance font-display text-xl text-center leading-[1.02] text-zinc-100 md:text-[2rem] p-6">
         Crafting experiences powered by next-gen tech
       </h3>
 
@@ -360,7 +360,9 @@ export function BentoTechStackCard() {
         </div>
         <section className=" space-y-4 p-6">
           <div className="h-6 rounded-md bg-white/20" />
-          <p className="text-center transition-all duration-75 leading-relaxed text-zinc-400 font-display text-lg">
+          <p
+            className={`text-center transition-all duration-75 leading-relaxed font-display text-lg ${cardHovered ? "text-white" : " text-zinc-400"}`}
+          >
             Websites that stand out and make a difference
           </p>
         </section>

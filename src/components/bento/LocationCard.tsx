@@ -4,18 +4,17 @@ import { Globe } from "@/components/ui/globe";
 const REGIONS = [
   { code: "GB", label: "UK" },
   { code: "PK", label: "Pakistan" },
-  { code: "US", label: "USA" },
+  { code: "US", label: "USA" }
 ];
 
 const LocationCard = () => {
   return (
     <div className="relative h-full w-full overflow-hidden">
       <div className="relative z-10 flex flex-col items-center gap-4 px-6 pt-6 text-center">
-        <h3 className="font-serif text-xl leading-snug text-neutral-100 md:text-2xl">
-          I'm very flexible with time
-          <br />
-          zone communications
-        </h3>
+        <p className="mt-2 text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-[2rem]">
+          Flexible with time zone communications
+        </p>
+
         <div className="flex items-center gap-2">
           {REGIONS.map((region) => (
             <div
