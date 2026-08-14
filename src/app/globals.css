@@ -27,15 +27,18 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-glow: var(--glow);
   --color-glow-2: var(--glow-2);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-surface-2: var(--surface-2);
 
   --animate-float: float 6s ease-in-out infinite;
@@ -82,30 +85,35 @@
 
 :root,
 .dark {
-  --radius: 0.875rem;
-  --background: oklch(0.13 0.02 270);
-  --foreground: oklch(0.97 0.01 270);
-  --card: oklch(0.17 0.025 270);
-  --card-foreground: oklch(0.97 0.01 270);
-  --popover: oklch(0.17 0.025 270);
-  --popover-foreground: oklch(0.97 0.01 270);
-  --primary: oklch(0.78 0.16 230);
-  --primary-foreground: oklch(0.13 0.02 270);
-  --secondary: oklch(0.22 0.03 270);
-  --secondary-foreground: oklch(0.97 0.01 270);
-  --muted: oklch(0.22 0.03 270);
-  --muted-foreground: oklch(0.66 0.03 270);
-  --accent: oklch(0.72 0.2 320);
-  --accent-foreground: oklch(0.13 0.02 270);
+  --radius: 0.75rem;
+  --background: #05070B;
+  --surface: #090C12;
+  --surface-elevated: #0D1118;
+  --surface-2: #0D1118;
+  --card: #090C12;
+  --card-foreground: #F1F3F6;
+  --popover: #090C12;
+  --popover-foreground: #F1F3F6;
+  --foreground: #F1F3F6;
+  --foreground-muted: #89919F;
+  --foreground-subtle: #555D69;
+  --muted: #89919F;
+  --muted-foreground: #89919F;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --accent: #00B8E8;
+  --accent-soft: rgba(0, 184, 232, 0.12);
+  --accent-foreground: #05070B;
+  --primary: #00B8E8;
+  --primary-foreground: #05070B;
+  --secondary: #0D1118;
+  --secondary-foreground: #F1F3F6;
   --destructive: oklch(0.62 0.24 25);
-  --destructive-foreground: oklch(0.97 0.01 270);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.78 0.16 230);
-  --glow: oklch(0.78 0.16 230);
-  --glow-2: oklch(0.72 0.2 320);
-  --surface: oklch(0.15 0.022 270);
-  --surface-2: oklch(0.19 0.028 270);
+  --destructive-foreground: #F1F3F6;
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #00B8E8;
+  --glow: #00B8E8;
+  --glow-2: rgba(0, 184, 232, 0.3);
 }
 
 @layer base {
@@ -180,12 +188,12 @@
     background-image:
       linear-gradient(
         to right,
-        color-mix(in oklab, var(--foreground) 5%, transparent) 1px,
+        rgba(255, 255, 255, 0.03) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        color-mix(in oklab, var(--foreground) 5%, transparent) 1px,
+        rgba(255, 255, 255, 0.03) 1px,
         transparent 1px
       );
     background-size: 60px 60px;

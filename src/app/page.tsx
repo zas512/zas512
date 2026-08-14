@@ -1,11 +1,11 @@
-import { Hero } from "@/components/sections/hero";
+import Navbar from "@/components/nav";
 import { Bento } from "@/components/sections/bento";
-import { Timeline } from "@/components/sections/timeline";
-import { TechOrbit } from "@/components/sections/tech-orbit";
+import { Contact } from "@/components/sections/contact";
 import { FeaturedWork } from "@/components/sections/featured-work";
 import { GithubActivity } from "@/components/sections/github-activity";
-import { Contact } from "@/components/sections/contact";
-import Navbar from "@/components/nav";
+import { Hero } from "@/components/sections/hero";
+import { TechOrbit } from "@/components/sections/tech-orbit";
+import { Timeline } from "@/components/sections/timeline";
 
 export default function Home() {
   return (

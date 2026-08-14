@@ -122,15 +122,9 @@ export function CollaborationBoxCard() {
   return (
     <div className="relative h-full overflow-hidden p-4">
       <div className="relative z-10 flex h-full flex-col items-center justify-start gap-6 px-2 pt-2 text-center">
-        <div className="w-full text-center">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-            What you get
-          </p>
-          <p className="mt-2 max-w-[18ch] text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-3xl">
-            Production-ready software, shipped fast
-          </p>
-        </div>
-
+        <p className="text-balance font-display tracking-wide text-xl w-full text-center text-zinc-100 md:text-3xl">
+          Production-ready software, shipped fast
+        </p>
         {/* Badge + box stage */}
         <div className="relative mt-4 h-72 w-full max-w-[24rem]">
           <BoxBack className="absolute inset-x-0 -bottom-20 z-10 mx-auto h-72 w-full scale-x-105 text-white" />
@@ -154,9 +148,7 @@ export function CollaborationBoxCard() {
                     <p className="text-xs font-semibold text-zinc-100">
                       {active.title}
                     </p>
-                    <p className="text-xs text-zinc-400">
-                      {active.subtitle}
-                    </p>
+                    <p className="text-xs text-zinc-400">{active.subtitle}</p>
                   </div>
                 </div>
               </motion.div>

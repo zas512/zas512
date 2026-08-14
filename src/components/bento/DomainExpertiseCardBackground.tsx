@@ -269,10 +269,6 @@ function DomainNodeBubble({
     dimmed
   );
 
-  const glowClass =
-    isHovered || centerLinked
-      ? "via-cyan-300/16 opacity-100"
-      : "group-hover/node:via-cyan-300/10 group-hover/node:opacity-100";
   const labelClass = node.isCenter
     ? "font-display text-sm text-cyan-100 md:text-base"
     : "text-xs text-zinc-100/95";
@@ -309,7 +305,7 @@ function DomainNodeBubble({
         className={`group/node relative -translate-x-1/2 -translate-y-1/2 rounded-full border px-3 py-2 text-left backdrop-blur-xl transition-colors md:px-3.5 ${cardClass}`}
       >
         <span
-          className={`absolute inset-0 rounded-full bg-linear-to-r from-cyan-300/0 to-teal-300/0 opacity-0 transition-opacity duration-300 ${glowClass}`}
+          className={`absolute inset-0 rounded-full bg-linear-to-r from-cyan-300/0 to-teal-300/0 opacity-0 transition-opacity duration-300`}
         />
         <span className="relative z-10 flex items-center gap-2">
           <NodeBadge
@@ -459,14 +455,6 @@ export function DomainExpertiseCardBackground() {
     raf = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(raf);
   }, [reduceMotion]);
-
-  const nodeMap = useMemo(() => {
-    const map = new Map<NodeId, DomainNode>();
-    for (const item of nodes) {
-      map.set(item.id, item);
-    }
-    return map;
-  }, []);
 
   const nodeOffsets = useMemo(() => {
     const values = new Map<NodeId, { x: number; y: number }>();
@@ -666,30 +654,6 @@ export function DomainExpertiseCardBackground() {
     <div className="relative h-full overflow-hidden p-6">
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          className="absolute inset-[-35%]"
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  x: ["-2%", "2%", "-1%"],
-                  y: ["1%", "-2%", "1%"],
-                  scale: [1, 1.05, 1]
-                }
-          }
-          transition={{
-            duration: 34,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "mirror"
-          }}
-          style={{
-            opacity: 0.26,
-            backgroundImage:
-              "radial-gradient(45% 40% at 22% 24%, rgba(45,212,191,0.14), transparent 78%), radial-gradient(42% 38% at 72% 28%, rgba(34,211,238,0.12), transparent 76%), radial-gradient(46% 40% at 48% 80%, rgba(56,189,248,0.11), transparent 80%)",
-            filter: "blur(30px)"
-          }}
-        />
-        <motion.div
           className="absolute inset-[-24%]"
           animate={
             reduceMotion
@@ -705,23 +669,11 @@ export function DomainExpertiseCardBackground() {
             ease: "easeInOut",
             repeat: Infinity
           }}
-          style={{
-            opacity: 0.18,
-            backgroundImage:
-              "radial-gradient(32% 34% at 34% 46%, rgba(103,232,249,0.22), transparent 74%), radial-gradient(30% 30% at 66% 58%, rgba(20,184,166,0.2), transparent 76%)",
-            filter: "blur(44px)"
-          }}
         />
       </div>
-
-      <div className="relative z-20 w-full text-center">
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-          Domain Graph
-        </p>
-        <p className="mt-2 text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-3xl">
-          Product experience across regulated, real-time and AI-first systems.
-        </p>
-      </div>
+      <p className="text-balance font-display tracking-wide text-xl w-full text-center text-zinc-100 md:text-3xl">
+        Product experience across regulated, real-time and AI-first systems.
+      </p>
 
       <div
         ref={graphRef}
@@ -842,10 +794,6 @@ export function DomainExpertiseCardBackground() {
 
         <motion.div
           className="pointer-events-none absolute"
-          style={{
-            left: `${nodeMap.get("experience")?.x ?? 50}%`,
-            top: `${nodeMap.get("experience")?.y ?? 50}%`
-          }}
           animate={{
             x: nodeOffsets.get("experience")?.x ?? 0,
             y: nodeOffsets.get("experience")?.y ?? 0,

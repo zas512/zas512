@@ -37,12 +37,12 @@ export default function WorkPage() {
   return (
     <main className="pt-32">
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 dot-bg mask-[radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
+        <div className="absolute inset-0 -z-10 grid-bg opacity-30" />
         <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 flex justify-center overflow-hidden">
           <span
             aria-hidden
-            className="select-none font-display text-[clamp(6rem,18vw,14rem)] leading-none text-foreground/3 outline-text"
-            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.04)" }}
+            className="select-none font-display text-[clamp(6rem,18vw,14rem)] leading-none text-foreground/2 outline-text"
+            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.02)" }}
           >
             PROJECTS
           </span>
@@ -55,24 +55,25 @@ export default function WorkPage() {
             transition={{ duration: 0.66, ease: "easeOut" }}
             className="text-center"
           >
-            <h1 className="mt-3 font-display text-5xl leading-[0.95] md:text-7xl lg:text-8xl">
-              <span className="italic text-foreground">Work</span>
+            <h1 className="mt-3 font-display text-5xl leading-[0.95] md:text-7xl lg:text-8xl font-light">
+              Selected <span className="italic">projects</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-sm text-muted-foreground md:text-base">
-              Production software, AI products, and realtime systems — built for
-              real users across startups, agencies, and independent engagements.
+            <p className="mx-auto mt-6 max-w-2xl text-sm text-foreground-muted md:text-base font-sans">
+              Production software, AI products, and real-time systems — built
+              for real users across startups, agencies, and independent
+              engagements.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
                 href="mailto:zainalis.914@gmail.com?subject=Hiring%20Inquiry"
-                className="rounded-full border border-primary/45 bg-primary/18 px-5 py-2 text-sm font-medium text-primary transition hover:bg-primary/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55"
+                className="rounded-full border border-accent bg-accent-soft px-5 py-2.5 text-xs font-mono uppercase tracking-widest text-accent transition hover:bg-accent-soft/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Hire for a project
               </a>
               <a
                 href="mailto:zainalis.914@gmail.com?subject=Portfolio%20Question"
-                className="rounded-full border border-border bg-card/60 px-5 py-2 text-sm text-foreground transition hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45"
+                className="rounded-full border border-border bg-surface px-5 py-2.5 text-xs font-mono uppercase tracking-widest text-foreground transition hover:border-border-strong hover:bg-surface-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Ask a question
               </a>
@@ -83,7 +84,7 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
-            className="mt-10 flex flex-wrap justify-center gap-2"
+            className="mt-12 flex flex-wrap justify-center gap-2"
           >
             {["All", ...allTags].map((tag) => (
               <button
@@ -91,10 +92,10 @@ export default function WorkPage() {
                 key={tag}
                 onClick={() => setActive(tag)}
                 data-cursor="hover"
-                className={`rounded-full border px-4 py-1.5 text-xs transition ${
+                className={`rounded-full border px-4 py-2 text-[10px] font-mono uppercase tracking-widest transition ${
                   active === tag
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card/60 text-muted-foreground hover:text-foreground"
+                    ? "border-accent bg-accent-soft text-accent"
+                    : "border-border bg-surface text-foreground-muted hover:text-foreground hover:border-border-strong"
                 }`}
               >
                 {tag}
@@ -106,20 +107,20 @@ export default function WorkPage() {
 
       <section className="container mx-auto px-6 pb-32">
         {filtered.length === 0 ? (
-          <div className="mx-auto mt-8 max-w-xl rounded-3xl border border-border/60 bg-card/40 p-10 text-center backdrop-blur-sm">
-            <p className="font-mono text-xs tracking-[0.16em] text-muted-foreground uppercase">
+          <div className="mx-auto mt-8 max-w-xl rounded-xl border border-border bg-surface p-10 text-center">
+            <p className="font-mono text-[10px] tracking-[0.2em] text-foreground-subtle uppercase">
               No matches
             </p>
-            <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
+            <h2 className="mt-3 font-display text-3xl text-foreground font-light md:text-4xl">
               No projects found for this tag
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground md:text-base">
+            <p className="mt-3 text-sm text-foreground-muted">
               Try another tag or reset to view every project.
             </p>
             <button
               type="button"
               onClick={() => setActive("All")}
-              className="mt-6 inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/15 px-5 py-2 text-sm text-primary transition hover:bg-primary/20"
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-accent bg-accent-soft px-5 py-2 text-xs font-mono uppercase tracking-widest text-accent transition hover:bg-accent-soft/30"
             >
               Show all projects
             </button>

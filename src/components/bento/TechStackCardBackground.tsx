@@ -286,7 +286,7 @@ export function BentoTechStackCard() {
       onMouseEnter={() => setCardHovered(true)}
       onMouseLeave={() => setCardHovered(false)}
     >
-      <h3 className="mt-2 p-6 text-center text-balance font-display w-full text-xl leading-[1.02] text-zinc-100 md:text-3xl">
+      <h3 className="text-balance font-display tracking-wide text-xl w-full text-center text-zinc-100 md:text-3xl p-4">
         Crafting experiences powered by next-gen tech
       </h3>
 
