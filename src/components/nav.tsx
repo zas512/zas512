@@ -29,6 +29,22 @@ export default function Nav() {
         <div className="h-4 w-px bg-border-strong mx-1" />
         <NavLink to="/" label="Home" active={pathname === "/"} />
         <NavLink to="/work" label="Work" active={pathname === "/work"} />
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-xs"
+        >
+          Resume
+        </a>
+        <a
+          href="https://calendly.com/zas512"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-xs"
+        >
+          Book Call
+        </a>
         <Link
           href="/#contact"
           className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-xs"
@@ -43,7 +59,7 @@ export default function Nav() {
 function NavLink({
   to,
   label,
-  active
+  active,
 }: Readonly<{ to: "/" | "/work"; label: string; active: boolean }>) {
   return (
     <Link

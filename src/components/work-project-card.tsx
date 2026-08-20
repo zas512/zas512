@@ -17,7 +17,7 @@ function getProjectTypeLabel(project: Project): string {
 
 function getStackIcon(name: string) {
   const found = techStack.find(
-    (t) => t.name.toLowerCase() === name.toLowerCase()
+    (t) => t.name.toLowerCase() === name.toLowerCase(),
   );
   if (found) return { slug: found.slug, color: found.color };
   const slug = name
@@ -43,7 +43,7 @@ function isTrustedRemoteImage(src: string) {
 
 export function WorkProjectCard({
   project,
-  index
+  index,
 }: Readonly<{
   project: Project;
   index: number;

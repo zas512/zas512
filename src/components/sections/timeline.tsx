@@ -7,7 +7,7 @@ export function Timeline() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.8", "end 0.2"]
+    offset: ["start 0.8", "end 0.2"],
   });
   const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
@@ -48,7 +48,7 @@ export function Timeline() {
 
 function Row({
   item,
-  index
+  index,
 }: Readonly<{ item: (typeof experience)[number]; index: number }>) {
   const isLeft = index % 2 === 0;
   const isCurrent = index === 0;

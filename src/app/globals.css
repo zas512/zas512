@@ -5,7 +5,7 @@
 
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -85,35 +85,45 @@
 
 :root,
 .dark {
+  --void: #0a0e14;
+  --signal: #0f1b2b;
+  --signal-2: #152436;
+  --cyan: #38bdf8;
+  --amber: #ffb454;
+  --bone: #f1f3f5;
+  --slate: #93a6bc;
+  --slate-dim: #5c6b80;
+  --line: #1d2a3a;
+
   --radius: 0.75rem;
-  --background: oklch(0.07 0.024 229);
-  --surface: oklch(0.11 0.03 229);
-  --surface-elevated: oklch(0.14 0.035 229);
-  --surface-2: oklch(0.15 0.04 229);
-  --card: oklch(0.11 0.03 229);
-  --card-foreground: oklch(0.97 0.012 229);
-  --popover: oklch(0.11 0.03 229);
-  --popover-foreground: oklch(0.97 0.012 229);
-  --foreground: oklch(0.97 0.012 229);
-  --foreground-muted: oklch(0.76 0.02 229);
-  --foreground-subtle: oklch(0.64 0.018 229);
-  --muted: oklch(0.76 0.02 229);
-  --muted-foreground: oklch(0.76 0.02 229);
-  --border: oklch(1 0 229 / 0.09);
-  --border-strong: oklch(1 0 229 / 0.17);
-  --accent: oklch(0.78 0.18 220);
-  --accent-soft: oklch(0.78 0.18 220 / 0.15);
-  --accent-foreground: oklch(0.07 0.024 229);
-  --primary: oklch(0.78 0.18 220);
-  --primary-foreground: oklch(0.07 0.024 229);
-  --secondary: oklch(0.14 0.032 229);
-  --secondary-foreground: oklch(0.97 0.012 229);
+  --background: var(--void);
+  --surface: var(--signal);
+  --surface-elevated: var(--signal-2);
+  --surface-2: var(--signal-2);
+  --card: var(--signal);
+  --card-foreground: var(--bone);
+  --popover: var(--signal);
+  --popover-foreground: var(--bone);
+  --foreground: var(--bone);
+  --foreground-muted: var(--slate);
+  --foreground-subtle: var(--slate-dim);
+  --muted: var(--slate);
+  --muted-foreground: var(--slate);
+  --border: var(--line);
+  --border-strong: color-mix(in srgb, var(--line) 80%, white 20%);
+  --accent: var(--cyan);
+  --accent-soft: rgba(56, 189, 248, 0.15);
+  --accent-foreground: var(--void);
+  --primary: var(--cyan);
+  --primary-foreground: var(--void);
+  --secondary: var(--signal-2);
+  --secondary-foreground: var(--bone);
   --destructive: oklch(0.62 0.24 25);
-  --destructive-foreground: oklch(0.97 0.012 229);
-  --input: oklch(1 0 229 / 0.08);
-  --ring: oklch(0.78 0.18 220);
-  --glow: oklch(0.78 0.18 220);
-  --glow-2: oklch(0.7 0.16 292 / 0.42);
+  --destructive-foreground: var(--bone);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: var(--cyan);
+  --glow: var(--cyan);
+  --glow-2: rgba(56, 189, 248, 0.3);
 }
 
 @layer base {
@@ -125,12 +135,24 @@
   }
   body {
     background:
-      radial-gradient(circle at top, color-mix(in oklab, var(--glow) 18%, transparent) 0%, transparent 32%),
-      radial-gradient(circle at 80% 20%, color-mix(in oklab, var(--glow-2) 22%, transparent) 0%, transparent 28%),
+      radial-gradient(
+        circle at top,
+        color-mix(in oklab, var(--glow) 18%, transparent) 0%,
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        color-mix(in oklab, var(--glow-2) 22%, transparent) 0%,
+        transparent 28%
+      ),
       var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv11", "ss01", "ss03";
     overflow-x: hidden;
+    line-height: 1.6;
+  }
+  p {
+    line-height: 1.6;
   }
   ::selection {
     background: color-mix(in oklab, var(--primary) 40%, transparent);
@@ -194,16 +216,8 @@
 
   .grid-bg {
     background-image:
-      linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px
-      );
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .dot-bg {

@@ -6,103 +6,103 @@ const badges = [
   {
     title: "Code You Keep",
     subtitle: "Clean & maintainable",
-    icon: "⌁"
+    icon: "⌁",
   },
   {
     title: "Clear Updates",
     subtitle: "No endless meetings",
-    icon: "◌"
+    icon: "◌",
   },
   {
     title: "Fast Shipping",
     subtitle: "Ship every week",
-    icon: "↻"
+    icon: "↻",
   },
   {
     title: "Built to Scale",
     subtitle: "Ready to grow",
-    icon: "▢"
+    icon: "▢",
   },
   {
     title: "Pixel-Perfect UI",
     subtitle: "Polished interfaces",
-    icon: "◈"
+    icon: "◈",
   },
   {
     title: "Strong Architecture",
     subtitle: "Built to last",
-    icon: "⧉"
+    icon: "⧉",
   },
   {
     title: "Reliable Delivery",
     subtitle: "On time, always",
-    icon: "✓"
+    icon: "✓",
   },
   {
     title: "Team-Friendly Handoff",
     subtitle: "Easy ownership",
-    icon: "⇄"
+    icon: "⇄",
   },
   {
     title: "Product-Focused Iteration",
     subtitle: "Driven by feedback",
-    icon: "◍"
+    icon: "◍",
   },
   {
     title: "Secure by Default",
     subtitle: "Security first",
-    icon: "🔒"
+    icon: "🔒",
   },
   {
     title: "Performance First",
     subtitle: "Fast by design",
-    icon: "⚡"
+    icon: "⚡",
   },
   {
     title: "Responsive Design",
     subtitle: "Works everywhere",
-    icon: "📱"
+    icon: "📱",
   },
   {
     title: "Accessible UX",
     subtitle: "Built for everyone",
-    icon: "♿"
+    icon: "♿",
   },
   {
     title: "Modern Stack",
     subtitle: "Latest technologies",
-    icon: "⬢"
+    icon: "⬢",
   },
   {
     title: "Developer Experience",
     subtitle: "Easy to extend",
-    icon: "🛠"
+    icon: "🛠",
   },
   {
     title: "API Integration",
     subtitle: "Connect anything",
-    icon: "🔗"
+    icon: "🔗",
   },
   {
     title: "Automated Testing",
     subtitle: "Fewer regressions",
-    icon: "🧪"
+    icon: "🧪",
   },
   {
     title: "Continuous Deployment",
     subtitle: "Deploy with confidence",
-    icon: "🚀"
+    icon: "🚀",
   },
   {
     title: "Documentation",
     subtitle: "Clear and complete",
-    icon: "📄"
+    icon: "📄",
   },
   {
     title: "Long-Term Support",
     subtitle: "Future ready",
-    icon: "🛡"
-  }
+    icon: "🛡",
+  },
 ];
 
 const CYCLE_MS = 2000;
