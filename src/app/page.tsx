@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
         <Bento />
         <Timeline />
         <TechOrbit />

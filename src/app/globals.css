@@ -86,34 +86,34 @@
 :root,
 .dark {
   --radius: 0.75rem;
-  --background: #05070B;
-  --surface: #090C12;
-  --surface-elevated: #0D1118;
-  --surface-2: #0D1118;
-  --card: #090C12;
-  --card-foreground: #F1F3F6;
-  --popover: #090C12;
-  --popover-foreground: #F1F3F6;
-  --foreground: #F1F3F6;
-  --foreground-muted: #89919F;
-  --foreground-subtle: #555D69;
-  --muted: #89919F;
-  --muted-foreground: #89919F;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --accent: #00B8E8;
-  --accent-soft: rgba(0, 184, 232, 0.12);
-  --accent-foreground: #05070B;
-  --primary: #00B8E8;
-  --primary-foreground: #05070B;
-  --secondary: #0D1118;
-  --secondary-foreground: #F1F3F6;
+  --background: oklch(0.07 0.024 229);
+  --surface: oklch(0.11 0.03 229);
+  --surface-elevated: oklch(0.14 0.035 229);
+  --surface-2: oklch(0.15 0.04 229);
+  --card: oklch(0.11 0.03 229);
+  --card-foreground: oklch(0.97 0.012 229);
+  --popover: oklch(0.11 0.03 229);
+  --popover-foreground: oklch(0.97 0.012 229);
+  --foreground: oklch(0.97 0.012 229);
+  --foreground-muted: oklch(0.76 0.02 229);
+  --foreground-subtle: oklch(0.64 0.018 229);
+  --muted: oklch(0.76 0.02 229);
+  --muted-foreground: oklch(0.76 0.02 229);
+  --border: oklch(1 0 229 / 0.09);
+  --border-strong: oklch(1 0 229 / 0.17);
+  --accent: oklch(0.78 0.18 220);
+  --accent-soft: oklch(0.78 0.18 220 / 0.15);
+  --accent-foreground: oklch(0.07 0.024 229);
+  --primary: oklch(0.78 0.18 220);
+  --primary-foreground: oklch(0.07 0.024 229);
+  --secondary: oklch(0.14 0.032 229);
+  --secondary-foreground: oklch(0.97 0.012 229);
   --destructive: oklch(0.62 0.24 25);
-  --destructive-foreground: #F1F3F6;
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #00B8E8;
-  --glow: #00B8E8;
-  --glow-2: rgba(0, 184, 232, 0.3);
+  --destructive-foreground: oklch(0.97 0.012 229);
+  --input: oklch(1 0 229 / 0.08);
+  --ring: oklch(0.78 0.18 220);
+  --glow: oklch(0.78 0.18 220);
+  --glow-2: oklch(0.7 0.16 292 / 0.42);
 }
 
 @layer base {
@@ -124,7 +124,10 @@
     font-family: var(--font-sans);
   }
   body {
-    background-color: var(--color-background);
+    background:
+      radial-gradient(circle at top, color-mix(in oklab, var(--glow) 18%, transparent) 0%, transparent 32%),
+      radial-gradient(circle at 80% 20%, color-mix(in oklab, var(--glow-2) 22%, transparent) 0%, transparent 28%),
+      var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv11", "ss01", "ss03";
     overflow-x: hidden;
@@ -147,10 +150,10 @@
   .text-gradient {
     background: linear-gradient(
       110deg,
-      oklch(0.97 0.01 270) 0%,
-      oklch(0.78 0.16 230) 40%,
-      oklch(0.72 0.2 320) 70%,
-      oklch(0.97 0.01 270) 100%
+      oklch(0.96 0.02 228) 0%,
+      oklch(0.76 0.16 222) 32%,
+      oklch(0.72 0.12 295) 62%,
+      oklch(0.96 0.02 228) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -159,9 +162,10 @@
   .text-shimmer {
     background: linear-gradient(
       90deg,
-      oklch(0.66 0.03 270) 0%,
-      oklch(0.97 0.01 270) 50%,
-      oklch(0.66 0.03 270) 100%
+      oklch(0.66 0.04 222) 0%,
+      oklch(0.95 0.02 228) 45%,
+      oklch(0.7 0.12 295) 65%,
+      oklch(0.66 0.04 222) 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -171,17 +175,21 @@
   }
 
   .glass {
-    background: color-mix(in oklab, var(--card) 60%, transparent);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid var(--border);
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--surface-elevated) 90%, transparent),
+      color-mix(in oklab, var(--surface) 82%, transparent)
+    );
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid color-mix(in oklab, var(--border) 100%, transparent);
   }
 
   .glow-ring {
     box-shadow:
       0 0 0 1px var(--border),
-      0 20px 60px -30px color-mix(in oklab, var(--glow) 60%, transparent),
-      0 0 80px -20px color-mix(in oklab, var(--glow-2) 30%, transparent);
+      0 20px 65px -28px color-mix(in oklab, var(--glow) 68%, transparent),
+      0 0 90px -26px color-mix(in oklab, var(--glow-2) 38%, transparent);
   }
 
   .grid-bg {
@@ -219,8 +227,9 @@
   .radial-fade {
     background: radial-gradient(
       ellipse at top,
-      color-mix(in oklab, var(--glow) 18%, transparent) 0%,
-      transparent 60%
+      color-mix(in oklab, var(--glow) 20%, transparent) 0%,
+      color-mix(in oklab, var(--glow-2) 18%, transparent) 38%,
+      transparent 68%
     );
   }
 }

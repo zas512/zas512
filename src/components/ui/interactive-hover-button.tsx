@@ -1,9 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import { ReactNode } from "react";
 
-export function InteractiveHoverButton({ children }: Readonly<{ children: ReactNode }>) {
+export function InteractiveHoverButton({
+  children
+}: Readonly<{ children: ReactNode }>) {
   return (
-    <button className="group bg-background/80 relative w-auto cursor-pointer overflow-hidden rounded-full border py-2 px-6 text-center font-semibold">
+    <button
+      type="button"
+      className="group bg-background/80 relative w-auto cursor-pointer overflow-hidden rounded-full border py-2 px-6 text-center font-semibold"
+    >
       <div className="flex items-center justify-center gap-2">
         <div className="bg-primary/80 h-2 w-2 rounded-full transition-all duration-300 group-hover:scale-[100.8]"></div>
         <span className="inline-block transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">

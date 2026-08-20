@@ -36,25 +36,26 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-xl bg-surface border border-border",
+      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-surface/90 shadow-[0_20px_60px_-40px_rgba(0,184,232,0.35)] transition duration-300",
       className
     )}
     {...props}
   >
+    <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(0,184,232,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(146,81,255,0.14),transparent_34%)]" />
     <div className="absolute inset-0 z-0">{background}</div>
-    <div className="p-5 mt-auto z-10">
+    <div className="relative z-10 mt-auto p-5">
       {(Icon || name || description) && (
         <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 transition-all duration-300">
           {Icon ? (
-            <Icon className="h-10 w-10 origin-left transform-gpu text-foreground-muted" />
+            <Icon className="h-10 w-10 origin-left transform-gpu text-accent" />
           ) : null}
           {name ? (
-            <h3 className="text-lg font-sans font-semibold text-foreground mt-2">
+            <h3 className="mt-2 text-lg font-sans font-semibold text-foreground">
               {name}
             </h3>
           ) : null}
           {description ? (
-            <p className="max-w-lg text-sm text-foreground-muted leading-relaxed font-sans">
+            <p className="max-w-lg text-sm leading-relaxed text-foreground-muted font-sans">
               {description}
             </p>
           ) : null}
@@ -65,3 +66,4 @@ const BentoCard = ({
 );
 
 export { BentoCard, BentoGrid };
+
