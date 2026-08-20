@@ -135,6 +135,7 @@ export function ProjectDetailsDialog({
 
             {/* Custom Close Button */}
             <button
+              type="button"
               onClick={handleClose}
               data-cursor="hover"
               className="absolute right-6 top-6 z-50 rounded-full border border-border bg-background/50 p-2.5 backdrop-blur cursor-pointer transition hover:bg-background hover:scale-105 active:scale-95"
@@ -175,7 +176,7 @@ export function ProjectDetailsDialog({
                     {project.tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-[10px] uppercase tracking-wider text-muted-foreground"
+                        className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-xs uppercase tracking-[0.14em] text-muted-foreground"
                       >
                         {t}
                       </span>

@@ -1,30 +1,40 @@
 "use client";
-import Link from "next/link";
-import { motion } from "framer-motion";
 import { profile } from "@/lib/data";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
+  const pathname = usePathname();
+
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5"
     >
-      <nav className="glass flex items-center gap-1 rounded-full px-2 py-2 text-sm">
+      <nav className="glass flex backdrop-blur-3xl items-center gap-2 rounded-full px-3 py-2 text-xs font-mono tracking-wider">
         <Link
           href="/"
-          className="group flex items-center gap-2 rounded-full px-3 py-1.5 text-foreground"
+          className="group flex items-center gap-2 rounded-full px-3 py-1 text-foreground"
         >
-          <span className="relative size-2 rounded-full bg-primary">
-            <span className="absolute inset-0 animate-ping rounded-full bg-primary opacity-60" />
+          <span className="relative size-2 rounded-full bg-accent">
+            <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-60" />
           </span>
-          <span className="font-display text-base tracking-tight">
+          <span className="font-sans text-sm font-semibold tracking-tight">
             {profile.handle}
           </span>
         </Link>
-        <NavLink to="/" label="Home" />
-        <NavLink to="/work" label="Work" />
+        <div className="h-4 w-px bg-border-strong mx-1" />
+        <NavLink to="/" label="Home" active={pathname === "/"} />
+        <NavLink to="/work" label="Work" active={pathname === "/work"} />
+        <Link
+          href="/#contact"
+          className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-[10.5px]"
+        >
+          Contact
+        </Link>
       </nav>
     </motion.header>
   );
@@ -33,11 +43,16 @@ export default function Nav() {
 function NavLink({
   to,
   label,
-}: Readonly<{ to: "/" | "/work"; label: string }>) {
+  active
+}: Readonly<{ to: "/" | "/work"; label: string; active: boolean }>) {
   return (
     <Link
       href={to}
-      className="rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-foreground data-[status=active]:bg-secondary data-[status=active]:text-foreground"
+      className={`rounded-full px-3 py-1.5 transition uppercase tracking-widest font-mono text-[10.5px] ${
+        active
+          ? "text-accent bg-accent-soft/20 border border-accent/10"
+          : "text-foreground-muted hover:text-foreground"
+      }`}
     >
       {label}
     </Link>

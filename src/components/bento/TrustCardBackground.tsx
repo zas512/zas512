@@ -9,7 +9,6 @@ export function TrustCardBackground() {
       <WavyBackground
         containerClassName="absolute inset-0 h-full w-full"
         className="hidden"
-        backgroundFill="#09090B"
         waveOpacity={0.16}
         blur={8}
         speed="slow"

@@ -45,7 +45,6 @@ import {
 type TechLogo = {
   node: ReactNode;
   title: string;
-  href: string;
 };
 
 const si = (colorClass: string) => `size-[1.05rem] shrink-0 ${colorClass}`;
@@ -119,48 +118,39 @@ export function BentoTechStackCard() {
     () => [
       {
         node: <SiJavascript className={si("text-[#F7DF1E]")} />,
-        title: "JavaScript",
-        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+        title: "JavaScript"
       },
       {
         node: <SiTypescript className={si("text-[#3178C6]")} />,
-        title: "TypeScript",
-        href: "https://www.typescriptlang.org"
+        title: "TypeScript"
       },
       {
         node: <SiPython className={si("text-[#3776AB]")} />,
-        title: "Python",
-        href: "https://www.python.org"
+        title: "Python"
       },
       {
         node: <SiReact className={si("text-[#61DAFB]")} />,
-        title: "React.js",
-        href: "https://react.dev"
+        title: "React.js"
       },
       {
         node: <SiNextdotjs className={si("text-white")} />,
-        title: "Next.js",
-        href: "https://nextjs.org"
+        title: "Next.js"
       },
       {
         node: <SiRedux className={si("text-[#764ABC]")} />,
-        title: "Redux",
-        href: "https://redux.js.org"
+        title: "Redux"
       },
       {
         node: <SiTailwindcss className={si("text-[#06B6D4]")} />,
-        title: "Tailwind CSS",
-        href: "https://tailwindcss.com"
+        title: "Tailwind CSS"
       },
       {
         node: <SiShadcnui className={si("text-white")} />,
-        title: "shadcn/ui",
-        href: "https://ui.shadcn.com"
+        title: "shadcn/ui"
       },
       {
         node: <SiFigma className={si("text-[#F24E1E]")} />,
-        title: "Figma",
-        href: "https://www.figma.com"
+        title: "Figma"
       }
     ],
     []
@@ -170,43 +160,35 @@ export function BentoTechStackCard() {
     () => [
       {
         node: <SiNodedotjs className={si("text-[#5FA04E]")} />,
-        title: "Node.js",
-        href: "https://nodejs.org"
+        title: "Node.js"
       },
       {
         node: <SiExpress className={si("text-white")} />,
-        title: "Express.js",
-        href: "https://expressjs.com"
+        title: "Express.js"
       },
       {
         node: <SiFastapi className={si("text-[#009688]")} />,
-        title: "FastAPI",
-        href: "https://fastapi.tiangolo.com"
+        title: "FastAPI"
       },
       {
         node: <LuGlyph Icon={Radio} className="stroke-[#22C55E]" />,
-        title: "WebSockets",
-        href: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
+        title: "WebSockets"
       },
       {
         node: <SiMongodb className={si("text-[#47A248]")} />,
-        title: "MongoDB",
-        href: "https://www.mongodb.com"
+        title: "MongoDB"
       },
       {
         node: <SiPostgresql className={si("text-[#4169E1]")} />,
-        title: "PostgreSQL",
-        href: "https://www.postgresql.org"
+        title: "PostgreSQL"
       },
       {
         node: <SiRedis className={si("text-[#FF4438]")} />,
-        title: "Redis",
-        href: "https://redis.io"
+        title: "Redis"
       },
       {
         node: <SiSupabase className={si("text-[#3ECF8E]")} />,
-        title: "Supabase",
-        href: "https://supabase.com"
+        title: "Supabase"
       }
     ],
     []
@@ -216,103 +198,83 @@ export function BentoTechStackCard() {
     () => [
       {
         node: <LuGlyph Icon={Cloud} className="stroke-[#FF9900]" />,
-        title: "AWS",
-        href: "https://aws.amazon.com"
+        title: "AWS"
       },
       {
         node: <LuGlyph Icon={Server} className="stroke-[#FF9900]" />,
-        title: "EC2",
-        href: "https://aws.amazon.com/ec2/"
+        title: "EC2"
       },
       {
         node: <LuGlyph Icon={Archive} className="stroke-[#FF9900]" />,
-        title: "S3",
-        href: "https://aws.amazon.com/s3/"
+        title: "S3"
       },
       {
         node: <LuGlyph Icon={Zap} className="stroke-[#FF9900]" />,
-        title: "Amplify",
-        href: "https://aws.amazon.com/amplify/"
+        title: "Amplify"
       },
       {
         node: <SiDocker className={si("text-[#2496ED]")} />,
-        title: "Docker",
-        href: "https://www.docker.com"
+        title: "Docker"
       },
       {
         node: <SiJenkins className={si("text-[#D24939]")} />,
-        title: "CI/CD",
-        href: "https://www.jenkins.io"
+        title: "CI/CD"
       },
       {
         node: <SiGithubactions className={si("text-[#2088FF]")} />,
-        title: "GitHub Actions",
-        href: "https://github.com/features/actions"
+        title: "GitHub Actions"
       },
       {
         node: <SiGit className={si("text-[#F05032]")} />,
-        title: "Git",
-        href: "https://git-scm.com"
+        title: "Git"
       },
       {
         node: <SiGithub className={si("text-white")} />,
-        title: "GitHub",
-        href: "https://github.com"
+        title: "GitHub"
       },
       {
         node: <SiJira className={si("text-[#0052CC]")} />,
-        title: "Jira",
-        href: "https://www.atlassian.com/software/jira"
+        title: "Jira"
       },
       {
         node: <SiWebrtc className={si("text-[#FF6600]")} />,
-        title: "WebRTC",
-        href: "https://webrtc.org"
+        title: "WebRTC"
       },
       {
         node: <LuGlyph Icon={Phone} className="stroke-[#E87722]" />,
-        title: "FreePBX",
-        href: "https://www.freepbx.org"
+        title: "FreePBX"
       },
       {
         node: <SiAsterisk className={si("text-[#F68F1E]")} />,
-        title: "Asterisk",
-        href: "https://www.asterisk.org"
+        title: "Asterisk"
       },
       {
         node: <SiLangchain className={si("text-[#2FE6AB]")} />,
-        title: "LangChain",
-        href: "https://www.langchain.com"
+        title: "LangChain"
       },
       {
         node: <LuGlyph Icon={Bot} className="stroke-[#10B981]" />,
-        title: "OpenAI API",
-        href: "https://platform.openai.com/docs/overview"
+        title: "OpenAI API"
       },
       {
         node: <LuGlyph Icon={BrainCircuit} className="stroke-[#B794F4]" />,
-        title: "Claude API",
-        href: "https://docs.anthropic.com/en/api/getting-started"
+        title: "Claude API"
       },
       {
         node: <LuGlyph Icon={BrainCircuit} className="stroke-[#22D3EE]" />,
-        title: "RAG Pipelines",
-        href: "https://python.langchain.com/docs/concepts/rag/"
+        title: "RAG Pipelines"
       },
       {
         node: <LuGlyph Icon={PhoneCall} className="stroke-[#F97316]" />,
-        title: "Twilio Voice",
-        href: "https://www.twilio.com/docs/voice"
+        title: "Twilio Voice"
       },
       {
         node: <LuGlyph Icon={Radio} className="stroke-[#FB923C]" />,
-        title: "SIP Trunking",
-        href: "https://www.twilio.com/docs/sip-trunking"
+        title: "SIP Trunking"
       },
       {
         node: <SiEslint className={si("text-[#4B32C3]")} />,
-        title: "ESLint",
-        href: "https://eslint.org"
+        title: "ESLint"
       }
     ],
     []
@@ -324,7 +286,7 @@ export function BentoTechStackCard() {
       onMouseEnter={() => setCardHovered(true)}
       onMouseLeave={() => setCardHovered(false)}
     >
-      <h3 className="mt-2 max-w-[18ch] text-balance font-display text-xl text-center leading-[1.02] text-zinc-100 md:text-[2rem] p-6">
+      <h3 className="text-balance font-display tracking-wide text-xl w-full text-center text-zinc-100 md:text-3xl p-4">
         Crafting experiences powered by next-gen tech
       </h3>
 
@@ -349,7 +311,7 @@ export function BentoTechStackCard() {
         />
       </div>
       <div
-        className={`flex shrink-0 mx-6 flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950/40 backdrop-blur-md transition-all duration-500 ease-out -bottom-4 absolute ${
+        className={`hidden lg:flex shrink-0 mx-6 flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950/40 backdrop-blur-md transition-all duration-500 ease-out -bottom-4 absolute ${
           cardHovered ? "h-56" : "h-44"
         }`}
       >

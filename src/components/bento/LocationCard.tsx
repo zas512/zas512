@@ -11,7 +11,7 @@ const LocationCard = () => {
   return (
     <div className="relative h-full w-full overflow-hidden">
       <div className="relative z-10 flex flex-col items-center gap-4 px-6 pt-6 text-center">
-        <p className="mt-2 text-balance font-display text-xl leading-[1.02] text-zinc-100 md:text-[2rem]">
+        <p className="text-balance font-display tracking-wide text-xl w-full text-center text-zinc-100 md:text-3xl">
           Flexible with time zone communications
         </p>
 
