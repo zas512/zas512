@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { SiGithub, SiLinkerd, SiX } from "react-icons/si";
+import { SiGithub, SiLinkerd } from "react-icons/si";
 
 const lines = [
   { p: "$", t: "initializing secure channel…" },
@@ -52,11 +52,6 @@ export function Contact() {
               Let's build something{" "}
               <span className="italic">unforgettable</span>.
             </h2>
-            <p className="mt-5 max-w-sm text-sm text-foreground-muted leading-relaxed font-sans">
-              I take on a small number of partnerships per quarter. If you've
-              got a product that deserves cinematic execution, send a line.
-            </p>
-
             <button
               type="button"
               onClick={copy}
@@ -80,9 +75,8 @@ export function Contact() {
               <Social
                 icon={<SiLinkerd />}
                 label="LinkedIn"
-                href="https://www.linkedin.com/in/zas512/"
+                href="https://www.linkedin.com/in/zas512"
               />
-              <Social icon={<SiX />} label="X" href="https://x.com/zas512" />
             </div>
           </div>
 

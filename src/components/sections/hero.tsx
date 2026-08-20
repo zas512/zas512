@@ -14,25 +14,25 @@ export function Hero() {
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
 
     const ctx = gsap.context(() => {
       const heroTl = gsap.timeline({
         defaults: {
           ease: "power3.out",
-          duration: prefersReducedMotion ? 0 : 0.8,
+          duration: prefersReducedMotion ? 0 : 0.8
         },
         onComplete: () => {
           setStartBgAnim(true);
-        },
+        }
       });
 
       heroTl
         .fromTo(
           ".hero-line",
           { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, stagger: 0.12 },
+          { opacity: 1, y: 0, stagger: 0.12 }
         )
         .fromTo(
           ".hero-card",
@@ -53,25 +53,25 @@ export function Hero() {
                       ease: "sine.inOut",
                       repeat: -1,
                       yoyo: true,
-                      delay: index * 0.3,
+                      delay: index * 0.3
                     });
                   });
               }
-            },
+            }
           },
-          "-=0.2",
+          "-=0.2"
         )
         .fromTo(
           ".hero-subhead",
           { opacity: 0, y: 12 },
           { opacity: 1, y: 0 },
-          "-=0.4",
+          "-=0.4"
         )
         .fromTo(
           ".hero-cta",
           { opacity: 0, y: 12 },
           { opacity: 1, y: 0, stagger: 0.08 },
-          "-=0.4",
+          "-=0.4"
         );
     }, containerRef);
 
@@ -158,76 +158,72 @@ export function Hero() {
     </section>
   );
 }
+
 function FloatingCards() {
   return (
-    <div className="absolute inset-0 z-0 hidden lg:block pointer-events-none">
+    <div className="absolute inset-0 z-0 max-w-7xl mx-auto hidden lg:block pointer-events-none">
       {/* Code snippet card (system) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-72">
-        <div className="rounded-xl border border-border-strong p-5 text-left font-mono text-sm text-foreground shadow-[0_20px_50px_rgba(56,189,248,0.15)] bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
-          <div className="mb-3.5 flex items-center justify-between border-b border-border pb-2">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2.5 rounded-full bg-red-500/80" />
-              <span className="size-2.5 rounded-full bg-yellow-500/80" />
-              <span className="size-2.5 rounded-full bg-green-500/80" />
-            </div>
-            <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
-              system
-            </span>
+      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-64 rounded-xl p-5 shadow-[0_20px_50px_rgba(56,189,248,0.1)] border border-slate-800 bg-surface">
+        <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2.5 rounded-full bg-red-500/80" />
+            <span className="size-2.5 rounded-full bg-yellow-500/80" />
+            <span className="size-2.5 rounded-full bg-green-500/80" />
           </div>
-          <div className="leading-relaxed text-[11px] font-mono text-slate">
-            <div className="text-accent font-semibold">production/</div>
-            <div>├── ai-workflows</div>
-            <div>├── realtime</div>
-            <div>├── api-layer</div>
-            <div>├── observability</div>
-            <div>└── infrastructure</div>
-            <div className="mt-4 border-t border-line pt-2 flex items-center gap-2">
-              <span className="size-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-slate-dim text-[10px] uppercase tracking-wider">
-                status: operational
-              </span>
-            </div>
+          <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
+            system
+          </span>
+        </div>
+        <div className="leading-relaxed text-[11px] font-mono text-slate">
+          <div className="text-accent font-semibold">production/</div>
+          <div>├── ai-workflows</div>
+          <div>├── realtime</div>
+          <div>├── api-layer</div>
+          <div>├── observability</div>
+          <div>└── infrastructure</div>
+          <div className="mt-3 border-t border-line pt-3 flex items-center gap-2">
+            <span className="size-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="text-slate-dim text-[10px] uppercase tracking-wider">
+              status: operational
+            </span>
           </div>
         </div>
       </div>
       {/* Telemetry metric card (outcome) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64">
-        <div className="rounded-xl p-5 text-left shadow-[0_20px_50px_rgba(56,189,248,0.15)] border border-border-strong bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
-          <div className="mb-3.5 flex items-center justify-between border-b border-border pb-2">
-            <div className="flex items-center gap-1.5">
-              <span className="size-2.5 rounded-full bg-red-500/80" />
-              <span className="size-2.5 rounded-full bg-yellow-500/80" />
-              <span className="size-2.5 rounded-full bg-green-500/80" />
-            </div>
-            <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
-              outcome
-            </span>
+      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64 rounded-xl p-4 shadow-[0_20px_50px_rgba(56,189,248,0.1)] border border-slate-800 bg-surface">
+        <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2.5 rounded-full bg-red-500/80" />
+            <span className="size-2.5 rounded-full bg-yellow-500/80" />
+            <span className="size-2.5 rounded-full bg-green-500/80" />
           </div>
-          <div className="leading-relaxed text-[11px] font-mono text-slate">
-            <div className="text-bone font-semibold mb-3 tracking-widest text-[10px]">
-              SYSTEM STATUS
-            </div>
-            <div className="flex justify-between gap-4 mb-1">
-              <span>AI workflows</span>
-              <span className="text-cyan font-bold">READY</span>
-            </div>
-            <div className="flex justify-between gap-4 mb-1">
-              <span>API infrastructure</span>
-              <span className="text-cyan font-bold">READY</span>
-            </div>
-            <div className="flex justify-between gap-4 mb-1">
-              <span>Realtime</span>
-              <span className="text-green-400 font-bold">LIVE</span>
-            </div>
-            <div className="flex justify-between gap-4">
-              <span>Deployment</span>
-              <span className="text-cyan font-bold">AUTOMATED</span>
-            </div>
-            <div className="mt-4 border-t border-line pt-2 text-right text-green-400 font-semibold flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-wider">
-              <span>production</span>
-              <span>✓</span>
-            </div>
+          <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
+            outcome
+          </span>
+        </div>
+        <div className="leading-relaxed text-[11px] font-mono text-slate">
+          <div className="text-bone font-semibold mb-3 tracking-widest text-[10px]">
+            SYSTEM STATUS
           </div>
+          <div className="flex justify-between gap-4 mb-1">
+            <span>AI workflows</span>
+            <span className="text-cyan font-bold">READY</span>
+          </div>
+          <div className="flex justify-between gap-4 mb-1">
+            <span>API infrastructure</span>
+            <span className="text-cyan font-bold">READY</span>
+          </div>
+          <div className="flex justify-between gap-4 mb-1">
+            <span>Realtime</span>
+            <span className="text-green-400 font-bold">LIVE</span>
+          </div>
+          <div className="flex justify-between gap-4">
+            <span>Deployment</span>
+            <span className="text-cyan font-bold">AUTOMATED</span>
+          </div>
+          <p className="mt-3 border-t border-line pt-3 text-right text-green-400 font-semibold flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-wider">
+            production ✓
+          </p>
         </div>
       </div>
     </div>

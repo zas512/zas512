@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "motion/react";
-import { memo, useMemo, useState, useEffect } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 
 interface Point {
   x: number;
@@ -12,15 +12,13 @@ interface PathData {
   d: string;
   opacity: number;
   width: number;
-  duration: number;
-  delay: number;
 }
 
-// Path generation function
+// Path generation function (unchanged logic)
 function generateAestheticPath(
   index: number,
   position: number,
-  type: "primary" | "secondary" | "accent",
+  type: "primary" | "secondary" | "accent"
 ): string {
   const baseAmplitude =
     type === "primary" ? 150 : type === "secondary" ? 100 : 60;
@@ -53,7 +51,7 @@ function generateAestheticPath(
 
     points.push({
       x: baseX * position,
-      y: baseY + wave1 + wave2 + wave3,
+      y: baseY + wave1 + wave2 + wave3
     });
   }
 
@@ -74,70 +72,151 @@ function generateAestheticPath(
 const generateUniqueId = (prefix: string, index: number): string =>
   `${prefix}-${index}`;
 
-// Memoized FloatingPaths component
+// Hook: pause animation when off-screen or tab is hidden
+function useShouldAnimate(ref: React.RefObject<HTMLElement | null>) {
+  const [inView, setInView] = useState(true);
+  const [tabVisible, setTabVisible] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+
+    const onVisibility = () =>
+      setTabVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", onVisibility);
+
+    let observer: IntersectionObserver | null = null;
+    if (ref.current) {
+      observer = new IntersectionObserver(
+        ([entry]) => setInView(entry.isIntersecting),
+        { threshold: 0 }
+      );
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      mq.removeEventListener("change", onChange);
+      document.removeEventListener("visibilitychange", onVisibility);
+      observer?.disconnect();
+    };
+  }, [ref]);
+
+  return inView && tabVisible && !reducedMotion;
+}
+
+// Single reusable wave-group renderer (filter applied ONCE per group, not per-path)
+const WaveGroup = memo(function WaveGroup({
+  paths,
+  className,
+  groupOpacity,
+  yRange,
+  duration,
+  animate
+}: {
+  paths: PathData[];
+  className: string;
+  groupOpacity: number;
+  yRange: number;
+  duration: number;
+  animate: boolean;
+}) {
+  return (
+    <motion.g
+      className={className}
+      style={{ opacity: groupOpacity }}
+      initial={{ y: 0 }}
+      animate={{ y: animate ? [0, -yRange, 0] : 0 }}
+      transition={{
+        duration,
+        repeat: Number.POSITIVE_INFINITY,
+        ease: "easeInOut",
+        repeatType: "reverse"
+      }}
+    >
+      {paths.map((path) => (
+        <path
+          key={path.id}
+          d={path.d}
+          stroke="url(#sharedGradient)"
+          strokeLinecap="round"
+          strokeWidth={path.width}
+          style={{ opacity: path.opacity }}
+        />
+      ))}
+    </motion.g>
+  );
+});
+
 // Memoized FloatingPaths component
 export const FloatingPaths = memo(function FloatingPaths({
   position,
-  animate = true,
+  animate = true
 }: {
   position: number;
   animate?: boolean;
 }) {
   const [isMounted, setIsMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canAnimate = useShouldAnimate(containerRef) && animate;
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  // Increased number of paths while maintaining optimization
   const primaryPaths: PathData[] = useMemo(
     () =>
-      Array.from({ length: 12 }, (_, i) => ({
+      Array.from({ length: 6 }, (_, i) => ({
         id: generateUniqueId("primary", i),
         d: generateAestheticPath(i, position, "primary"),
-        opacity: 0.15 + i * 0.02,
-        width: 4 + i * 0.3,
-        duration: 25,
-        delay: 0,
+        opacity: 0.35 + i * 0.04,
+        width: 5 + i * 0.4
       })),
-    [position],
+    [position]
   );
 
   const secondaryPaths: PathData[] = useMemo(
     () =>
-      Array.from({ length: 15 }, (_, i) => ({
+      Array.from({ length: 8 }, (_, i) => ({
         id: generateUniqueId("secondary", i),
         d: generateAestheticPath(i, position, "secondary"),
-        opacity: 0.12 + i * 0.015,
-        width: 3 + i * 0.25,
-        duration: 20,
-        delay: 0,
+        opacity: 0.28 + i * 0.03,
+        width: 3.5 + i * 0.3
       })),
-    [position],
+    [position]
   );
 
   const accentPaths: PathData[] = useMemo(
     () =>
-      Array.from({ length: 10 }, (_, i) => ({
+      Array.from({ length: 5 }, (_, i) => ({
         id: generateUniqueId("accent", i),
         d: generateAestheticPath(i, position, "accent"),
-        opacity: 0.08 + i * 0.12,
-        width: 2 + i * 0.2,
-        duration: 15,
-        delay: 0,
+        opacity: 0.2 + i * 0.06,
+        width: 2.5 + i * 0.25
       })),
-    [position],
+    [position]
   );
 
   if (!isMounted) return null;
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden blur-xs">
+    <div
+      ref={containerRef}
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      style={{
+        willChange: "filter",
+        filter:
+          "blur(3px) drop-shadow(0 0 14px rgba(56,189,248,0.45)) drop-shadow(0 0 28px rgba(56,189,248,0.25))"
+      }}
+    >
       <svg
         className="h-full w-full text-slate-950/40 dark:text-white/40"
         fill="none"
         preserveAspectRatio="xMidYMid slice"
         viewBox="-2400 -800 4800 1600"
+        style={{ willChange: "transform" }}
       >
         <title>Background Paths</title>
         <defs>
@@ -147,86 +226,32 @@ export const FloatingPaths = memo(function FloatingPaths({
             <stop offset="75%" stopColor="var(--amber)" stopOpacity="0.25" />
             <stop offset="100%" stopColor="var(--cyan)" stopOpacity="0.05" />
           </linearGradient>
-          <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="8" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
 
-        <g className="primary-waves">
-          {primaryPaths.map((path) => (
-            <motion.path
-              initial={{ y: 0 }}
-              animate={{ y: animate ? [0, -15, 0] : 0 }}
-              d={path.d}
-              key={path.id}
-              stroke="url(#sharedGradient)"
-              strokeLinecap="round"
-              strokeWidth={path.width}
-              filter="url(#glow-filter)"
-              style={{ opacity: path.opacity }}
-              transition={{
-                y: {
-                  duration: 8,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  repeatType: "reverse",
-                },
-              }}
-            />
-          ))}
-        </g>
-
-        <g className="secondary-waves" style={{ opacity: 0.8 }}>
-          {secondaryPaths.map((path) => (
-            <motion.path
-              initial={{ y: 0 }}
-              animate={{ y: animate ? [0, -10, 0] : 0 }}
-              d={path.d}
-              key={path.id}
-              stroke="url(#sharedGradient)"
-              strokeLinecap="round"
-              strokeWidth={path.width}
-              filter="url(#glow-filter)"
-              style={{ opacity: path.opacity }}
-              transition={{
-                y: {
-                  duration: 6,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  repeatType: "reverse",
-                },
-              }}
-            />
-          ))}
-        </g>
-
-        <g className="accent-waves" style={{ opacity: 0.6 }}>
-          {accentPaths.map((path) => (
-            <motion.path
-              initial={{ y: 0 }}
-              animate={{ y: animate ? [0, -5, 0] : 0 }}
-              d={path.d}
-              key={path.id}
-              stroke="url(#sharedGradient)"
-              strokeLinecap="round"
-              strokeWidth={path.width}
-              filter="url(#glow-filter)"
-              style={{ opacity: path.opacity }}
-              transition={{
-                y: {
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  repeatType: "reverse",
-                },
-              }}
-            />
-          ))}
-        </g>
+        <WaveGroup
+          paths={primaryPaths}
+          className="primary-waves"
+          groupOpacity={1}
+          yRange={15}
+          duration={8}
+          animate={canAnimate}
+        />
+        <WaveGroup
+          paths={secondaryPaths}
+          className="secondary-waves"
+          groupOpacity={0.8}
+          yRange={10}
+          duration={6}
+          animate={canAnimate}
+        />
+        <WaveGroup
+          paths={accentPaths}
+          className="accent-waves"
+          groupOpacity={0.6}
+          yRange={5}
+          duration={4}
+          animate={canAnimate}
+        />
       </svg>
     </div>
   );
@@ -234,7 +259,7 @@ export const FloatingPaths = memo(function FloatingPaths({
 
 // Memoized AnimatedTitle component
 const AnimatedTitle = memo(function AnimatedTitle({
-  title,
+  title
 }: {
   title: string;
 }) {
@@ -245,7 +270,7 @@ const AnimatedTitle = memo(function AnimatedTitle({
       initial={{ opacity: 0, y: 20 }}
       transition={{
         duration: 1.2,
-        ease: [0.2, 0.65, 0.3, 0.9],
+        ease: [0.2, 0.65, 0.3, 0.9]
       }}
     >
       {title}
@@ -254,7 +279,7 @@ const AnimatedTitle = memo(function AnimatedTitle({
 });
 
 export default memo(function BackgroundPaths({
-  title = "Background Paths",
+  title = "Background Paths"
 }: {
   title?: string;
 }) {

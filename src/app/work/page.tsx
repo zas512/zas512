@@ -13,10 +13,6 @@ export default function WorkPage() {
     });
   }, []);
 
-  const allTags = useMemo(
-    () => Array.from(new Set(sortedProjects.flatMap((p) => p.tags))),
-    [sortedProjects]
-  );
   const [active, setActive] = useState<string>("All");
 
   const filtered = useMemo(() => {
@@ -35,7 +31,7 @@ export default function WorkPage() {
   );
 
   return (
-    <main className="pt-32">
+    <main className="pt-12">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 grid-bg opacity-30" />
         <div className="pointer-events-none absolute inset-x-0 top-24 -z-10 flex justify-center overflow-hidden">
@@ -78,29 +74,6 @@ export default function WorkPage() {
                 Ask a question
               </a>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12, ease: "easeOut" }}
-            className="mt-12 flex flex-wrap justify-center gap-2"
-          >
-            {["All", ...allTags].map((tag) => (
-              <button
-                type="button"
-                key={tag}
-                onClick={() => setActive(tag)}
-                data-cursor="hover"
-                className={`rounded-full border px-4 py-2 text-xs font-mono uppercase tracking-widest transition ${
-                  active === tag
-                    ? "border-accent bg-accent-soft text-accent"
-                    : "border-border bg-surface text-foreground-muted hover:text-foreground hover:border-border-strong"
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
           </motion.div>
         </div>
       </section>
