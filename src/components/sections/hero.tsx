@@ -1,14 +1,16 @@
 "use client";
+import { FloatingPaths } from "@/components/kokonutui/background-paths";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { profile } from "@/lib/data";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [startBgAnim, setStartBgAnim] = useState(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -20,6 +22,9 @@ export function Hero() {
         defaults: {
           ease: "power3.out",
           duration: prefersReducedMotion ? 0 : 0.8,
+        },
+        onComplete: () => {
+          setStartBgAnim(true);
         },
       });
 
@@ -39,16 +44,18 @@ export function Hero() {
             stagger: 0.15,
             onComplete: () => {
               if (!prefersReducedMotion) {
-                gsap.utils.toArray<HTMLElement>(".hero-card").forEach((card, index) => {
-                  gsap.to(card, {
-                    y: index === 0 ? "-=12" : "+=12",
-                    duration: index === 0 ? 3.5 : 4.2,
-                    ease: "sine.inOut",
-                    repeat: -1,
-                    yoyo: true,
-                    delay: index * 0.3,
+                gsap.utils
+                  .toArray<HTMLElement>(".hero-card")
+                  .forEach((card, index) => {
+                    gsap.to(card, {
+                      y: index === 0 ? "-=12" : "+=12",
+                      duration: index === 0 ? 3.5 : 4.2,
+                      ease: "sine.inOut",
+                      repeat: -1,
+                      yoyo: true,
+                      delay: index * 0.3,
+                    });
                   });
-                });
               }
             },
           },
@@ -77,7 +84,10 @@ export function Hero() {
       className="relative flex items-center justify-center isolate min-h-svh overflow-hidden pt-28 pb-16"
       aria-label="Hero section"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <FloatingPaths position={1} animate={startBgAnim} />
+      </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         {/* Main Headline */}
         <p className="text-center font-display text-[clamp(2.75rem,2rem+4vw,5.5rem)] leading-[1.05] tracking-tight">
           <span className="text-foreground font-light hero-line">
@@ -152,8 +162,8 @@ function FloatingCards() {
   return (
     <div className="absolute inset-0 z-0 hidden lg:block pointer-events-none">
       {/* Code snippet card (system) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] top-[25%] w-72">
-        <div className="glass rounded-xl border border-border-strong p-5 text-left font-mono text-sm text-foreground shadow-[0_20px_50px_rgba(56,189,248,0.15)] backdrop-blur-xl bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
+      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-72">
+        <div className="rounded-xl border border-border-strong p-5 text-left font-mono text-sm text-foreground shadow-[0_20px_50px_rgba(56,189,248,0.15)] bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
           <div className="mb-3.5 flex items-center justify-between border-b border-border pb-2">
             <div className="flex items-center gap-1.5">
               <span className="size-2.5 rounded-full bg-red-500/80" />
@@ -180,10 +190,9 @@ function FloatingCards() {
           </div>
         </div>
       </div>
-
       {/* Telemetry metric card (outcome) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[25%] w-64">
-        <div className="glass rounded-xl p-5 text-left shadow-[0_20px_50px_rgba(56,189,248,0.15)] border border-border-strong backdrop-blur-xl bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
+      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64">
+        <div className="rounded-xl p-5 text-left shadow-[0_20px_50px_rgba(56,189,248,0.15)] border border-border-strong bg-surface/90 transition-all duration-300 hover:scale-[1.03] hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(56,189,248,0.25)]">
           <div className="mb-3.5 flex items-center justify-between border-b border-border pb-2">
             <div className="flex items-center gap-1.5">
               <span className="size-2.5 rounded-full bg-red-500/80" />

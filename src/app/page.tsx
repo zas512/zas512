@@ -1,4 +1,3 @@
-import Navbar from "@/components/nav";
 import { Bento } from "@/components/sections/bento";
 import { Contact } from "@/components/sections/contact";
 import { FeaturedWork } from "@/components/sections/featured-work";
@@ -9,10 +8,9 @@ import { Timeline } from "@/components/sections/timeline";
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
+    <>
       <Hero />
-      <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
         <Bento />
         <Timeline />
         <TechOrbit />
@@ -20,6 +18,6 @@ export default function Home() {
         <GithubActivity />
         <Contact />
       </div>
-    </main>
+    </>
   );
 }

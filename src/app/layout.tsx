@@ -1,3 +1,4 @@
+import Navbar from "@/components/nav";
 import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import type { ReactNode } from "react";
@@ -31,7 +32,8 @@ export default async function RootLayout({
       <body
         className={`dark ${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
       >
-        <main className="px-6 lg:px-10">{children}</main>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

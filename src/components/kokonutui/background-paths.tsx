@@ -1,17 +1,6 @@
 "use client";
-
-/**
- * @author: @dorianbaffier
- * @description: Background Paths
- * @version: 1.0.0
- * @date: 2025-06-26
- * @license: MIT
- * @website: https://kokonutui.com
- * @github: https://github.com/kokonut-labs/kokonutui
- */
-
 import { motion } from "motion/react";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState, useEffect } from "react";
 
 interface Point {
   x: number;
@@ -31,7 +20,7 @@ interface PathData {
 function generateAestheticPath(
   index: number,
   position: number,
-  type: "primary" | "secondary" | "accent"
+  type: "primary" | "secondary" | "accent",
 ): string {
   const baseAmplitude =
     type === "primary" ? 150 : type === "secondary" ? 100 : 60;
@@ -82,67 +71,68 @@ function generateAestheticPath(
   return pathCommands.join(" ");
 }
 
-const generateUniqueId = (prefix: string): string =>
-  `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+const generateUniqueId = (prefix: string, index: number): string =>
+  `${prefix}-${index}`;
 
 // Memoized FloatingPaths component
-const FloatingPaths = memo(function FloatingPaths({
+// Memoized FloatingPaths component
+export const FloatingPaths = memo(function FloatingPaths({
   position,
+  animate = true,
 }: {
   position: number;
+  animate?: boolean;
 }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Increased number of paths while maintaining optimization
   const primaryPaths: PathData[] = useMemo(
     () =>
       Array.from({ length: 12 }, (_, i) => ({
-        id: generateUniqueId("primary"),
+        id: generateUniqueId("primary", i),
         d: generateAestheticPath(i, position, "primary"),
         opacity: 0.15 + i * 0.02,
         width: 4 + i * 0.3,
         duration: 25,
         delay: 0,
       })),
-    [position]
+    [position],
   );
 
   const secondaryPaths: PathData[] = useMemo(
     () =>
       Array.from({ length: 15 }, (_, i) => ({
-        id: generateUniqueId("secondary"),
+        id: generateUniqueId("secondary", i),
         d: generateAestheticPath(i, position, "secondary"),
         opacity: 0.12 + i * 0.015,
         width: 3 + i * 0.25,
         duration: 20,
         delay: 0,
       })),
-    [position]
+    [position],
   );
 
   const accentPaths: PathData[] = useMemo(
     () =>
       Array.from({ length: 10 }, (_, i) => ({
-        id: generateUniqueId("accent"),
+        id: generateUniqueId("accent", i),
         d: generateAestheticPath(i, position, "accent"),
         opacity: 0.08 + i * 0.12,
         width: 2 + i * 0.2,
         duration: 15,
         delay: 0,
       })),
-    [position]
+    [position],
   );
 
-  // Shared animation configuration
-  const sharedAnimationProps = {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      opacity: { duration: 1 },
-      scale: { duration: 1 },
-    },
-  };
+  if (!isMounted) return null;
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden blur-xs">
       <svg
         className="h-full w-full text-slate-950/40 dark:text-white/40"
         fill="none"
@@ -152,28 +142,33 @@ const FloatingPaths = memo(function FloatingPaths({
         <title>Background Paths</title>
         <defs>
           <linearGradient id="sharedGradient" x1="0%" x2="100%" y1="0%" y2="0%">
-            <stop offset="0%" stopColor="rgba(147, 51, 234, 0.5)" />
-            <stop offset="50%" stopColor="rgba(236, 72, 153, 0.5)" />
-            <stop offset="100%" stopColor="rgba(59, 130, 246, 0.5)" />
+            <stop offset="0%" stopColor="var(--cyan)" stopOpacity="0.05" />
+            <stop offset="40%" stopColor="var(--cyan)" stopOpacity="0.4" />
+            <stop offset="75%" stopColor="var(--amber)" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="var(--cyan)" stopOpacity="0.05" />
           </linearGradient>
+          <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
 
         <g className="primary-waves">
           {primaryPaths.map((path) => (
             <motion.path
-              animate={{
-                ...sharedAnimationProps,
-                y: [0, -15, 0],
-              }}
+              initial={{ y: 0 }}
+              animate={{ y: animate ? [0, -15, 0] : 0 }}
               d={path.d}
-              initial={{ opacity: 0, scale: 0.8 }}
               key={path.id}
               stroke="url(#sharedGradient)"
               strokeLinecap="round"
               strokeWidth={path.width}
+              filter="url(#glow-filter)"
               style={{ opacity: path.opacity }}
               transition={{
-                ...sharedAnimationProps.transition,
                 y: {
                   duration: 8,
                   repeat: Number.POSITIVE_INFINITY,
@@ -188,19 +183,16 @@ const FloatingPaths = memo(function FloatingPaths({
         <g className="secondary-waves" style={{ opacity: 0.8 }}>
           {secondaryPaths.map((path) => (
             <motion.path
-              animate={{
-                ...sharedAnimationProps,
-                y: [0, -10, 0],
-              }}
+              initial={{ y: 0 }}
+              animate={{ y: animate ? [0, -10, 0] : 0 }}
               d={path.d}
-              initial={{ opacity: 0, scale: 0.9 }}
               key={path.id}
               stroke="url(#sharedGradient)"
               strokeLinecap="round"
               strokeWidth={path.width}
+              filter="url(#glow-filter)"
               style={{ opacity: path.opacity }}
               transition={{
-                ...sharedAnimationProps.transition,
                 y: {
                   duration: 6,
                   repeat: Number.POSITIVE_INFINITY,
@@ -215,19 +207,16 @@ const FloatingPaths = memo(function FloatingPaths({
         <g className="accent-waves" style={{ opacity: 0.6 }}>
           {accentPaths.map((path) => (
             <motion.path
-              animate={{
-                ...sharedAnimationProps,
-                y: [0, -5, 0],
-              }}
+              initial={{ y: 0 }}
+              animate={{ y: animate ? [0, -5, 0] : 0 }}
               d={path.d}
-              initial={{ opacity: 0, scale: 0.95 }}
               key={path.id}
               stroke="url(#sharedGradient)"
               strokeLinecap="round"
               strokeWidth={path.width}
+              filter="url(#glow-filter)"
               style={{ opacity: path.opacity }}
               transition={{
-                ...sharedAnimationProps.transition,
                 y: {
                   duration: 4,
                   repeat: Number.POSITIVE_INFINITY,
@@ -252,7 +241,7 @@ const AnimatedTitle = memo(function AnimatedTitle({
   return (
     <motion.h1
       animate={{ opacity: 1, y: 0 }}
-      className="mb-8 bg-gradient-to-r from-neutral-800/90 to-neutral-600/90 bg-clip-text font-bold text-3xl text-transparent tracking-tighter sm:text-5xl md:text-5xl dark:from-white/90 dark:to-white/70"
+      className="mb-8 bg-linear-to-r from-neutral-800/90 to-neutral-600/90 bg-clip-text font-bold text-3xl text-transparent tracking-tighter sm:text-5xl md:text-5xl dark:from-white/90 dark:to-white/70"
       initial={{ opacity: 0, y: 20 }}
       transition={{
         duration: 1.2,
