@@ -41,7 +41,7 @@ export function Bento() {
   return (
     <section className="relative py-24 md:py-32" id="capabilities">
       <div className="mb-16 max-w-3xl">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
           02 / CAPABILITIES
         </p>
         <h2 className="mt-4 font-display text-4xl leading-[1.05] text-foreground md:text-6xl font-light">

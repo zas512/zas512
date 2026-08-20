@@ -15,7 +15,7 @@ export function Timeline() {
     <section className="relative py-24 md:py-32" id="experience">
       <div className="container mx-auto">
         <div className="max-w-2xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             03 / EXPERIENCE
           </p>
           <h2 className="mt-4 font-display text-4xl leading-[1.05] text-foreground md:text-6xl font-light">
@@ -76,13 +76,13 @@ function Row({
       <div
         className={`${isLeft ? "md:text-right md:pr-12" : "md:order-2 md:pl-12"}`}
       >
-        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+        <div className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
           {item.period}
         </div>
         <h3 className="mt-2 font-display text-2xl md:text-3xl text-foreground font-light">
           {item.role}
         </h3>
-        <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-foreground-muted">
+        <div className="mt-1 font-mono text-xs uppercase tracking-wider text-foreground-muted">
           {item.company} ·{" "}
           <span className="text-foreground-subtle">{item.location}</span>
         </div>
@@ -99,7 +99,7 @@ function Row({
         {/* Achievements list: Show detailed list for current, compact list for older */}
         {isCurrent ? (
           <div className="mt-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground-subtle block mb-2">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-foreground-subtle block mb-2">
               Selected systems & contributions:
             </span>
             <ul
@@ -118,7 +118,7 @@ function Row({
           </div>
         ) : (
           <div className="mt-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground-subtle block mb-1">
+            <span className="font-mono text-xs uppercase tracking-[0.16em] text-foreground-subtle block mb-1">
               Systems:
             </span>
             <p className="text-xs text-foreground-subtle leading-relaxed">
@@ -133,7 +133,7 @@ function Row({
           {item.stack.map((s) => (
             <span
               key={s}
-              className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[10px] text-foreground-muted uppercase tracking-wider"
+              className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-xs text-foreground-muted uppercase tracking-wider"
             >
               {s}
             </span>

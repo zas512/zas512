@@ -92,7 +92,7 @@ export default function WorkPage() {
                 key={tag}
                 onClick={() => setActive(tag)}
                 data-cursor="hover"
-                className={`rounded-full border px-4 py-2 text-[10px] font-mono uppercase tracking-widest transition ${
+                className={`rounded-full border px-4 py-2 text-xs font-mono uppercase tracking-widest transition ${
                   active === tag
                     ? "border-accent bg-accent-soft text-accent"
                     : "border-border bg-surface text-foreground-muted hover:text-foreground hover:border-border-strong"
@@ -108,7 +108,7 @@ export default function WorkPage() {
       <section className="container mx-auto px-6 pb-32">
         {filtered.length === 0 ? (
           <div className="mx-auto mt-8 max-w-xl rounded-xl border border-border bg-surface p-10 text-center">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-foreground-subtle uppercase">
+            <p className="font-mono text-xs tracking-[0.2em] text-foreground-subtle uppercase">
               No matches
             </p>
             <h2 className="mt-3 font-display text-3xl text-foreground font-light md:text-4xl">

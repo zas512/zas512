@@ -66,7 +66,7 @@ export function WorkProjectCard({
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="group"
     >
-      <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-foreground-subtle">
+      <div className="mb-4 flex items-center justify-between font-mono text-xs uppercase tracking-[0.2em] text-foreground-subtle">
         <span>
           {formatProjectNumber(index)} / {typeLabel}
         </span>
@@ -114,7 +114,7 @@ export function WorkProjectCard({
                     <Lock className="size-5 text-foreground-muted" />
                   )}
                 </div>
-                <span className="relative font-mono text-[10px] uppercase tracking-[0.16em] text-foreground-subtle">
+                <span className="relative font-mono text-xs uppercase tracking-[0.16em] text-foreground-subtle">
                   {project.type === "backend"
                     ? "Backend Infrastructure"
                     : "NDA Protected"}
@@ -123,7 +123,7 @@ export function WorkProjectCard({
             )}
           </div>
 
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-[10px] tracking-widest text-foreground-muted uppercase transition duration-300 group-hover:bg-accent-soft group-hover:text-accent group-hover:border-accent/25">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-xs tracking-widest text-foreground-muted uppercase transition duration-300 group-hover:bg-accent-soft group-hover:text-accent group-hover:border-accent/25">
             <span>Open case study</span>
             <ArrowUpRight className="size-3.5" />
           </div>
@@ -136,7 +136,7 @@ export function WorkProjectCard({
           return (
             <span
               key={tech}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-[11px] font-mono uppercase tracking-[0.14em] text-foreground-muted transition hover:border-border-strong hover:text-foreground hover:bg-surface-elevated"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-mono uppercase tracking-[0.14em] text-foreground-muted transition hover:border-border-strong hover:text-foreground hover:bg-surface-elevated"
             >
               <TechIcon slug={icon.slug} color={icon.color} size={13} />
               {tech}

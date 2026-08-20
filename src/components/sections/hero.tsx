@@ -43,7 +43,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-accent" />
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground-muted">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-foreground-muted">
               01 / AVAILABLE FOR FULL-TIME & CONTRACT
             </span>
           </div>
@@ -110,7 +110,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.85, duration: 0.8 }}
-          className="mt-16 flex flex-wrap items-center justify-center gap-5 text-[11px] font-mono tracking-[0.16em] text-foreground-subtle"
+          className="mt-16 flex flex-wrap items-center justify-center gap-5 text-xs font-mono tracking-[0.16em] text-foreground-subtle"
         >
           <span className="flex items-center gap-2">
             <Sparkles className="size-3 text-accent" />
@@ -178,14 +178,14 @@ function FloatingCards() {
         }}
         className="pointer-events-auto absolute left-[5%] top-[25%] w-68 hover:scale-[1.02] hover:-rotate-3 transition-transform duration-300"
       >
-        <div className="glass rounded-xl border border-border p-4 text-left font-mono text-[11px] text-foreground-muted shadow-2xl backdrop-blur-xl bg-surface/50">
+        <div className="glass rounded-xl border border-border p-4 text-left font-mono text-xs text-foreground-muted shadow-2xl backdrop-blur-xl bg-surface/50">
           <div className="mb-2.5 flex items-center justify-between border-b border-border pb-2">
             <div className="flex items-center gap-1.5">
               <span className="size-2 rounded-full bg-border-strong" />
               <span className="size-2 rounded-full bg-border-strong" />
               <span className="size-2 rounded-full bg-border-strong" />
             </div>
-            <span className="text-[10px] tracking-[0.14em] text-foreground-subtle uppercase">
+            <span className="text-xs tracking-[0.14em] text-foreground-subtle uppercase">
               agent.ts
             </span>
           </div>
@@ -224,7 +224,7 @@ function FloatingCards() {
       >
         <div className="glass rounded-xl p-4 text-left shadow-2xl border border-border backdrop-blur-xl bg-surface/50">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground-subtle">
+            <span className="font-mono text-xs uppercase tracking-[0.18em] text-foreground-subtle">
               Telemetry
             </span>
             <span className="size-2 rounded-full bg-accent animate-pulse" />
@@ -232,7 +232,7 @@ function FloatingCards() {
           <div className="mt-1 text-3xl font-display font-light text-foreground">
             99<span className="text-accent">.</span>
           </div>
-          <div className="mt-1 text-[11px] text-foreground-muted font-sans">
+          <div className="mt-1 text-xs text-foreground-muted font-sans">
             Lighthouse Performance Score
           </div>
           <div className="mt-3.5 h-1 w-full overflow-hidden rounded-full bg-surface-elevated">

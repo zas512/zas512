@@ -31,7 +31,7 @@ export default function Nav() {
         <NavLink to="/work" label="Work" active={pathname === "/work"} />
         <Link
           href="/#contact"
-          className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-[10.5px]"
+          className="rounded-full px-3 py-1.5 text-foreground-muted transition hover:text-foreground uppercase tracking-widest font-mono text-xs"
         >
           Contact
         </Link>
@@ -48,7 +48,7 @@ function NavLink({
   return (
     <Link
       href={to}
-      className={`rounded-full px-3 py-1.5 transition uppercase tracking-widest font-mono text-[10.5px] ${
+      className={`rounded-full px-3 py-1.5 transition uppercase tracking-widest font-mono text-xs ${
         active
           ? "text-accent bg-accent-soft/20 border border-accent/10"
           : "text-foreground-muted hover:text-foreground"

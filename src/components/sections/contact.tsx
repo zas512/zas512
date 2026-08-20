@@ -45,7 +45,7 @@ export function Contact() {
       <div className="container mx-auto">
         <div className="grid gap-12 md:grid-cols-5">
           <div className="md:col-span-2">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
               06 / GET IN TOUCH
             </p>
             <h2 className="mt-4 font-display text-4xl leading-[1.05] text-foreground md:text-6xl font-light">
@@ -99,7 +99,7 @@ export function Contact() {
                 <span className="size-2 rounded-full bg-border-strong" />
                 <span className="size-2 rounded-full bg-border-strong" />
                 <span className="size-2 rounded-full bg-border-strong" />
-                <span className="ml-3 font-mono text-[10px] uppercase tracking-wider text-foreground-subtle">
+                <span className="ml-3 font-mono text-xs uppercase tracking-wider text-foreground-subtle">
                   ~/zain.dev - bash
                 </span>
               </div>
@@ -139,7 +139,7 @@ export function Contact() {
                     <span className="inline-block h-3.5 w-1.5 animate-blink bg-accent" />
                     <button
                       type="submit"
-                      className="rounded-full bg-accent-soft border border-accent/20 px-3.5 py-1 text-[10px] font-mono uppercase tracking-widest text-accent hover:bg-accent-soft/30 transition-all cursor-pointer"
+                      className="rounded-full bg-accent-soft border border-accent/20 px-3.5 py-1 text-xs font-mono uppercase tracking-widest text-accent hover:bg-accent-soft/30 transition-all cursor-pointer"
                     >
                       send
                     </button>
@@ -165,7 +165,7 @@ function Social({
       target="_blank"
       rel="noreferrer"
       data-cursor="hover"
-      className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-[10px] font-mono uppercase tracking-widest text-foreground-muted transition hover:border-border-strong hover:text-foreground hover:bg-surface-elevated"
+      className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-xs font-mono uppercase tracking-widest text-foreground-muted transition hover:border-border-strong hover:text-foreground hover:bg-surface-elevated"
     >
       {icon} {label}
     </Link>

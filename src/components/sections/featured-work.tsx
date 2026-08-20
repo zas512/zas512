@@ -10,7 +10,7 @@ export function FeaturedWork() {
       <div className="container mx-auto">
         <div className="mb-12 flex flex-col items-start gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
               05 / Selected work
             </p>
             <h2 className="mt-3 font-display text-4xl leading-[1.05] text-foreground md:text-5xl font-light">
@@ -19,7 +19,7 @@ export function FeaturedWork() {
           </div>
           <Link
             href="/work"
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-foreground transition hover:border-border-strong hover:bg-surface-elevated"
+            className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground transition hover:border-border-strong hover:bg-surface-elevated"
           >
             <span>All projects</span>
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />

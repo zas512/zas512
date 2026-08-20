@@ -66,7 +66,7 @@ export function ProjectCard({
                   )}
                 </div>
 
-                <span className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground-muted">
+                <span className="rounded-full border border-border bg-surface px-2.5 py-1 font-mono text-xs uppercase tracking-[0.18em] text-foreground-muted">
                   {project.type === "backend" ? "Backend infrastructure" : "NDA protected"}
                 </span>
               </div>
@@ -77,7 +77,7 @@ export function ProjectCard({
             {project.tags.slice(0, 2).map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-border bg-surface/80 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-foreground-muted backdrop-blur"
+                className="rounded-full border border-border bg-surface/80 px-2.5 py-1 font-mono text-xs uppercase tracking-[0.14em] text-foreground-muted backdrop-blur"
               >
                 {t}
               </span>
@@ -98,7 +98,7 @@ export function ProjectCard({
               {project.tagline}
             </p>
           </div>
-          <div className="hidden shrink-0 text-right font-mono text-[10px] uppercase tracking-[0.14em] text-foreground-subtle md:block">
+          <div className="hidden shrink-0 text-right font-mono text-xs uppercase tracking-[0.14em] text-foreground-subtle md:block">
             <div>{project.year}</div>
             <div>{project.client}</div>
           </div>
