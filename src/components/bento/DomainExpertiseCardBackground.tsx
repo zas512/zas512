@@ -236,7 +236,7 @@ function NodeBadge({
     <span
       className={`inline-flex h-5 w-5 items-center justify-center rounded-full border ${badgeClass}`}
     >
-      <node.Icon className="h-3.5 w-3.5 text-cyan-100/95" />
+      <node.Icon className="h-3.5 w-3.5 text-accent/95" />
     </span>
   );
 }
@@ -270,7 +270,7 @@ function DomainNodeBubble({
   );
 
   const labelClass = node.isCenter
-    ? "font-display text-sm text-cyan-100 md:text-base"
+    ? "font-display text-sm text-accent md:text-base"
     : "text-xs text-zinc-100/95";
 
   return (

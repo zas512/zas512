@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ACCENT_COLORS: Record<string, string> = {
-  nexamortgage: "rgba(56, 189, 248, 0.4)", // cyan
+  nexamortgage: "rgba(85, 233, 171, 0.4)", // mint
   surehelp: "rgba(16, 185, 129, 0.4)", // emerald
   "signwise-inbox": "rgba(236, 72, 153, 0.4)", // pink/fuchsia
   pulseops: "rgba(20, 184, 166, 0.4)", // teal
@@ -35,7 +35,7 @@ export function ProjectCard({
   large?: boolean;
   onClick?: (project: Project) => void;
 }>) {
-  const accentBorder = ACCENT_COLORS[project.slug] || "rgba(56, 189, 248, 0.4)";
+  const accentBorder = ACCENT_COLORS[project.slug] || "rgba(85, 233, 171, 0.4)";
 
   return (
     <motion.div

@@ -1,6 +1,5 @@
 "use client";
 import { profile } from "@/lib/data";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,26 +7,22 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <motion.header
-      initial={{ y: -30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-5"
-    >
-      <nav className="glass flex backdrop-blur-xl items-center gap-2 rounded-full px-3 py-2 text-xs font-mono tracking-wider">
+    <header className="animate-nav-in fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl backdrop-saturate-150">
+      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 font-mono tracking-wider sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2 rounded-full px-3 py-1 text-foreground"
+          className="group flex items-center gap-2 text-foreground"
         >
-          <span className="font-sans text-sm font-semibold">
+          <span className="font-sans text-sm font-medium">
             {profile.handle}
           </span>
         </Link>
-        <div className="h-4 w-px bg-border-strong mr-2" />
-        <NavLink to="/" label="Home" active={pathname === "/"} />
-        <NavLink to="/work" label="Work" active={pathname === "/work"} />
+        <div className="flex items-center gap-2">
+          <NavLink to="/" label="Home" active={pathname === "/"} />
+          <NavLink to="/work" label="Work" active={pathname === "/work"} />
+        </div>
       </nav>
-    </motion.header>
+    </header>
   );
 }
 
@@ -39,10 +34,10 @@ function NavLink({
   return (
     <Link
       href={to}
-      className={`rounded-full px-3 py-1.5 uppercase tracking-widest font-mono text-xs ${
+      className={`rounded-full border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors ${
         active
-          ? "text-accent bg-accent-soft/50 border border-accent/10"
-          : "text-foreground-muted hover:text-foreground"
+          ? "border-white/10 bg-white/10 text-foreground"
+          : "border-transparent text-foreground-muted hover:text-foreground"
       }`}
     >
       {label}

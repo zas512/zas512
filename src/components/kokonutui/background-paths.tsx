@@ -208,7 +208,7 @@ export const FloatingPaths = memo(function FloatingPaths({
       style={{
         willChange: "filter",
         filter:
-          "blur(3px) drop-shadow(0 0 14px rgba(56,189,248,0.45)) drop-shadow(0 0 28px rgba(56,189,248,0.25))"
+          "blur(3px) drop-shadow(0 0 14px rgba(85,233,171,0.45)) drop-shadow(0 0 28px rgba(85,233,171,0.25))"
       }}
     >
       <svg

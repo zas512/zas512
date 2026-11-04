@@ -36,12 +36,12 @@ const BentoCard = ({
   <div
     key={name}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-surface/90 shadow-[0_20px_60px_-40px_rgba(0,184,232,0.35)] transition duration-300",
+      "animate-fade-in-up group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-2xl border border-border bg-surface/90 shadow-[0_20px_60px_-40px_rgba(85,233,171,0.28)] transition duration-300",
       className
     )}
     {...props}
   >
-    <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(0,184,232,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(146,81,255,0.14),transparent_34%)]" />
+    <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(85,233,171,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(202,159,245,0.12),transparent_34%)]" />
     <div className="absolute inset-0 z-0">{background}</div>
     <div className="relative z-10 mt-auto p-5">
       {(Icon || name || description) && (
@@ -66,4 +66,3 @@ const BentoCard = ({
 );
 
 export { BentoCard, BentoGrid };
-

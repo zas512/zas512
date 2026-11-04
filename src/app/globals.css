@@ -3,16 +3,87 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: Diatype;
+  src: url("/fonts/ABCDiatype-Light.1a9eca98.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Diatype;
+  src: url("/fonts/ABCDiatype-Regular.2505c0cb.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Diatype;
+  src: url("/fonts/ABCDiatype-Medium.c86deac8.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Diatype;
+  src: url("/fonts/ABCDiatype-Bold.f2bf1e1c.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Diatype Mono";
+  src: url("/fonts/ABCDiatypeSemi-Mono-Regular.39db908c.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Diatype Mono";
+  src: url("/fonts/ABCDiatypeSemi-Mono-Medium.bc3bf3a6.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Diatype Mono";
+  src: url("/fonts/ABCDiatypeSemi-Mono-Bold.9bc44e28.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Diatype", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Diatype", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Diatype Mono", ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-void: var(--void);
+  --color-signal: var(--signal);
+  --color-signal-2: var(--signal-2);
+  --color-cyan: var(--cyan);
+  --color-amber: var(--amber);
+  --color-bone: var(--bone);
+  --color-slate: var(--slate);
+  --color-slate-dim: var(--slate-dim);
+  --color-line: var(--line);
+  --color-highlight-green: var(--highlight-green);
+  --color-highlight-gold: var(--highlight-gold);
+  --color-highlight-orange: var(--highlight-orange);
+  --color-highlight-lime: var(--highlight-lime);
+  --color-highlight-lavender: var(--highlight-lavender);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -83,6 +154,67 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes curtain-left-to-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes curtain-top-to-bottom {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.1);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes flash-background {
+  0%,
+  100% {
+    background-color: var(--flash-bg-default, transparent);
+  }
+  50% {
+    background-color: var(--flash-bg-color, white);
+  }
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
 @keyframes spin-clockwise {
   from {
     transform: rotate(0deg);
@@ -103,15 +235,20 @@
 
 :root,
 .dark {
-  --void: #0a0e14;
-  --signal: #0f1b2b;
-  --signal-2: #152436;
-  --cyan: #38bdf8;
-  --amber: #ffb454;
-  --bone: #f1f3f5;
-  --slate: #93a6bc;
-  --slate-dim: #5c6b80;
-  --line: #1d2a3a;
+  --void: #000;
+  --signal: #101012;
+  --signal-2: #17171a;
+  --cyan: #55e9ab;
+  --amber: #ffc526;
+  --bone: #fff;
+  --slate: #ababba;
+  --slate-dim: #81818d;
+  --line: #ece4fd1f;
+  --highlight-green: #55e9ab;
+  --highlight-gold: #ffc526;
+  --highlight-orange: #f48252;
+  --highlight-lime: #cff15e;
+  --highlight-lavender: #ca9ff5;
 
   --radius: 0.75rem;
   --background: var(--void);
@@ -128,9 +265,9 @@
   --muted: var(--slate);
   --muted-foreground: var(--slate);
   --border: var(--line);
-  --border-strong: color-mix(in srgb, var(--line) 80%, white 20%);
+  --border-strong: #ece4fd33;
   --accent: var(--cyan);
-  --accent-soft: rgba(56, 189, 248, 0.15);
+  --accent-soft: rgb(85 233 171 / 13%);
   --accent-foreground: var(--void);
   --primary: var(--cyan);
   --primary-foreground: var(--void);
@@ -141,7 +278,7 @@
   --input: rgba(255, 255, 255, 0.08);
   --ring: var(--cyan);
   --glow: var(--cyan);
-  --glow-2: rgba(56, 189, 248, 0.3);
+  --glow-2: rgb(85 233 171 / 30%);
 }
 
 @layer base {
@@ -150,27 +287,24 @@
   }
   html {
     font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
-    background:
-      radial-gradient(
-        circle at top,
-        color-mix(in oklab, var(--glow) 18%, transparent) 0%,
-        transparent 32%
-      ),
-      radial-gradient(
-        circle at 80% 20%,
-        color-mix(in oklab, var(--glow-2) 22%, transparent) 0%,
-        transparent 28%
-      ),
-      var(--color-background);
+    background: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv11", "ss01", "ss03";
     overflow-x: hidden;
-    line-height: 1.6;
+    line-height: 1.4;
   }
   p {
-    line-height: 1.6;
+    line-height: 1.4;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
   }
   ::selection {
     background: color-mix(in oklab, var(--primary) 40%, transparent);
@@ -187,13 +321,46 @@
     font-family: var(--font-mono);
   }
 
+  .font-brand-mono {
+    font-family: var(--font-mono);
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-curtain-left-to-right {
+    animation: curtain-left-to-right 0.8s ease-out forwards;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .animate-curtain-top-to-bottom {
+    animation: curtain-top-to-bottom 0.6s ease-out forwards;
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.1);
+  }
+
+  .animate-flash-background {
+    --flash-bg-default: transparent;
+    animation: flash-background 0.8s ease-out forwards;
+  }
+
+  .animate-nav-in {
+    animation: nav-in 0.3s ease-out both;
+  }
+
+  .animate-sheet-in {
+    animation: sheet-in 0.3s ease-out both;
+  }
+
   .text-gradient {
     background: linear-gradient(
       110deg,
-      oklch(0.96 0.02 228) 0%,
-      oklch(0.76 0.16 222) 32%,
-      oklch(0.72 0.12 295) 62%,
-      oklch(0.96 0.02 228) 100%
+      var(--bone) 0%,
+      var(--highlight-green) 38%,
+      var(--highlight-lavender) 68%,
+      var(--bone) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -202,10 +369,10 @@
   .text-shimmer {
     background: linear-gradient(
       90deg,
-      oklch(0.66 0.04 222) 0%,
-      oklch(0.95 0.02 228) 45%,
-      oklch(0.7 0.12 295) 65%,
-      oklch(0.66 0.04 222) 100%
+      var(--slate) 0%,
+      var(--bone) 45%,
+      var(--highlight-lavender) 65%,
+      var(--slate) 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -269,4 +436,19 @@
 html,
 body {
   background: var(--color-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

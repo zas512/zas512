@@ -163,7 +163,7 @@ function FloatingCards() {
   return (
     <div className="absolute inset-0 z-0 max-w-7xl mx-auto hidden lg:block pointer-events-none">
       {/* Code snippet card (system) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-64 rounded-xl p-5 shadow-[0_20px_50px_rgba(56,189,248,0.1)] border border-slate-800 bg-surface">
+      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-64 rounded-xl p-5 shadow-[0_20px_50px_rgba(85,233,171,0.12)] border border-border bg-surface">
         <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
           <div className="flex items-center gap-1.5">
             <span className="size-2.5 rounded-full bg-red-500/80" />
@@ -190,7 +190,7 @@ function FloatingCards() {
         </div>
       </div>
       {/* Telemetry metric card (outcome) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64 rounded-xl p-4 shadow-[0_20px_50px_rgba(56,189,248,0.1)] border border-slate-800 bg-surface">
+      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64 rounded-xl p-4 shadow-[0_20px_50px_rgba(85,233,171,0.12)] border border-border bg-surface">
         <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
           <div className="flex items-center gap-1.5">
             <span className="size-2.5 rounded-full bg-red-500/80" />

@@ -59,6 +59,7 @@ export function Bento() {
           <BentoCard
             key={feature.name || feature.className || index}
             {...feature}
+            style={{ animationDelay: `${index * 0.1}s` }}
           />
         ))}
       </BentoGrid>
