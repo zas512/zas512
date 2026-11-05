@@ -1,231 +1,52 @@
-"use client";
-import { FloatingPaths } from "@/components/kokonutui/background-paths";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import Unicorn from "@/components/Unicorn";
 import { profile } from "@/lib/data";
-import gsap from "gsap";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-export function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [startBgAnim, setStartBgAnim] = useState(false);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const ctx = gsap.context(() => {
-      const heroTl = gsap.timeline({
-        defaults: {
-          ease: "power3.out",
-          duration: prefersReducedMotion ? 0 : 0.8
-        },
-        onComplete: () => {
-          setStartBgAnim(true);
-        }
-      });
-
-      heroTl
-        .fromTo(
-          ".hero-line",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, stagger: 0.12 }
-        )
-        .fromTo(
-          ".hero-card",
-          { opacity: 0, y: 30, rotate: (i) => (i === 0 ? -4 : 4) },
-          {
-            opacity: 1,
-            y: 0,
-            rotate: (i) => (i === 0 ? -6 : 5),
-            stagger: 0.15,
-            onComplete: () => {
-              if (!prefersReducedMotion) {
-                gsap.utils
-                  .toArray<HTMLElement>(".hero-card")
-                  .forEach((card, index) => {
-                    gsap.to(card, {
-                      y: index === 0 ? "-=12" : "+=12",
-                      duration: index === 0 ? 3.5 : 4.2,
-                      ease: "sine.inOut",
-                      repeat: -1,
-                      yoyo: true,
-                      delay: index * 0.3
-                    });
-                  });
-              }
-            }
-          },
-          "-=0.2"
-        )
-        .fromTo(
-          ".hero-subhead",
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0 },
-          "-=0.4"
-        )
-        .fromTo(
-          ".hero-cta",
-          { opacity: 0, y: 12 },
-          { opacity: 1, y: 0, stagger: 0.08 },
-          "-=0.4"
-        );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
+export default function Hero() {
   return (
     <section
-      ref={containerRef}
-      className="relative flex items-center justify-center isolate min-h-svh overflow-hidden pt-28 pb-16"
-      aria-label="Hero section"
+      id="hero"
+      className="relative mt-10 mx-0 mb-0 overflow-hidden bg-nd-inverse text-nd-high-em-text text-left border-b border-nd-border-light"
+      aria-labelledby="hero-title"
     >
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <FloatingPaths position={1} animate={startBgAnim} />
-      </div>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
-        {/* Main Headline */}
-        <p className="text-center font-display text-[clamp(2.75rem,2rem+4vw,5.5rem)] leading-[1.05] tracking-tight">
-          <span className="text-foreground font-light hero-line">
-            Shipping full-stack <span className="italic">products</span>
-          </span>
-          <span className="text-foreground font-light block hero-line opacity-0">
-            with{" "}
-            <span className="text-accent font-semibold">
-              intelligent, real-time systems
-            </span>
-            .
-          </span>
-        </p>
-        {/* Subtitle & Differentiator */}
-        <div className="hero-subhead opacity-0 mx-auto mt-8 max-w-2xl text-center">
-          <p className="text-balance text-base text-foreground-muted md:text-lg leading-relaxed font-sans">
-            I'm{" "}
-            <span className="font-medium text-foreground">
-              {profile.shortName}
-            </span>
-            , a <span className="text-foreground">{profile.role}</span>{" "}
-            specializing in scalable multi-tenant platforms, async state
-            machines, and polished interfaces.
-          </p>
-        </div>
-
-        {/* Call to Action Buttons */}
-        <div className="hero-cta opacity-0 mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="#work"
-            className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
-          >
-            <InteractiveHoverButton>See what shipped</InteractiveHoverButton>
-          </Link>
-          <Link
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-2.5 text-sm font-semibold text-foreground backdrop-blur-md transition-all hover:bg-surface-elevated hover:border-border-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            <span>Start a conversation</span>
-            <ArrowUpRight className="size-4 text-foreground-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
-          </Link>
-        </div>
-
-        {/* Social / Channel Indicators */}
-        <div className="hero-cta opacity-0 mt-16 flex flex-wrap items-center justify-center gap-5 text-xs font-mono tracking-[0.16em] text-foreground-subtle">
-          <Link
-            href="https://github.com/zas512"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 uppercase"
-            aria-label="GitHub profile (opens in new tab)"
-          >
-            <FaGithub className="size-4" /> GitHub
-          </Link>
-          <span className="size-1 rounded-full bg-border" />
-          <Link
-            href="https://www.linkedin.com/in/zas512/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 uppercase"
-            aria-label="LinkedIn profile (opens in new tab)"
-          >
-            <FaLinkedin className="size-4" /> LinkedIn
-          </Link>
+      <Unicorn src="/src/img/index/hero-bg.json" />
+      <div className="flex min-h-175">
+        <div className="max-w-screen-2xl w-full mx-auto px-5 md:px-8 xl:px-10 flex flex-col justify-between relative pt-12 xl:pt-41.25 md:pb-8 xl:pb-10 min-h-[calc(100svh-2.5rem)]">
+          <div className="max-w-5xl">
+            <h1 className="nd-heading-2xl" id="hero-title">
+              Shipping full-stack <br />
+              <span className="font-light">
+                products with intelligent, real-time systems.
+              </span>
+            </h1>
+            <p className="text-nd-mid-em-text font-medium max-md:mt-5 md:mt-6 nd-body-xl xl:max-w-110">
+              I&apos;m {profile.shortName}, a {profile.role} specializing in
+              scalable multi-tenant platforms, async state machines, and
+              polished interfaces.
+            </p>
+            <div className="mt-13">
+              <button
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-11 px-6 rounded-full md:h-12 nd-body-m py-3 bg-nd-cta text-nd-inverse hover:bg-nd-primary/90! md:tracking-[-0.18px]"
+                aria-label="See what shipped"
+              >
+                <span>See what shipped</span>
+                <span className="-mr-3 p-1 size-8! bg-nd-inverse text-nd-cta rounded-full inline-flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                    className="size-4! block"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 13h6v4l6-5-6-5v4H6z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <FloatingCards />
     </section>
-  );
-}
-
-function FloatingCards() {
-  return (
-    <div className="absolute inset-0 z-0 max-w-7xl mx-auto hidden lg:block pointer-events-none">
-      {/* Code snippet card (system) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute left-[6%] bottom-[12%] w-64 rounded-xl p-5 shadow-[0_20px_50px_rgba(85,233,171,0.12)] border border-border bg-surface">
-        <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
-          <div className="flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-red-500/80" />
-            <span className="size-2.5 rounded-full bg-yellow-500/80" />
-            <span className="size-2.5 rounded-full bg-green-500/80" />
-          </div>
-          <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
-            system
-          </span>
-        </div>
-        <div className="leading-relaxed text-[11px] font-mono text-slate">
-          <div className="text-accent font-semibold">production/</div>
-          <div>├── ai-workflows</div>
-          <div>├── realtime</div>
-          <div>├── api-layer</div>
-          <div>├── observability</div>
-          <div>└── infrastructure</div>
-          <div className="mt-3 border-t border-line pt-3 flex items-center gap-2">
-            <span className="size-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-slate-dim text-[10px] uppercase tracking-wider">
-              status: operational
-            </span>
-          </div>
-        </div>
-      </div>
-      {/* Telemetry metric card (outcome) */}
-      <div className="hero-card opacity-0 pointer-events-auto absolute right-[6%] bottom-[15%] w-64 rounded-xl p-4 shadow-[0_20px_50px_rgba(85,233,171,0.12)] border border-border bg-surface">
-        <div className="mb-3 flex items-center justify-between border-b border-border pb-3">
-          <div className="flex items-center gap-1.5">
-            <span className="size-2.5 rounded-full bg-red-500/80" />
-            <span className="size-2.5 rounded-full bg-yellow-500/80" />
-            <span className="size-2.5 rounded-full bg-green-500/80" />
-          </div>
-          <span className="text-xs tracking-[0.14em] text-foreground-muted uppercase font-mono">
-            outcome
-          </span>
-        </div>
-        <div className="leading-relaxed text-[11px] font-mono text-slate">
-          <div className="text-bone font-semibold mb-3 tracking-widest text-[10px]">
-            SYSTEM STATUS
-          </div>
-          <div className="flex justify-between gap-4 mb-1">
-            <span>AI workflows</span>
-            <span className="text-cyan font-bold">READY</span>
-          </div>
-          <div className="flex justify-between gap-4 mb-1">
-            <span>API infrastructure</span>
-            <span className="text-cyan font-bold">READY</span>
-          </div>
-          <div className="flex justify-between gap-4 mb-1">
-            <span>Realtime</span>
-            <span className="text-green-400 font-bold">LIVE</span>
-          </div>
-          <div className="flex justify-between gap-4">
-            <span>Deployment</span>
-            <span className="text-cyan font-bold">AUTOMATED</span>
-          </div>
-          <p className="mt-3 border-t border-line pt-3 text-right text-green-400 font-semibold flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-wider">
-            production ✓
-          </p>
-        </div>
-      </div>
-    </div>
   );
 }
